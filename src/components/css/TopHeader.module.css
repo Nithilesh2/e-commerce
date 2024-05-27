@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+.main {
+  height: 45px;
+  width: 100%;
+  background-color: rgba(42, 42, 42, 0.866);
+  color: rgba(255, 255, 255, 0.852);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.discount {
+  height: auto;
+  font-size: 1rem;
+  font-weight: 500;
+  padding-left: 15px;
+}
+
+.shopNow {
+  /* color: rgba(255, 255, 255, 0.852); */
+  color: rgba(255, 31, 31, 0.764);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.shopNow:hover {
+  color: rgba(255, 62, 62, 0.726);
+}
+
+.language {
+  height: auto;
+  width: auto;
+  display: block;
+}
+.select {
+  border: none;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 700px) {
+  .language {
+    display: none;
+  }
+}
