@@ -14,7 +14,7 @@ const TopHeader = () => {
         </div>
         <div className={style.language}>
           <select className={style.select}>
-            <option selected>English</option>
+            <option defaultValue="">English</option>
             <option>Telugu</option>
             <option>Tamil</option>
             <option>Hindi</option>
