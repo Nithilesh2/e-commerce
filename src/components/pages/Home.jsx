@@ -7,7 +7,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import MultiCarousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import data from "../json/offerItemsData.json";
+// import data from "../json/offerItemsData.json";
 import { AiOutlineHeart } from "react-icons/ai";
 
 const Home = () => {
@@ -96,7 +96,10 @@ const Home = () => {
           </div>
         </div>
         <div className={style.todaySpecialOffersItems}>
-          <MultiCarousel responsive={responsive} className={style.multiCarousal}>
+          <MultiCarousel
+            responsive={responsive}
+            className={style.multiCarousal}
+          >
             {/* {data.map((data, key) => (
               <div key={key} className={style.rowTwoOffersData}>
 
@@ -135,7 +138,9 @@ const Home = () => {
                     </span>
                   </div>
                 </div>
-                <button className={style.allProductsBtn}>View All Products</button>
+                <button className={style.allProductsBtn}>
+                  View All Products
+                </button>
               </div>
             </div>
           </MultiCarousel>
