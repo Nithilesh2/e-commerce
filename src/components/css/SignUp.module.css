@@ -1,0 +1,200 @@
+.signUp {
+  height: 100%;
+  width: 99%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 50px 0;
+}
+.imageBox {
+  height: 90%;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loginImage {
+  width: 555px;
+  aspect-ratio: 21 / 19;
+  transition: all 0.5s;
+}
+.form {
+  height: 500px;
+  width: 400px;
+  max-width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.signUpBox {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+.top {
+  cursor: default;
+  height: auto;
+  width: 100%;
+}
+.top > h2 {
+  font-size: 1.98rem;
+}
+.top > h4 {
+  font-size: 1.1rem;
+  margin-left: 3px;
+}
+.center {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.nameInput,
+.emailOrPhoneInput,
+.passwordInput {
+  outline: none;
+  height: 20px;
+  width: 310px;
+  border: none;
+  font-size: 16px;
+  margin-left: 3px;
+  padding-bottom: 5px;
+  border-bottom: 1.6px solid rgba(0, 0, 0, 0.442);
+}
+.bottom {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+}
+.googleSignIn {
+  height: 40px;
+  width: 310px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.createAccBtn,
+.googleLoginBtn {
+  cursor: pointer;
+  height: 40px;
+  width: 310px;
+  border: none;
+  font-size: 14px;
+  margin-left: 3px;
+  border-radius: 3px;
+  background-color: #db4444;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login {
+  height: auto;
+  width: 100%;
+  display: flex;
+  margin-left: 5px;
+  gap: 0.65rem;
+  cursor: default;
+}
+.loginRedirect {
+  cursor: pointer;
+  border-bottom: 1px solid black;
+}
+@media only screen and (max-width: 1030px) {
+  .loginImage {
+    width: 425px;
+    aspect-ratio: 17 / 20;
+  }
+  .signUpBox {
+    width: 90%;
+  }
+  .top > h2 {
+    font-size: 1.68rem;
+  }
+  .top > h4 {
+    font-size: 1rem;
+    margin-left: 3px;
+  }
+  .nameInput,
+  .emailOrPhoneInput,
+  .passwordInput {
+    font-size: 14px;
+    width: 260px;
+  }
+  .googleSignIn,
+  .createAccBtn {
+    width: 260px;
+  }
+  .login {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-height: 690px) {
+  .signUpBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .imageBox {
+    display: none;
+  }
+  .form {
+    width: 100%;
+    max-width: 100%;
+  }
+  .top,
+  .center,
+  .bottom,
+  .login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .login {
+    justify-content: center;
+    flex-direction: row;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .signUp {
+    height: 100%;
+    width: 90%;
+    justify-content: center;
+    border: 1px solid black;
+    margin: 10px 0 20px 20px;
+    border-radius: 10px;
+  }
+  .imageBox {
+    display: none;
+  }
+  .form {
+    width: 100%;
+    max-width: 100%;
+  }
+  .signUpBox {
+    justify-content: center;
+  }
+  .top,
+  .center,
+  .bottom,
+  .login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .login {
+    justify-content: center;
+    flex-direction: row;
+  }
+}

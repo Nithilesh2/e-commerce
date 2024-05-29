@@ -4,18 +4,26 @@ import { useNavigate } from "react-router-dom";
 import {
   AiFillHeart,
   AiOutlineShoppingCart,
+  AiOutlineShopping,
   AiOutlineMenu,
   AiOutlineClose,
   AiOutlineUser,
   AiOutlineSearch,
+  AiOutlineCloseCircle,
+  AiOutlineStar,
+  AiOutlineLogout,
 } from "react-icons/ai";
 
 const Navbar = (props) => {
   const navigate = useNavigate();
   const [menuToggle, setMenuToggle] = useState(false);
   const [activePage, setActivePage] = useState("");
+  const [popOver, setPopOver] = useState(false);
   function menuClicked() {
     setMenuToggle(!menuToggle);
+  }
+  function popOverClicked() {
+    setPopOver(!popOver);
   }
   useEffect(() => {
     if (props.showbar) {
@@ -65,7 +73,7 @@ const Navbar = (props) => {
               </ul>
             </div>
             <div className={style.search}>
-              <form>
+              <form className={style.form}>
                 <input
                   className={style.input}
                   type="search"
@@ -84,8 +92,40 @@ const Navbar = (props) => {
                 <div className={style.addedItems}>1</div>
                 <AiOutlineShoppingCart className={style.cart} />
               </div>
-              <div className={style.userBox} title="my profile">
+              <div
+                className={style.userBox}
+                title="my profile"
+                onClick={popOverClicked}
+              >
                 <AiOutlineUser className={style.user} />
+                <div
+                  className={
+                    popOver ? style.popupBoxActive : style.popupBoxDeActive
+                  }
+                >
+                  <ul className={style.popupDataActive}>
+                    <li title="account">
+                      <AiOutlineUser />
+                      <span>Manage My Account</span>
+                    </li>
+                    <li title="orders">
+                      <AiOutlineShopping />
+                      <span>My Order</span>
+                    </li>
+                    <li title="canceled">
+                      <AiOutlineCloseCircle />
+                      <span>My Cancellations</span>
+                    </li>
+                    <li title="reviews">
+                      <AiOutlineStar />
+                      <span>My Reviews</span>
+                    </li>
+                    <li title="logout">
+                      <AiOutlineLogout />
+                      <span>Logout</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
             <div className={style.toggle} onClick={menuClicked}>

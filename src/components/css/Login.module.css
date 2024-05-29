@@ -1,0 +1,170 @@
+.login {
+  height: 100%;
+  width: 99%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 50px 0;
+}
+.imageBox {
+  height: 90%;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loginImage {
+  width: 555px;
+  aspect-ratio: 21 / 19;
+  transition: all 0.5s;
+}
+.form {
+  height: 500px;
+  width: 400px;
+  max-width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loginBox {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+.top {
+  cursor: default;
+  height: auto;
+  width: 100%;
+}
+.top > h2 {
+  font-size: 1.98rem;
+}
+.top > h4 {
+  font-size: 1.1rem;
+  margin-left: 3px;
+}
+.center {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.emailOrPhoneInput,
+.passwordInput {
+  outline: none;
+  height: 20px;
+  width: 310px;
+  border: none;
+  font-size: 16px;
+  margin-left: 3px;
+  padding-bottom: 5px;
+  border-bottom: 1.6px solid rgba(0, 0, 0, 0.442);
+}
+.bottom {
+  height: auto;
+  width: 310px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.loginBtn {
+  cursor: pointer;
+  height: 40px;
+  width: 100px;
+  border: none;
+  font-size: 14px;
+  margin-left: 3px;
+  border-radius: 3px;
+  background-color: #db4444;
+  color: white;
+}
+.forgotPass {
+  color: #db4444;
+}
+@media only screen and (max-width: 1030px) {
+  .loginImage {
+    width: 425px;
+    aspect-ratio: 17 / 20;
+  }
+  .signUpBox {
+    width: 90%;
+  }
+  .top > h2 {
+    font-size: 1.68rem;
+  }
+  .top > h4 {
+    font-size: 1rem;
+    margin-left: 3px;
+  }
+  .nameInput,
+  .emailOrPhoneInput,
+  .passwordInput {
+    font-size: 14px;
+    width: 260px;
+  }
+  .googleSignIn,
+  .createAccBtn {
+    width: 260px;
+  }
+  .login {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .login {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    border: 1px solid black;
+    margin: 10px 0 20px 20px;
+    border-radius: 10px;
+  }
+  .imageBox {
+    display: none;
+  }
+  .form {
+    width: 100%;
+    max-width: 100%;
+  }
+  .loginBox {
+    align-items: center;
+    justify-content: center;
+  }
+  .nameInput,
+  .emailOrPhoneInput,
+  .passwordInput {
+    font-size: 14px;
+    width: 220px;
+  }
+  .top,
+  .center,
+  .bottom,
+  .login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+  }
+  .login {
+    width: 80%;
+    position: relative;
+    top: 0;
+    left: 15px;
+  }
+  .center {
+    margin: 15px 0;
+  }
+  .bottom {
+    justify-content: space-between;
+    flex-direction: row;
+    width: 80%;
+  }
+}
+

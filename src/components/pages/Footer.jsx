@@ -35,7 +35,7 @@ const Footer = () => {
               <p>DH1515, Bangladesh.</p>
             </li>
             <li>
-              <a href="mailto:exclusive@gmail.com">exclusive@gmail.com</a>
+              <a href="mailto:abcde@gmail.com">abcde@gmail.com</a>
             </li>
             <li>
               <a href="tel:+919864847518">9864847518</a>

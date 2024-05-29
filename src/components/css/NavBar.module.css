@@ -27,6 +27,7 @@
   align-items: center;
   justify-content: space-evenly;
   padding-left: 20px;
+  transition: all.5s;
 }
 .left {
   height: 100%;
@@ -86,7 +87,7 @@
   justify-content: center;
   margin: 0 10px;
 }
-form {
+.form {
   position: relative;
   width: 200px;
   background: var(--color-brand);
@@ -99,7 +100,7 @@ form {
   color: var(--color-dark);
   font-size: 1.8rem;
 }
-input[type="search"] {
+.input[type="search"] {
   outline: 0;
   width: 100%;
   background: var(--color-light);
@@ -123,7 +124,7 @@ input[type="search"] {
   background: var(--color-brand);
   border-radius: 5px;
 }
-input:not(:placeholder-shown) {
+.input:not(:placeholder-shown) {
   border-radius: 5px 0 0 5px;
   width: 165px;
   + button {
@@ -144,6 +145,11 @@ input:not(:placeholder-shown) {
 .userBox {
   margin: 0 10px;
   cursor: pointer;
+}
+.userBox {
+  position: relative;
+  top: 0;
+  right: 0;
 }
 .cartBox {
   position: relative;
@@ -178,13 +184,54 @@ input:not(:placeholder-shown) {
 .toggle {
   display: none;
 }
-
-/* @media only screen and (max-height: 300px) {
-  .navItems {
-    margin-top: 60px;
-  }
-} */
-
+.popupBoxActive {
+  opacity: 1;
+  top: 40px;
+  right: -50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 86, 185, 0.47),
+    rgba(107, 225, 255, 0.47)
+  );
+  padding: 10px 20px;
+  border-radius: 8px;
+  z-index: 1000;
+  height: 200px;
+  width: 230px;
+}
+.popupDataActive {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-direction: column;
+  color: black;
+  filter: blur(0px);
+}
+.popupBoxDeActive,
+.popupDataDeActive {
+  display: none;
+}
+.popupDataActive li {
+  font-size: 24px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.popupDataActive li span {
+  font-size: 16px;
+  height: auto;
+  width: 100%;
+}
 @media only screen and (max-width: 920px) {
   .toggle {
     height: 100%;
@@ -217,14 +264,14 @@ input:not(:placeholder-shown) {
     position: static;
   }
   .navItems {
-    transition: max-height 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
     z-index: 1;
     top: 120px;
     right: 0;
     position: absolute;
     justify-content: center;
     flex-direction: column;
-    max-height: 400px;
+    height: 350px;
     width: 100%;
     gap: 1.5rem;
     overflow: hidden;
@@ -245,7 +292,6 @@ input:not(:placeholder-shown) {
     display: block;
   }
 }
-
 @media only screen and (max-width: 540px) {
   .navbar {
     height: 95px;
@@ -253,6 +299,7 @@ input:not(:placeholder-shown) {
   }
   .navItems {
     top: 140px;
+    height: 400px;
   }
   .outerright {
     justify-content: center;
@@ -271,7 +318,8 @@ input:not(:placeholder-shown) {
     height: auto;
     position: absolute;
     display: flex;
-    top: 400px;
+    top: 170px;
+    z-index: 1;
   }
   .menu,
   .close {

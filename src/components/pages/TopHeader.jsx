@@ -8,7 +8,7 @@ const TopHeader = () => {
       <main className={style.main}>
         <div className={style.discount}>
           Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
-          <Link to={"./"}>
+          <Link to={"/"}>
             <span className={style.shopNow}> ShopNow</span>
           </Link>
         </div>
