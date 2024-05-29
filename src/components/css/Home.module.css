@@ -1,0 +1,22 @@
+.rowOne {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.carousalOne {
+  height: auto;
+  max-width: 1000px;
+  width: 90%;
+}
+.todaySpecialOffersItems {
+  height: auto;
+  width: 100%;
+}
+.rowTwoOffersData {
+  height: auto;
+  width: 100%;
+  background-color: red;
+}
