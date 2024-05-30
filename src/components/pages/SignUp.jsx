@@ -13,6 +13,7 @@ const SignUp = () => {
       <div className={style.main}>
         <TopHeader />
         <Navbar showbar="signup" />
+        <hr />
         <div className={style.signUp}>
           <div className={style.imageBox}>
             <img

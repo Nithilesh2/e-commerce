@@ -8,7 +8,8 @@ const Login = () => {
   return (
     <>
       <TopHeader />
-      <Navbar showbar="login" />
+      <Navbar showbar="login" /> 
+      <hr />
       <div className={style.login}>
         <div className={style.imageBox}>
           <img

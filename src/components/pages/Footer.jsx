@@ -7,8 +7,10 @@ import {
   AiOutlineSend,
   AiOutlineTwitter,
 } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <>
       <footer className={style.footer}>
@@ -46,10 +48,22 @@ const Footer = () => {
           <ul className={style.footerDataThreeItems}>
             <li className={style.account}>Account</li>
             <li>My Account</li>
-            <li>Login / Register</li>
+            <li
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Login / Register
+            </li>
             <li>Cart</li>
             <li>WishList</li>
-            <li>Shop</li>
+            <li
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Shop
+            </li>
           </ul>
         </div>
         <div className={style.footerDataFour}>

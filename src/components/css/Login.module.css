@@ -1,10 +1,11 @@
 .login {
   height: 100%;
-  width: 99%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin: 50px 0;
+  padding: 50px 0;
+  background-color: rgba(244, 244, 244, 0.852);
 }
 .imageBox {
   height: 90%;
@@ -56,6 +57,7 @@
 }
 .emailOrPhoneInput,
 .passwordInput {
+  background-color: rgba(244, 244, 244, 0.852);
   outline: none;
   height: 20px;
   width: 310px;
@@ -167,4 +169,3 @@
     width: 80%;
   }
 }
-
