@@ -22,6 +22,7 @@ import {
 } from "react-icons/ai";
 import SideLeftRedColor from "./SideLeftRedColor";
 import browseByCategoryData from "../json/browseByCategory.json";
+import bestSellingProductsData from "../json/bestSellingProducts.json";
 
 const Home = () => {
   const [likedItems, setLikedItems] = useState({});
@@ -269,7 +270,90 @@ const Home = () => {
               </button>
             </div>
           </div>
+          <div className={style.todaySpecialOffersItems}>
+            <MultiCarousel
+              responsive={responsiverowTwo}
+              className={style.multiCarousal}
+              autoPlay={true}
+              autoPlaySpeed={3000}
+              infinite={true}
+            >
+              {bestSellingProductsData.map((data, key) => (
+                <div className={style.rowTwoOffersData} key={key}>
+                  <div className={style.rowTwoOffersDataBox}>
+                    <div
+                      className={style.rowTwoOffersDataBoxTop}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "flex-end",
+                        paddingRight: "20px",
+                      }}
+                    >
+                      <div
+                        className={style.rowTwoOffersDataBoxTopLike}
+                        onClick={() => likeBtnClicked(key)}
+                      >
+                        {likedItems[key] ? (
+                          <AiFillHeart className={style.heartActive} />
+                        ) : (
+                          <AiOutlineHeart className={style.heartDeActive} />
+                        )}
+                      </div>
+                    </div>
+                    <div className={style.rowTwoOffersDataBoxCenter}>
+                      <img src={data.image} alt="img" />
+                    </div>
+                    <div className={style.rowTwoOffersDataBoxBottom}>
+                      <div className={style.rowTwoOffersDataBoxBottomName}>
+                        {data.name}
+                      </div>
+                      <div className={style.rowTwoOffersDataBoxBottomCost}>
+                        <span
+                          className={
+                            style.rowTwoOffersDataBoxBottomCostDiscount
+                          }
+                        >
+                          {data.discountCost}
+                        </span>
+                        <span
+                          className={
+                            style.rowTwoOffersDataBoxBottomCostOriginal
+                          }
+                        >
+                          {data.originalCost}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </MultiCarousel>
+          </div>
         </div>
+        <div className={style.rowFive}>
+          <div className={style.speakerBox}>
+            <div className={style.speakerBoxLeft}>
+              <div className={style.speakerBoxLeftCategories}>Categories</div>
+              <div className={style.speakerBoxLeftEnhance}>
+                <div className={style.speakerBoxLeftTop}>Enhance Your</div>
+                <div className={style.speakerBoxLeftBottom}>
+                  Music Experience
+                </div>
+              </div>
+              <div className={style.speakerBoxLeftBuyBtnBox}>
+                <button className={style.speakerBoxLeftBuyBtn}>Buy Now</button>
+              </div>
+            </div>
+            <div className={style.speakerBoxRight}>
+              <img
+                src="https://www.pngmart.com/files/15/JBL-Audio-Speakers-Amplifier-Background-PNG.png"
+                alt="speaker"
+              />
+            </div>
+          </div>
+        </div>
+        <hr />
       </div>
       <Footer />
     </>

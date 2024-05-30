@@ -7,7 +7,7 @@ import style from "../css/SignUp.module.css";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <>
       <div className={style.main}>
@@ -52,11 +52,11 @@ const SignUp = () => {
                 <div className={style.googleSignIn}>
                   <GoogleLogin
                     className={style.googleLoginBtn}
-                    onSuccess={(credentialResponse) => {
-                      console.log(credentialResponse);
+                    onSuccess={() => {
+                      navigate("/");
                     }}
                     onError={() => {
-                      console.log("Login Failed");
+                      navigate("/login");
                     }}
                   />
                 </div>
