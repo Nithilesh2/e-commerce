@@ -8,7 +8,20 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import MultiCarousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import data from "../json/offerItemsData.json";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import {
+  AiFillHeart,
+  AiOutlineBulb,
+  AiOutlineCamera,
+  AiOutlineDesktop,
+  AiOutlineHeart,
+  AiOutlineLaptop,
+  AiOutlineMobile,
+  AiOutlinePrinter,
+  AiOutlineTablet,
+  AiOutlineWallet,
+} from "react-icons/ai";
+import SideLeftRedColor from "./SideLeftRedColor";
+import browseByCategoryData from "../json/browseByCategory.json";
 
 const Home = () => {
   const [likedItems, setLikedItems] = useState({});
@@ -18,7 +31,17 @@ const Home = () => {
       [key]: !prevState[key],
     }));
   };
-  const responsive = {
+  const iconMap = {
+    AiOutlineMobile: <AiOutlineMobile />,
+    AiOutlineCamera: <AiOutlineCamera />,
+    AiOutlineWallet: <AiOutlineWallet />,
+    AiOutlineTablet: <AiOutlineTablet />,
+    AiOutlinePrinter: <AiOutlinePrinter />,
+    AiOutlineBulb: <AiOutlineBulb />,
+    AiOutlineDesktop: <AiOutlineDesktop />,
+    AiOutlineLaptop: <AiOutlineLaptop />,
+  };
+  const responsiverowTwo = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
       items: 10,
@@ -45,6 +68,32 @@ const Home = () => {
     },
     mobile: {
       breakpoint: { max: 520, min: 0 },
+      items: 1,
+    },
+  };
+  const responsiveRowThree = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 1600 },
+      items: 10,
+    },
+    desktop: {
+      breakpoint: { max: 1600, min: 820 },
+      items: 5,
+    },
+    tablet: {
+      breakpoint: { max: 820, min: 600 },
+      items: 4,
+    },
+    tablet2: {
+      breakpoint: { max: 600, min: 450 },
+      items: 3,
+    },
+    mobile: {
+      breakpoint: { max: 450, min: 260 },
+      items: 2,
+    },
+    mobile2: {
+      breakpoint: { max: 260, min: 0 },
       items: 1,
     },
   };
@@ -90,10 +139,7 @@ const Home = () => {
           </Carousel>
         </div>
         <div className={style.rowTwo}>
-          <div className={style.todaySpecialOffers}>
-            <div className={style.todaySpecialOffersLeft}></div>
-            <div className={style.todaySpecialOffersRight}>Today's</div>
-          </div>
+          <SideLeftRedColor data={"Today's"} />
           <div className={style.flashSalesBox}>
             <div className={style.flashSales}>Flash Sales</div>
             <div className={style.offerTimePeriod}>
@@ -128,8 +174,11 @@ const Home = () => {
           </div>
           <div className={style.todaySpecialOffersItems}>
             <MultiCarousel
-              responsive={responsive}
+              responsive={responsiverowTwo}
               className={style.multiCarousal}
+              autoPlay={true}
+              autoPlaySpeed={3000}
+              infinite={true}
             >
               {data.map((data, key) => (
                 <div className={style.rowTwoOffersData} key={key}>
@@ -178,6 +227,47 @@ const Home = () => {
               ))}
             </MultiCarousel>
             <button className={style.allProductsBtn}>View All Products</button>
+          </div>
+        </div>
+        <hr />
+        <div className={style.rowThree}>
+          <SideLeftRedColor data={"Categories"} />
+          <div className={style.browseByCategory}>Browse By Category</div>
+          <div className={style.rowThreeDataBoxDataItems}>
+            <div className={style.rowThreeDataBox}>
+              <MultiCarousel
+                responsive={responsiveRowThree}
+                className={style.multiCarousal}
+                autoPlay={true}
+                autoPlaySpeed={3000}
+                infinite={true}
+              >
+                {browseByCategoryData.map((data, key) => (
+                  <div key={key} className={style.rowThreeDataBoxes}>
+                    <div className={style.rowThreeDataBoxIcons}>
+                      {iconMap[data.icon]}
+                    </div>
+                    <div className={style.rowThreeDataBoxNames}>
+                      {data.type}
+                    </div>
+                  </div>
+                ))}
+              </MultiCarousel>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div className={style.rowFour}>
+          <SideLeftRedColor data={"This Month"} />
+          <div className={style.rowFourBestSellingBox}>
+            <div className={style.bestSellingProducts}>
+              Best Selling Products
+            </div>
+            <div>
+              <button type="button" className={style.bestSellingProductsButton}>
+                View All
+              </button>
+            </div>
           </div>
         </div>
       </div>

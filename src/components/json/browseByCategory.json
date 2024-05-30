@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "icon": "AiOutlineMobile",
+    "type": "Mobile"
+  },
+  {
+    "id": 2,
+    "icon": "AiOutlineCamera ",
+    "type": "Camera"
+  },
+  {
+    "id": 3,
+    "icon": "AiOutlineWallet",
+    "type": "wallet"
+  },
+  {
+    "id": 4,
+    "icon": "AiOutlineTablet",
+    "type": "Tablet"
+  },
+  {
+    "id": 5,
+    "icon": "AiOutlinePrinter",
+    "type": "Printer"
+  },
+  {
+    "id": 6,
+    "icon": "AiOutlineBulb",
+    "type": "Bulb"
+  },
+  {
+    "id": 7,
+    "icon": "AiOutlineDesktop",
+    "type": "Computer"
+  },
+  {
+    "id": 8,
+    "icon": "AiOutlineLaptop",
+    "type": "Laptop"
+  }
+]

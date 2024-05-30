@@ -20,7 +20,9 @@
   max-width: 1000px;
   width: 90%;
 }
-.rowTwo {
+.rowTwo,
+.rowThree,
+.rowFour {
   height: 100%;
   width: 100%;
   display: flex;
@@ -32,14 +34,14 @@
 }
 .todaySpecialOffers {
   height: 30px;
-  width: 50px;
+  width: 100px;
   display: flex;
   gap: 0.8rem;
 }
 .todaySpecialOffersLeft {
   height: 100%;
-  width: 100%;
-  border-left: 14px solid rgb(255, 73, 73);
+  width: auto;
+  border-left: 14px solid #db4444;
   border-radius: 3px;
 }
 .todaySpecialOffersRight {
@@ -47,10 +49,10 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: 14px;
   font-weight: 600;
-  color: rgb(255, 73, 73);
+  color: #db4444;
 }
 .flashSalesBox {
   height: 70px;
@@ -90,11 +92,15 @@
   gap: 0.5rem;
 }
 .semicolon {
-  color: rgb(255, 73, 73);
+  color: #db4444;
 }
 .todaySpecialOffersItems {
   height: auto;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .multiCarousal {
   height: auto;
@@ -115,9 +121,8 @@
   transition: all 0.5s;
 }
 .rowTwoOffersDataBox {
-  margin-bottom: 100px;
-  height: 230px;
-  width: 230px;
+  height: 290px;
+  width: 250px;
   border-radius: 5px;
   transition: all 0.5s;
 }
@@ -140,7 +145,7 @@
   align-items: center;
   justify-content: center;
   color: white;
-  background-color: rgb(255, 73, 73);
+  background-color: #db4444;
 }
 .rowTwoOffersDataBoxTopLike {
   height: 23px;
@@ -193,7 +198,7 @@
 .rowTwoOffersDataBoxBottomCostDiscount {
   height: auto;
   width: auto;
-  color: rgb(255, 73, 73);
+  color: #db4444;
 }
 .rowTwoOffersDataBoxBottomCostOriginal {
   height: auto;
@@ -203,6 +208,80 @@
 }
 .multiCarousal {
   margin-top: 20px;
+}
+.allProductsBtn,
+.bestSellingProductsButton {
+  height: 40px;
+  width: 150px;
+  border-radius: 4px;
+  border: none;
+  background-color: #db4444;
+  color: white;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.bestSellingProductsButton {
+  margin-right: 30px;
+}
+.browseByCategory,
+.bestSellingProducts {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.rowThreeDataBoxDataItems {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.rowThreeDataBox {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  margin-bottom: 15px;
+}
+.rowThreeDataBoxes {
+  cursor: pointer;
+  height: 120px;
+  width: 120px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid rgba(155, 155, 155, 0.674);
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+.rowThreeDataBoxes:hover {
+  background-color: #db4444;
+  color: white;
+}
+.rowThreeDataBoxIcons {
+  font-size: 2.6rem;
+}
+.rowThreeDataBoxNames {
+  font-size: 1rem;
+}
+.react-multiple-carousel__arrow--left {
+  left: calc(0% + 1px);
+  top: calc(0% + 1px);
+}
+.react-multiple-carousel__arrow--right {
+  right: calc(0% + 1px);
+}
+.rowFourBestSellingBox {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 @media only screen and (max-width: 1020px) {
   .flashSalesBox {
@@ -238,5 +317,10 @@
   .rowTwoOffersData {
     justify-content: center;
     margin-left: -5px;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .rowThreeDataBoxDataItems {
+    padding-left: 40px;
   }
 }
