@@ -13,17 +13,21 @@ import {
   AiOutlineArrowUp,
   AiOutlineBulb,
   AiOutlineCamera,
+  AiOutlineCustomerService,
   AiOutlineDesktop,
   AiOutlineHeart,
   AiOutlineLaptop,
   AiOutlineMobile,
   AiOutlinePrinter,
+  AiOutlineSafetyCertificate,
   AiOutlineTablet,
+  AiOutlineTruck,
   AiOutlineWallet,
 } from "react-icons/ai";
 import SideLeftRedColor from "./SideLeftRedColor";
 import browseByCategoryData from "../json/browseByCategory.json";
 import bestSellingProductsData from "../json/bestSellingProducts.json";
+import exploreOurProducts from "../json/exploreOurProducts.json";
 
 const Home = () => {
   const buttonRef = useRef();
@@ -374,7 +378,108 @@ const Home = () => {
           </div>
         </div>
         <hr />
+        <div className={style.rowSix}>
+          <SideLeftRedColor data={"Our Products"} />
+          <div className={style.exploreOurProducts}>Explore Our Products</div>
+          <div className={style.todaySpecialOffersItems}>
+            <div className={style.rowSixMultiCarousal}>
+              {exploreOurProducts.map((data, key) => (
+                <div className={style.rowSixOffersData} key={key}>
+                  <div className={style.rowTwoOffersDataBox}>
+                    <div
+                      className={style.rowTwoOffersDataBoxTop}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "flex-end",
+                        paddingRight: "20px",
+                      }}
+                    >
+                      <div
+                        className={style.rowTwoOffersDataBoxTopLike}
+                        onClick={() => likeBtnClicked(key)}
+                      >
+                        {likedItems[key] ? (
+                          <AiFillHeart className={style.heartActive} />
+                        ) : (
+                          <AiOutlineHeart className={style.heartDeActive} />
+                        )}
+                      </div>
+                    </div>
+                    <div className={style.rowTwoOffersDataBoxCenter}>
+                      <img src={data.img} alt="img" loading="lazy" />
+                    </div>
+                    <div className={style.rowTwoOffersDataBoxBottom}>
+                      <div className={style.rowTwoOffersDataBoxBottomName}>
+                        {data.name}
+                      </div>
+                      <div className={style.rowTwoOffersDataBoxBottomCost}>
+                        <span
+                          className={
+                            style.rowTwoOffersDataBoxBottomCostDiscount
+                          }
+                        >
+                          {data.discountCost}
+                        </span>
+                        <span
+                          className={
+                            style.rowTwoOffersDataBoxBottomCostOriginal
+                          }
+                        >
+                          {data.originalCost}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <button className={style.rowSixAllProductsBtn}>
+              View All Products
+            </button>
+          </div>
+        </div>
+        <hr />
+        <div className={style.rowSeven}>
+          <div className={style.rowSevenFirstBox}>
+            <div className={style.top}>
+              <div className={style.outerCircle}>
+                <div className={style.innerCircle}>
+                  <AiOutlineTruck />
+                </div>
+              </div>
+            </div>
+            <div className={style.center}>Free And Fast Delivery</div>
+            <div className={style.bottom}>
+              Free delivery for all orders over ₹2,000
+            </div>
+          </div>
+          <div className={style.rowSevenSecondBox}>
+            <div className={style.top}>
+              <div className={style.outerCircle}>
+                <div className={style.innerCircle}>
+                  <AiOutlineCustomerService />
+                </div>
+              </div>
+            </div>
+            <div className={style.center}>24/7 Customer Service</div>
+            <div className={style.bottom}>Friendly 24/7 customer support</div>
+          </div>
+          <div className={style.rowSevenThirdBox}>
+            <div className={style.top}>
+              <div className={style.outerCircle}>
+                <div className={style.innerCircle}>
+                  <AiOutlineSafetyCertificate />
+                </div>
+              </div>
+            </div>
+            <div className={style.center}>Money Back Guarantee</div>
+            <div className={style.bottom}>We return money in 30 days</div>
+          </div>
+        </div>
       </div>
+
+      {/*/////////////////// uparrow ////////////////////////*/}
       <div className={style.upArrow}>
         <button
           type="button"
