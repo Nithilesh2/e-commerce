@@ -5,6 +5,7 @@
   flex-direction: column;
   gap: 2rem;
   background-color: rgba(244, 244, 244, 0.852);
+  position: relative;
 }
 .rowOne {
   height: 100%;
@@ -272,10 +273,11 @@
 }
 .react-multiple-carousel__arrow--left {
   left: calc(0% + 1px);
-  top: calc(0% + 1px);
+  top: calc(30% + 1px);
 }
 .react-multiple-carousel__arrow--right {
   right: calc(0% + 1px);
+  top: calc(30% + 1px);
 }
 .rowFourBestSellingBox {
   height: 100%;
@@ -353,6 +355,30 @@
   aspect-ratio: 4/3;
   filter: drop-shadow(30px 20px 75px white);
 }
+.upArrow {
+  height: auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+}
+.upArrowBtn {
+  background-color: rgba(0, 0, 0, 0.886);
+  color: white;
+  height: 40px;
+  width: 40px;
+  border-radius: 30px;
+  position: fixed;
+  bottom: 15px;
+  right: 10px;
+  font-size: 1.2rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
 @media only screen and (max-width: 1020px) {
   .flashSalesBox {
     width: 60%;
@@ -426,5 +452,8 @@
   }
   .speakerBoxLeft {
     margin-left: 0;
+  }
+  .upArrowBtn {
+    cursor: default;
   }
 }

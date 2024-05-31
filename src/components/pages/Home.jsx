@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import TopHeader from "./TopHeader";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -10,6 +10,7 @@ import "react-multi-carousel/lib/styles.css";
 import data from "../json/offerItemsData.json";
 import {
   AiFillHeart,
+  AiOutlineArrowUp,
   AiOutlineBulb,
   AiOutlineCamera,
   AiOutlineDesktop,
@@ -25,6 +26,7 @@ import browseByCategoryData from "../json/browseByCategory.json";
 import bestSellingProductsData from "../json/bestSellingProducts.json";
 
 const Home = () => {
+  const buttonRef = useRef();
   const [likedItems, setLikedItems] = useState({});
   const likeBtnClicked = (key) => {
     setLikedItems((prevState) => ({
@@ -98,6 +100,19 @@ const Home = () => {
       items: 1,
     },
   };
+  const listenToScroll = () => {
+    if (window.pageYOffset > 99) {
+      buttonRef.current.style.opacity = "1";
+    } else {
+      buttonRef.current.style.opacity = "0";
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", listenToScroll);
+    return () => {
+      window.removeEventListener("scroll", listenToScroll);
+    };
+  }, []);
   return (
     <>
       <TopHeader />
@@ -117,24 +132,28 @@ const Home = () => {
               <img
                 src="https://cdn.grabon.in/gograbon/images/web-images/uploads/1621488513434/today-electronics-offers.jpg"
                 alt="offers"
+                loading="lazy"
               />
             </div>
             <div>
               <img
                 src="https://pbs.twimg.com/media/GGMpKzJW0AApMNQ.jpg:large"
                 alt="onePlusOffer"
+                loading="lazy"
               />
             </div>
             <div>
               <img
                 src="https://idestiny.in/wp-content/uploads/2024/02/Web-offer-page_Web-banner-3-01-1024x373.png"
                 alt="iphoneOffer"
+                loading="lazy"
               />
             </div>
             <div>
               <img
                 src="https://cdn.grabon.in/gograbon/images/web-images/uploads/1618571140235/mobile-offers.jpg"
                 alt="samsungOffer"
+                loading="lazy"
               />
             </div>
           </Carousel>
@@ -200,7 +219,7 @@ const Home = () => {
                       </div>
                     </div>
                     <div className={style.rowTwoOffersDataBoxCenter}>
-                      <img src={data.image} alt="img" />
+                      <img src={data.image} alt="img" loading="lazy" />
                     </div>
                     <div className={style.rowTwoOffersDataBoxBottom}>
                       <div className={style.rowTwoOffersDataBoxBottomName}>
@@ -302,7 +321,7 @@ const Home = () => {
                       </div>
                     </div>
                     <div className={style.rowTwoOffersDataBoxCenter}>
-                      <img src={data.image} alt="img" />
+                      <img src={data.image} alt="img" loading="lazy" />
                     </div>
                     <div className={style.rowTwoOffersDataBoxBottom}>
                       <div className={style.rowTwoOffersDataBoxBottomName}>
@@ -349,11 +368,24 @@ const Home = () => {
               <img
                 src="https://www.pngmart.com/files/15/JBL-Audio-Speakers-Amplifier-Background-PNG.png"
                 alt="speaker"
+                loading="lazy"
               />
             </div>
           </div>
         </div>
         <hr />
+      </div>
+      <div className={style.upArrow}>
+        <button
+          type="button"
+          className={style.upArrowBtn}
+          ref={buttonRef}
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        >
+          <AiOutlineArrowUp />
+        </button>
       </div>
       <Footer />
     </>
