@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import style from "../css/NavBar.module.css";
 import { useNavigate } from "react-router-dom";
+import AppContext from "../context/AppContext";
+
 import {
-  AiFillHeart,
+  AiOutlineHeart,
   AiOutlineShoppingCart,
   AiOutlineShopping,
   AiOutlineMenu,
@@ -15,6 +17,7 @@ import {
 } from "react-icons/ai";
 
 const Navbar = (props) => {
+  const { likedItemsSent } = useContext(AppContext);
   const navigate = useNavigate();
   const [menuToggle, setMenuToggle] = useState(false);
   const [activePage, setActivePage] = useState("");
@@ -86,7 +89,8 @@ const Navbar = (props) => {
             </div>
             <div className={menuToggle ? style.rightActive : style.right}>
               <div className={style.like} title="saved">
-                <AiFillHeart className={style.heart} />
+                <div className={style.addedItemsHeart}>{likedItemsSent}</div>
+                <AiOutlineHeart className={style.heart} />
               </div>
               <div className={style.cartBox} title="cart">
                 <div className={style.addedItems}>1</div>

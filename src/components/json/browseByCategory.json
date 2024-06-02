@@ -1,41 +1,41 @@
 [
   {
-    "id": 1,
+    "id": "bbc1",
     "icon": "AiOutlineMobile",
     "type": "Mobile"
   },
   {
-    "id": 2,
+    "id": "bbc2",
     "icon": "AiOutlineCamera ",
     "type": "Camera"
   },
   {
-    "id": 3,
+    "id": "bbc3",
     "icon": "AiOutlineWallet",
     "type": "wallet"
   },
   {
-    "id": 4,
+    "id": "bbc4",
     "icon": "AiOutlineTablet",
     "type": "Tablet"
   },
   {
-    "id": 5,
+    "id": "bbc5",
     "icon": "AiOutlinePrinter",
     "type": "Printer"
   },
   {
-    "id": 6,
+    "id": "bbc6",
     "icon": "AiOutlineBulb",
     "type": "Bulb"
   },
   {
-    "id": 7,
+    "id": "bbc7",
     "icon": "AiOutlineDesktop",
     "type": "Computer"
   },
   {
-    "id": 8,
+    "id": "bbc8",
     "icon": "AiOutlineLaptop",
     "type": "Laptop"
   }
