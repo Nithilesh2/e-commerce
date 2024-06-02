@@ -6,6 +6,9 @@ const AppStore = (props) => {
   const buttonRef = useRef();
   const [likedItems, setLikedItems] = useState({});
   const [likedItemsSent, setLikedItemsSent] = useState({});
+  const [addtoCart, setAddtoCart] = useState({});
+  const [addtoCartSent, setaddtoCartSent] = useState();
+
   const likeBtnClicked = (key) => {
     setLikedItems((prevState) => ({
       ...prevState,
@@ -17,9 +20,19 @@ const AppStore = (props) => {
       Object.keys(likedItems).filter((key) => likedItems[key]).length
     );
   }, [likedItems]);
+
+  const addToCartBtnClicked = (key) => {
+    setAddtoCart((prevState) => ({
+      ...prevState,
+      [key]: !prevState[key],
+    }));
+  };
   useEffect(() => {
-    setLikedItemsSent((prevState) => ({ ...prevState, likedItems }));
-  }, [likedItems]);
+    setaddtoCartSent(
+      Object.keys(addtoCart).filter((key) => addtoCart[key]).length
+    );
+  }, [addtoCart]);
+
   return (
     <AppContext.Provider
       value={{
@@ -29,6 +42,11 @@ const AppStore = (props) => {
         likeBtnClicked,
         likedItemsSent,
         setLikedItemsSent,
+        addToCartBtnClicked,
+        addtoCart,
+        setAddtoCart,
+        addtoCartSent,
+        setaddtoCartSent,
       }}
     >
       {props.children}

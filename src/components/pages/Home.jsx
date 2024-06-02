@@ -33,7 +33,9 @@ import AppContext from "../context/AppContext";
 const Home = () => {
   const buttonRef = useRef();
   const [likedItems, setLikedItems] = useState({});
+  const [addtoCart, setAddtoCart] = useState({});
   const [likedItemsSent, setLikedItemsSent] = useState();
+  const [addtoCartSent, setaddtoCartSent] = useState();
   const likeBtnClicked = (key) => {
     setLikedItems((prevState) => ({
       ...prevState,
@@ -45,6 +47,19 @@ const Home = () => {
       Object.keys(likedItems).filter((key) => likedItems[key]).length
     );
   }, [likedItems]);
+
+  const addToCartBtnClicked = (key) => {
+    setAddtoCart((prevState) => ({
+      ...prevState,
+      [key]: !prevState[key],
+    }));
+  };
+  useEffect(() => {
+    setaddtoCartSent(
+      Object.keys(addtoCart).filter((key) => addtoCart[key]).length
+    );
+  }, [addtoCart]);
+
   const iconMap = {
     AiOutlineMobile: <AiOutlineMobile />,
     AiOutlineCamera: <AiOutlineCamera />,
@@ -126,7 +141,7 @@ const Home = () => {
   }, []);
   return (
     <>
-      <AppContext.Provider value={{ likedItemsSent }}>
+      <AppContext.Provider value={{ likedItemsSent, addtoCartSent }}>
         <TopHeader />
         <Navbar showbar="home" />
         <hr />
@@ -233,6 +248,25 @@ const Home = () => {
                       <div className={style.rowTwoOffersDataBoxCenter}>
                         <img src={data.image} alt="img" loading="lazy" />
                       </div>
+                      {addtoCart[data.id] ? (
+                        <div
+                          className={style.addToCartDeActive}
+                          onClick={() => {
+                            addToCartBtnClicked(data.id);
+                          }}
+                        >
+                          Added
+                        </div>
+                      ) : (
+                        <div
+                          className={style.addToCartActive}
+                          onClick={() => {
+                            addToCartBtnClicked(data.id);
+                          }}
+                        >
+                          Add to cart
+                        </div>
+                      )}
                       <div className={style.rowTwoOffersDataBoxBottom}>
                         <div className={style.rowTwoOffersDataBoxBottomName}>
                           {data.name}
@@ -340,6 +374,25 @@ const Home = () => {
                       <div className={style.rowTwoOffersDataBoxCenter}>
                         <img src={data.image} alt="img" loading="lazy" />
                       </div>
+                      {addtoCart[data.id] ? (
+                        <div
+                          className={style.addToCartDeActive}
+                          onClick={() => {
+                            addToCartBtnClicked(data.id);
+                          }}
+                        >
+                          Added
+                        </div>
+                      ) : (
+                        <div
+                          className={style.addToCartActive}
+                          onClick={() => {
+                            addToCartBtnClicked(data.id);
+                          }}
+                        >
+                          Add to cart
+                        </div>
+                      )}
                       <div className={style.rowTwoOffersDataBoxBottom}>
                         <div className={style.rowTwoOffersDataBoxBottomName}>
                           {data.name}
@@ -424,6 +477,25 @@ const Home = () => {
                       <div className={style.rowTwoOffersDataBoxCenter}>
                         <img src={data.img} alt="img" loading="lazy" />
                       </div>
+                      {addtoCart[data.id] ? (
+                        <div
+                          className={style.addToCartDeActive}
+                          onClick={() => {
+                            addToCartBtnClicked(data.id);
+                          }}
+                        >
+                          Added
+                        </div>
+                      ) : (
+                        <div
+                          className={style.addToCartActive}
+                          onClick={() => {
+                            addToCartBtnClicked(data.id);
+                          }}
+                        >
+                          Add to cart
+                        </div>
+                      )}
                       <div className={style.rowTwoOffersDataBoxBottom}>
                         <div className={style.rowTwoOffersDataBoxBottomName}>
                           {data.name}

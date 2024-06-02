@@ -17,7 +17,7 @@ import {
 } from "react-icons/ai";
 
 const Navbar = (props) => {
-  const { likedItemsSent } = useContext(AppContext);
+  const { likedItemsSent, addtoCartSent } = useContext(AppContext);
   const navigate = useNavigate();
   const [menuToggle, setMenuToggle] = useState(false);
   const [activePage, setActivePage] = useState("");
@@ -93,7 +93,7 @@ const Navbar = (props) => {
                 <AiOutlineHeart className={style.heart} />
               </div>
               <div className={style.cartBox} title="cart">
-                <div className={style.addedItems}>1</div>
+                <div className={style.addedItems}>{addtoCartSent}</div>
                 <AiOutlineShoppingCart className={style.cart} />
               </div>
               <div
