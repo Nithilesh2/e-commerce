@@ -1,37 +1,48 @@
-import React, { useEffect } from "react";
+import React, { useMemo, useCallback   } from "react";
 import { useState, useRef } from "react";
 import AppContext from "./AppContext";
 
 const AppStore = (props) => {
   const buttonRef = useRef();
   const [likedItems, setLikedItems] = useState({});
-  const [likedItemsSent, setLikedItemsSent] = useState({});
+  // const [likedItemsSent, setLikedItemsSent] = useState({});
   const [addtoCart, setAddtoCart] = useState({});
-  const [addtoCartSent, setaddtoCartSent] = useState();
+  // const [addtoCartSent, setaddtoCartSent] = useState();
 
-  const likeBtnClicked = (key) => {
+  // const likeBtnClicked = (key) => {
+  //   setLikedItems((prevState) => ({
+  //     ...prevState,
+  //     [key]: !prevState[key],
+  //   }));
+  // };
+  const likedItemsSent = useMemo(
+    () => Object.keys(likedItems).filter((key) => likedItems[key]).length,
+    [likedItems]
+  );
+  const likeBtnClicked = useCallback((key) => {
     setLikedItems((prevState) => ({
       ...prevState,
       [key]: !prevState[key],
     }));
-  };
-  useEffect(() => {
-    setLikedItemsSent(
-      Object.keys(likedItems).filter((key) => likedItems[key]).length
-    );
-  }, [likedItems]);
+  }, []);
 
-  const addToCartBtnClicked = (key) => {
+  const addToCartBtnClicked = useCallback((key) => {
     setAddtoCart((prevState) => ({
       ...prevState,
       [key]: !prevState[key],
     }));
-  };
-  useEffect(() => {
-    setaddtoCartSent(
-      Object.keys(addtoCart).filter((key) => addtoCart[key]).length
-    );
-  }, [addtoCart]);
+  }, []);
+
+  // const addToCartBtnClicked = (key) => {
+  //   setAddtoCart((prevState) => ({
+  //     ...prevState,
+  //     [key]: !prevState[key],
+  //   }));
+  // };
+  const addtoCartSent = useMemo(
+    () => Object.keys(addtoCart).filter((key) => addtoCart[key]).length,
+    [addtoCart]
+  );
 
   return (
     <AppContext.Provider
@@ -41,12 +52,10 @@ const AppStore = (props) => {
         setLikedItems,
         likeBtnClicked,
         likedItemsSent,
-        setLikedItemsSent,
         addToCartBtnClicked,
         addtoCart,
         setAddtoCart,
         addtoCartSent,
-        setaddtoCartSent,
       }}
     >
       {props.children}

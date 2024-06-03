@@ -5,7 +5,7 @@ import SignUp from "./components/pages/SignUp";
 import Login from "./components/pages/Login";
 import Cart from "./components/pages/Cart";
 import CheckOut from "./components/pages/CheckOut";
-import MyAccount from "./components/pages/MyAccount";
+import MyAccount from "./components/pages/ManageMyAccount";
 import WishList from "./components/pages/WishList";
 
 const App = () => {

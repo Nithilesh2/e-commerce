@@ -27,12 +27,17 @@ const Navbar = (props) => {
   }
   function popOverClicked() {
     setPopOver(!popOver);
+    // navigate("/myaccount");
   }
   useEffect(() => {
     if (props.showbar) {
       setActivePage(props.showbar);
     }
   }, [props.showbar]);
+
+  const myaccount = () => {
+    navigate("/myaccount");
+  };
   return (
     <>
       <main className={style.main}>
@@ -88,7 +93,13 @@ const Navbar = (props) => {
               </form>
             </div>
             <div className={menuToggle ? style.rightActive : style.right}>
-              <div className={style.like} title="saved">
+              <div
+                className={style.like}
+                title="saved"
+                onClick={() => {
+                  navigate("/wishlist");
+                }}
+              >
                 <div className={style.addedItemsHeart}>{likedItemsSent}</div>
                 <AiOutlineHeart className={style.heart} />
               </div>
@@ -108,7 +119,10 @@ const Navbar = (props) => {
                   }
                 >
                   <ul className={style.popupDataActive}>
-                    <li title="account">
+                    <li
+                      title="account"
+                      onClick={myaccount}
+                    >
                       <AiOutlineUser />
                       <span>Manage My Account</span>
                     </li>
