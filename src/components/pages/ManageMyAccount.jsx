@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import style from "../css/ManageMyAccount.module.css";
 import TopHeader from "./TopHeader";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
-import { AiOutlineEdit } from "react-icons/ai";
+import { AiOutlineEdit, AiOutlineArrowUp } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -19,6 +19,7 @@ const ManageMyAccount = () => {
   const passRef = useRef();
   const newPassRef = useRef();
   const cnfmPassRef = useRef();
+  const buttonRef = useRef();
 
   const [fname, setFname] = useState("Shriya");
   const [lname, setLname] = useState("Saran");
@@ -70,7 +71,19 @@ const ManageMyAccount = () => {
     setAddress(address);
     setEdit(true);
   };
-
+  const listenToScroll = () => {
+    if (window.pageYOffset > 99) {
+      buttonRef.current.style.opacity = "1";
+    } else {
+      buttonRef.current.style.opacity = "0";
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", listenToScroll);
+    return () => {
+      window.removeEventListener("scroll", listenToScroll);
+    };
+  }, []);
   return (
     <>
       <ToastContainer />
@@ -256,6 +269,18 @@ const ManageMyAccount = () => {
             </div>
           </form>
         </div>
+      </div>
+      <div className={style.upArrow}>
+        <button
+          type="button"
+          className={style.upArrowBtn}
+          ref={buttonRef}
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        >
+          <AiOutlineArrowUp />
+        </button>
       </div>
       <Footer />
     </>

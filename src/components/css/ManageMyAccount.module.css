@@ -1,5 +1,5 @@
 .myAccountMain {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background-color: rgba(244, 244, 244, 0.852);
   display: flex;
@@ -97,6 +97,7 @@
   justify-content: flex-start;
   padding: 20px 0 0 40px;
   gap: 1rem;
+  transition: all 0.3s;
 }
 .editYourProfileBox {
   height: auto;
@@ -192,4 +193,90 @@ input {
   color: white;
   font-weight: 600;
   border-radius: 5px;
+}
+.upArrowBtn {
+  background-color: rgba(0, 0, 0, 0.886);
+  color: white;
+  height: 40px;
+  width: 40px;
+  border-radius: 30px;
+  position: fixed;
+  bottom: 15px;
+  right: 10px;
+  font-size: 1.2rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+@media only screen and (max-width: 950px) {
+  .fnameAndlname,
+  .emailAndAddress,
+  .password {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .inputSame {
+    max-width: 810px;
+  }
+  .fname,
+  .lname,
+  .email,
+  .address {
+    width: 100%;
+  }
+  .formBox {
+    height: 790px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .bottom {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+  .bottomLeft {
+    flex-direction: row;
+    width: 100%;
+  }
+  .bottomRight {
+    margin-right: 0px;
+    width: 85%;
+  }
+  .bottomLeftOneBottom,
+  .bottomLeftTwoBottom {
+    padding-left: 0px;
+  }
+  .buttons {
+    padding-right: 0;
+  }
+  .bottomLeftOne,
+  .bottomLeftTwo {
+    margin: 0;
+  }
+  .bottomLeftOne {
+    margin-left: 20px;
+  }
+  .bottomLeftTwo {
+    padding-left: 20px;
+  }
+  .upArrowBtn {
+    cursor: default;
+  }
+  .formBox {
+    gap: 1.5rem;
+  }
+}
+@media only screen and (max-width: 383px) {
+  .bottomLeftTwoBottom {
+    margin-top: 20px;
+  }
+  label {
+    font-size: 1.2rem;
+  }
+  .formBox {
+    height: 800px;
+  }
 }
