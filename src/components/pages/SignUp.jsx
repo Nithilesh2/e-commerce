@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TopHeader from "./TopHeader";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { GoogleLogin } from "@react-oauth/google";
 import style from "../css/SignUp.module.css";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const [decoded, setDecoded] = useState("");
+  const [decodedName, setDecodedName] = useState("");
+  function loginClicked(credentialResponse) {
+    let decode = jwtDecode(credentialResponse.credential);
+    var userName = decode.name;
+    setDecoded(userName);
+  }
+  useEffect(() => {
+    setDecodedName(decoded);
+    if (decodedName) {
+      setDecoded((decodedName) => decodedName);
+      navigate("/");
+    }
+  }, [decoded, navigate, decodedName]);
+
   return (
     <>
       <div className={style.main}>
@@ -52,9 +68,7 @@ const SignUp = () => {
                 <div className={style.googleSignIn}>
                   <GoogleLogin
                     className={style.googleLoginBtn}
-                    onSuccess={() => {
-                      navigate("/");
-                    }}
+                    onSuccess={loginClicked}
                     onError={() => {
                       navigate("/login");
                     }}

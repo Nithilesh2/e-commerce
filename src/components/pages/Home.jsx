@@ -36,18 +36,21 @@ const Home = () => {
   const [addtoCart, setAddtoCart] = useState({});
   const [likedItemsSent, setLikedItemsSent] = useState();
   const [addtoCartSent, setaddtoCartSent] = useState();
+  const [likeItemsIdArray, setLikeItemsIdArray] = useState([]);
+
   const likeBtnClicked = (key) => {
     setLikedItems((prevState) => ({
       ...prevState,
       [key]: !prevState[key],
     }));
+    setLikeItemsIdArray((pstate) => [...pstate, key]);
   };
+  let arr = [...likeItemsIdArray, likeItemsIdArray];
   useEffect(() => {
     setLikedItemsSent(
       Object.keys(likedItems).filter((key) => likedItems[key]).length
     );
   }, [likedItems]);
-
   const addToCartBtnClicked = (key) => {
     setAddtoCart((prevState) => ({
       ...prevState,
@@ -59,7 +62,6 @@ const Home = () => {
       Object.keys(addtoCart).filter((key) => addtoCart[key]).length
     );
   }, [addtoCart]);
-
   const iconMap = {
     AiOutlineMobile: <AiOutlineMobile />,
     AiOutlineCamera: <AiOutlineCamera />,
@@ -141,7 +143,9 @@ const Home = () => {
   }, []);
   return (
     <>
-      <AppContext.Provider value={{ likedItemsSent, addtoCartSent }}>
+      <AppContext.Provider
+        value={{ likedItemsSent, addtoCartSent, likeItemsIdArray, arr }}
+      >
         <TopHeader />
         <Navbar showbar="home" />
         <hr />

@@ -266,7 +266,7 @@
   .navItems {
     transition: all 0.5s ease-in-out;
     z-index: 1;
-    top: 120px;
+    top: 122px;
     right: 0;
     position: absolute;
     justify-content: center;
@@ -298,7 +298,7 @@
     flex-direction: column;
   }
   .navItems {
-    top: 140px;
+    top: 141px;
     height: 400px;
   }
   .outerright {
@@ -325,5 +325,11 @@
   .close {
     top: 10px;
     right: 0px;
+  }
+}
+@media only screen and (max-width: 337px) {
+  .navItems {
+    top: 157px;
+    height: 400px;
   }
 }

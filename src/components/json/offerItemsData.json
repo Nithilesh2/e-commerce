@@ -5,7 +5,8 @@
     "image": "https://scx2.b-cdn.net/gfx/news/hires/2019/googleschall.jpg",
     "name": "Sigma Gamepad",
     "discountCost": "₹999",
-    "originalCost": "₹1,999"
+    "originalCost": "₹1,999",
+    "type": false
   },
   {
     "id": "oid2",
@@ -13,7 +14,8 @@
     "image": "https://rukminim2.flixcart.com/image/850/1000/xif0q/keyboard/desktop-keyboard/w/l/6/gaming-keyboard-with-87-keys-rgb-backlit-with-suspension-keys-original-imagzcgwtrabgjna.jpeg?q=20&crop=false",
     "name": "RPM Euro Games Keyboard",
     "discountCost": "₹699",
-    "originalCost": "₹1,490"
+    "originalCost": "₹1,490",
+    "type": false
   },
   {
     "id": "oid3",
@@ -21,7 +23,8 @@
     "image": "https://m.media-amazon.com/images/I/41M0GHMhUlL._SY300_SX300_QL70_FMwebp_.jpg",
     "name": "Acer 109cm(43 inches)",
     "discountCost": "₹26,999",
-    "originalCost": "₹41,999"
+    "originalCost": "₹41,999",
+    "type": false
   },
   {
     "id": "oid5",
@@ -29,7 +32,8 @@
     "image": "https://m.media-amazon.com/images/I/51dzwcZhEzL._SX300_SY300_QL70_FMwebp_.jpg",
     "name": "boAt Wave Sigma Smartwatch",
     "discountCost": "₹1,599",
-    "originalCost": "₹7,999"
+    "originalCost": "₹7,999",
+    "type": false
   },
   {
     "id": "oid6",
@@ -37,7 +41,8 @@
     "image": "https://m.media-amazon.com/images/I/41sp078gJ9L._SX300_SY300_QL70_FMwebp_.jpg",
     "name": "Wings Phantom Truly Wireless",
     "discountCost": "₹899",
-    "originalCost": "₹4,999"
+    "originalCost": "₹4,999",
+    "type": false
   },
   {
     "id": "oid7",
@@ -45,6 +50,7 @@
     "image": "https://m.media-amazon.com/images/I/31JTPECqm-L._SX300_SY300_QL70_FMwebp_.jpg",
     "name": "OnePlus Pad 29.49cm (11.61 inch)",
     "discountCost": "₹35,150",
-    "originalCost": "₹37,999"
+    "originalCost": "₹37,999",
+    "type": false
   }
 ]

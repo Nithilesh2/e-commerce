@@ -38,6 +38,9 @@ const Navbar = (props) => {
   const myaccount = () => {
     navigate("/myaccount");
   };
+  const logout = () => {
+    navigate("/");
+  };
   return (
     <>
       <main className={style.main}>
@@ -119,10 +122,7 @@ const Navbar = (props) => {
                   }
                 >
                   <ul className={style.popupDataActive}>
-                    <li
-                      title="account"
-                      onClick={myaccount}
-                    >
+                    <li title="account" onClick={myaccount}>
                       <AiOutlineUser />
                       <span>Manage My Account</span>
                     </li>
@@ -138,7 +138,7 @@ const Navbar = (props) => {
                       <AiOutlineStar />
                       <span>My Reviews</span>
                     </li>
-                    <li title="logout">
+                    <li title="logout" onClick={logout}>
                       <AiOutlineLogout />
                       <span>Logout</span>
                     </li>
