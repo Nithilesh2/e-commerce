@@ -1,3 +1,11 @@
+.skele {
+  margin-bottom: 100px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .rows {
   height: 100%;
   width: 100%;
@@ -379,6 +387,10 @@
   font-size: 1rem;
   font-weight: bolder;
 }
+.speakerBoxLeftCategories::selection {
+  color: rgb(0, 0, 0);
+  background-color: rgb(0, 219, 0);
+}
 .speakerBoxLeftEnhance {
   height: auto;
   width: 100%;
@@ -387,6 +399,11 @@
   justify-content: flex-start;
   flex-direction: column;
   font-size: 3rem;
+}
+.speakerBoxLeftTop::selection,
+.speakerBoxLeftBottom::selection {
+  color: black;
+  background-color: #fff;
 }
 .speakerBoxLeftBuyBtnBox {
   height: auto;
