@@ -1,0 +1,202 @@
+.myAccountMain {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(244, 244, 244, 0.852);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: all 0.5s;
+}
+.topLeft {
+  height: auto;
+  width: 100%;
+  max-width: 250px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 50px 0px 30px;
+  cursor: default;
+  font-weight: 600;
+}
+.home {
+  height: auto;
+  width: auto;
+  color: grey;
+  font-size: 1rem;
+}
+.myAccount {
+  height: auto;
+  width: auto;
+  color: black;
+  font-size: 1rem;
+}
+.bottom {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 4rem;
+}
+.bottomOne {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bottomOneLeft {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 80px;
+  gap: 1.5rem;
+}
+.bottomOneLeftOurStory {
+  height: auto;
+  width: 100%;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #db4444;
+}
+.bottomOneLeftParaGraphs {
+  height: 100%;
+  width: 75%;
+  line-height: 1.48rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-weight: 600;
+  font-size: 1.01rem;
+}
+.bottomOneRight {
+  height: 100%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottomOneRightImage {
+  width: 100%;
+  aspect-ratio: 5/4;
+}
+.bottomTwo {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.multiCarousal {
+  height: auto;
+  width: 100%;
+  max-width: 2440px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  transition: all 0.5s;
+  gap: 2rem;
+}
+.multiCarousal ul {
+  gap: 4rem;
+}
+.rowTwoDataBoxes {
+  cursor: pointer;
+  height: 190px;
+  width: 250px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid rgba(155, 155, 155, 0.674);
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  gap: 1.5rem;
+}
+.rowTwoDataBoxes:hover {
+  background-color: #db4444;
+  color: white;
+}
+.rowTwoDataBoxNames {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.rowTwoDataBoxNames .top {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.rowTwoDataBoxNames .bottom {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.bottomFour {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 60px;
+  transition: all 0.5s;
+}
+.outerCircle {
+  height: 53px;
+  width: 53px;
+  background-color: grey;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+.innerCircle {
+  color: white;
+  height: 40px;
+  width: 40px;
+  background-color: black;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  transition: all 0.3s ease-in-out;
+}
+.icons {
+  transition: all 0.3s ease-in-out;
+  font-size: 2rem;
+  border-radius: 100px;
+}
+.rowTwoDataBoxes:hover .outerCircle {
+  background-color: rgba(230, 228, 228, 0.629);
+}
+.rowTwoDataBoxes:hover .innerCircle {
+  background-color: rgb(255, 255, 255);
+}
+.rowTwoDataBoxes:hover .icons {
+  background-color: rgb(0, 0, 0);
+  border-radius: 100px;
+}
+@media only screen and (max-width: 660px) {
+  .bottomOne {
+    flex-direction: column;
+  }
+  .bottomOneLeftParaGraphs {
+    width: 85%;
+  }
+  .bottomOneRight {
+    display: none;
+  }
+  .bottomFour {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}

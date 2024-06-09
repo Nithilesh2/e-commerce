@@ -68,7 +68,7 @@ const Navbar = (props) => {
                 <li
                   className={activePage === "about" ? style.active : ""}
                   onClick={() => {
-                    navigate("/");
+                    navigate("/about");
                   }}
                 >
                   About

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import TopHeader from "./TopHeader";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -10,18 +10,15 @@ import "react-multi-carousel/lib/styles.css";
 import data from "../json/offerItemsData.json";
 import {
   AiFillHeart,
-  AiOutlineArrowUp,
+  // AiOutlineArrowUp,
   AiOutlineBulb,
   AiOutlineCamera,
-  AiOutlineCustomerService,
   AiOutlineDesktop,
   AiOutlineHeart,
   AiOutlineLaptop,
   AiOutlineMobile,
   AiOutlinePrinter,
-  AiOutlineSafetyCertificate,
   AiOutlineTablet,
-  AiOutlineTruck,
   AiOutlineWallet,
 } from "react-icons/ai";
 import SideLeftRedColor from "./SideLeftRedColor";
@@ -29,9 +26,10 @@ import browseByCategoryData from "../json/browseByCategory.json";
 import bestSellingProductsData from "../json/bestSellingProducts.json";
 import exploreOurProducts from "../json/exploreOurProducts.json";
 import AppContext from "../context/AppContext";
+import Trust from "./Trust";
+import ClickToTop from "./ClickToTop";
 
 const Home = () => {
-  const buttonRef = useRef();
   const [likedItems, setLikedItems] = useState({});
   const [addtoCart, setAddtoCart] = useState({});
   const [likedItemsSent, setLikedItemsSent] = useState();
@@ -128,19 +126,7 @@ const Home = () => {
       items: 1,
     },
   };
-  const listenToScroll = () => {
-    if (window.pageYOffset > 99) {
-      buttonRef.current.style.opacity = "1";
-    } else {
-      buttonRef.current.style.opacity = "0";
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", listenToScroll);
-    return () => {
-      window.removeEventListener("scroll", listenToScroll);
-    };
-  }, []);
+
   return (
     <>
       <AppContext.Provider
@@ -230,6 +216,7 @@ const Home = () => {
                 autoPlay={true}
                 autoPlaySpeed={3000}
                 infinite={true}
+                arrows={false}
               >
                 {data.map((data) => (
                   <div className={style.rowTwoOffersData} key={data.id}>
@@ -313,6 +300,7 @@ const Home = () => {
                   autoPlay={true}
                   autoPlaySpeed={3000}
                   infinite={true}
+                  arrows={false}
                 >
                   {browseByCategoryData.map((data, key) => (
                     <div key={key} className={style.rowThreeDataBoxes}>
@@ -351,6 +339,7 @@ const Home = () => {
                 autoPlay={true}
                 autoPlaySpeed={3000}
                 infinite={true}
+                arrows={false}
               >
                 {bestSellingProductsData.map((data) => (
                   <div className={style.rowTwoOffersData} key={data.id}>
@@ -532,57 +521,12 @@ const Home = () => {
           </div>
           <hr />
           <div className={style.rowSeven}>
-            <div className={style.rowSevenFirstBox}>
-              <div className={style.top}>
-                <div className={style.outerCircle}>
-                  <div className={style.innerCircle}>
-                    <AiOutlineTruck />
-                  </div>
-                </div>
-              </div>
-              <div className={style.center}>Free And Fast Delivery</div>
-              <div className={style.bottom}>
-                Free delivery for all orders over ₹2,000
-              </div>
-            </div>
-            <div className={style.rowSevenSecondBox}>
-              <div className={style.top}>
-                <div className={style.outerCircle}>
-                  <div className={style.innerCircle}>
-                    <AiOutlineCustomerService />
-                  </div>
-                </div>
-              </div>
-              <div className={style.center}>24/7 Customer Service</div>
-              <div className={style.bottom}>Friendly 24/7 customer support</div>
-            </div>
-            <div className={style.rowSevenThirdBox}>
-              <div className={style.top}>
-                <div className={style.outerCircle}>
-                  <div className={style.innerCircle}>
-                    <AiOutlineSafetyCertificate />
-                  </div>
-                </div>
-              </div>
-              <div className={style.center}>Money Back Guarantee</div>
-              <div className={style.bottom}>We return money in 30 days</div>
-            </div>
+            <Trust />
           </div>
         </div>
 
         {/*/////////////////// uparrow ////////////////////////*/}
-        <div className={style.upArrow}>
-          <button
-            type="button"
-            className={style.upArrowBtn}
-            ref={buttonRef}
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-          >
-            <AiOutlineArrowUp />
-          </button>
-        </div>
+        <ClickToTop />
         <Footer />
       </AppContext.Provider>
     </>

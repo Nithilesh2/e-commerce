@@ -7,6 +7,7 @@ import Cart from "./components/pages/Cart";
 import CheckOut from "./components/pages/CheckOut";
 import MyAccount from "./components/pages/ManageMyAccount";
 import WishList from "./components/pages/WishList";
+import About from "./components/pages/About";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/myaccount" element={<MyAccount />} />
           <Route path="/wishlist" element={<WishList />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
     </>
