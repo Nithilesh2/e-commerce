@@ -155,7 +155,7 @@ const Home = () => {
         {skeletonLoading ? (
           <div className={style.skele}>
             <div>
-              <LoadingBar color="#FFA500" ref={ref} shadow={true} />
+              <LoadingBar color="#00BFFF" ref={ref} shadow={true} />
             </div>
           </div>
         ) : (

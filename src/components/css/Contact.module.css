@@ -1,0 +1,213 @@
+.skele {
+  margin-bottom: 100px;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contactMain {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(244, 244, 244, 0.852);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.topLeft {
+  height: auto;
+  width: 100%;
+  max-width: 250px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 50px 0px 30px;
+  cursor: default;
+  font-weight: 600;
+}
+.home {
+  height: auto;
+  width: auto;
+  color: grey;
+  font-size: 1rem;
+}
+.contact {
+  height: auto;
+  width: auto;
+  color: black;
+  font-size: 1rem;
+}
+.bottom {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5%;
+  padding-left: 4%;
+  margin-bottom: 80px;
+}
+.hr {
+  height: 1px;
+  border: 1px solid rgba(0, 0, 0, 0.623);
+  width: 90%;
+}
+.bottomLeft {
+  height: 100%;
+  width: 40%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  box-shadow: -3px -2px 5px rgba(0, 0, 0, 0.129);
+  margin-bottom: 50px;
+  border-radius: 5px;
+  padding: 20px 0 45px 40px;
+  gap: 1rem;
+  transition: all 0.3s;
+}
+
+.bottomLeftTop,
+.bottomLeftBottom {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.8rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: default;
+}
+.bottomLeftTopCallToUsBox,
+.bottomLeftBottomWriteToUsBox {
+  height: 100%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.bottomLeftTopCallToUsCallIcon {
+  rotate: 90deg;
+}
+.bottomLeftTopCallToUsCallIcon,
+.bottomLeftBottomEnvelopeIcon {
+  height: 35px;
+  width: 35px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #db4444;
+  color: white;
+  font-size: 1.5rem;
+}
+.bottomRight {
+  height: 100%;
+  max-width: 1200px;
+  width: 65%;
+}
+.bottomRightFormBox {
+  height: 100%;
+  max-width: 920px;
+  width: 100%;
+  box-shadow: -3px -2px 5px rgba(0, 0, 0, 0.129);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 30px 30px 40px 40px;
+  gap: 1rem;
+  transition: all 0.3s;
+}
+.bottomRightFormBoxTop {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+}
+.bottomRightFormBoxTopName,
+.bottomRightFormBoxTopEmail,
+.bottomRightFormBoxTopTelNumber {
+  height: 45px;
+  width: 100%;
+  font-size: 1.05rem;
+}
+.bottomRightFormBoxTopCenter {
+  height: 100%;
+  width: 100%;
+}
+.bottomRightFormBoxTopCenterYourMessage {
+  height: 100%;
+  width: 100%;
+  border: none;
+  font-size: 1.05rem;
+  resize: none;
+  padding: 15px 10px 0 15px;
+}
+.bottomRightFormBoxTopBottom {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.bottomRightFormBoxTopBottomButton {
+  height: 47px;
+  width: 150px;
+  background-color: #db4444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.87rem;
+  cursor: pointer;
+}
+@media only screen and (max-width: 750px) {
+  .bottom {
+    flex-direction: column;
+  }
+  .bottomLeft,
+  .bottomRight {
+    width: 100%;
+    max-width: 90%;
+  }
+  .bottomLeftBottom,
+  .bottomLeftTop {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bottomRightFormBox {
+    padding: 15px 15px 40px 15px;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .bottom {
+    align-items: center;
+    padding-left: 0%;
+  }
+  .bottomRightFormBoxTop {
+    flex-direction: column;
+  }
+  .bottomLeftTopOne,
+  .bottomLeftTopTwo,
+  .bottomLeftTopThree,
+  .bottomLeftBottomOne,
+  .bottomLeftBottomTwo,
+  .bottomLeftBottomThree {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .bottomRightFormBoxTopBottom {
+    justify-content: center;
+  }
+}

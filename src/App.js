@@ -8,6 +8,7 @@ import CheckOut from "./components/pages/CheckOut";
 import MyAccount from "./components/pages/ManageMyAccount";
 import WishList from "./components/pages/WishList";
 import About from "./components/pages/About";
+import Contact from "./components/pages/Contact";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/myaccount" element={<MyAccount />} />
           <Route path="/wishlist" element={<WishList />} />
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </BrowserRouter>
     </>

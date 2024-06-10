@@ -60,7 +60,7 @@ const Navbar = (props) => {
                 <li
                   className={activePage === "contact" ? style.active : ""}
                   onClick={() => {
-                    navigate("/");
+                    navigate("/contact");
                   }}
                 >
                   Contact
