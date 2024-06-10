@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import TopHeader from "./TopHeader";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -27,7 +27,7 @@ import exploreOurProducts from "../json/exploreOurProducts.json";
 import AppContext from "../context/AppContext";
 import Trust from "./Trust";
 import ClickToTop from "./ClickToTop";
-import { BookLoader } from "react-awesome-loaders";
+import LoadingBar from "react-top-loading-bar";
 
 const Home = () => {
   const [likedItems, setLikedItems] = useState({});
@@ -137,6 +137,13 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const ref = useRef(null);
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.continuousStart();
+    }
+  }, []);
+
   return (
     <>
       <AppContext.Provider
@@ -147,12 +154,9 @@ const Home = () => {
         <hr />
         {skeletonLoading ? (
           <div className={style.skele}>
-            <BookLoader
-              background={"linear-gradient(135deg, #6066FA, #4645F6)"}
-              desktopSize={"150px"}
-              mobileSize={"80px"}
-              textColor={"#4645F6"}
-            />
+            <div>
+              <LoadingBar color="#FFA500" ref={ref} shadow={true} />
+            </div>
           </div>
         ) : (
           <div className={style.rows}>

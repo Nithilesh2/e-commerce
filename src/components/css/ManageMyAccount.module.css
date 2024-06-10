@@ -133,6 +133,42 @@
   font-weight: 600;
   margin-left: 4px;
 }
+.labelFnameSkeletonLoading {
+  height: 20px;
+  width: 100%;
+  border-radius: 5px;
+  animation: skeletonLoading 1s linear infinite alternate;
+}
+.labelInputSkeletonLoading {
+  height: 20px;
+  width: 30%;
+  border-radius: 5px;
+  animation: skeletonLoading 1s linear infinite alternate;
+}
+.inputSameSkeletonLoading {
+  height: 35px;
+  max-width: 350px;
+  width: 90%;
+  margin-left: 5px;
+  border-radius: 5px;
+  animation: skeletonLoading 1s linear infinite alternate;
+}
+.inputSkeletonLoading {
+  height: 35px;
+  max-width: 750px;
+  width: 90%;
+  margin-left: 5px;
+  border-radius: 5px;
+  animation: skeletonLoading 1s linear infinite alternate;
+}
+@keyframes skeletonLoading {
+  from {
+    background-color: hsla(199, 22%, 72%, 0.656);
+  }
+  to {
+    background-color: hsla(204, 20%, 95%, 0.656);
+  }
+}
 .fname,
 .lname,
 .email,
@@ -157,7 +193,8 @@ input {
   margin-left: 5px;
 }
 .password {
-  height: 100%;
+  height: auto;
+  width: 100%;
   align-items: flex-start;
   flex-direction: column;
 }

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import style from "../css/ManageMyAccount.module.css";
 import TopHeader from "./TopHeader";
 import Navbar from "./Navbar";
@@ -26,51 +26,83 @@ const ManageMyAccount = () => {
   const [email, setEmail] = useState("shriyasaran@gmail.com");
   const [address, setAddress] = useState("Hyderabad,Telangana");
   const [edit, setEdit] = useState(true);
+  const [skeletonLoading, setSkeletonLoading] = useState(true);
 
-  const editBtnClicked = () => {
-    setEdit(!edit);
-  };
-  const changeBtnPressed = () => {
-    if (!edit) {
-      setFname(fnameRef.current.value);
-      setLname(lnameRef.current.value);
-      setEmail(emailRef.current.value);
-      setAddress(addressRef.current.value);
-      notifyTrue("Successfully changed");
-      setEdit(true);
-    } else if (passRef.current.value !== "") {
-      if (newPassRef.current.value === "" || cnfmPassRef.current.value === "") {
-        notify("Please Enter new Password and Confirm Password");
-      } else if (newPassRef.current.value === cnfmPassRef.current.value) {
-        notifyTrue("Password changed");
-        passRef.current.value = "";
-        newPassRef.current.value = "";
-        cnfmPassRef.current.value = "";
-      } else {
-        notify("Password didn't match");
-      }
-    } else if (
-      newPassRef.current.value !== "" ||
-      cnfmPassRef.current.value !== ""
-    ) {
-      if (
-        newPassRef.current.value === cnfmPassRef.current.value ||
-        (newPassRef.current.value !== cnfmPassRef.current.value &&
-          passRef.current.value === "")
-      ) {
-        notify("Please enter current password");
-      }
+  const editBtnClicked = (eve) => {
+    if (skeletonLoading) {
+      eve.preventDefault();
     } else {
-      notify("Nothing to change");
+      setEdit(!edit);
     }
   };
-  const cancelBtnClicked = () => {
-    setFname(fname);
-    setLname(lname);
-    setEmail(email);
-    setAddress(address);
-    setEdit(true);
+  const changeBtnPressed = (eve) => {
+    if (skeletonLoading) {
+      eve.preventDefault();
+    } else {
+      if (!edit) {
+        setFname(fnameRef.current.value);
+        setLname(lnameRef.current.value);
+        setEmail(emailRef.current.value);
+        setAddress(addressRef.current.value);
+        notifyTrue("Successfully changed");
+        setEdit(true);
+      } else if (passRef.current.value !== "") {
+        if (
+          newPassRef.current.value === "" ||
+          cnfmPassRef.current.value === ""
+        ) {
+          notify("Please Enter new Password and Confirm Password");
+        } else if (newPassRef.current.value === cnfmPassRef.current.value) {
+          notifyTrue("Password changed");
+          passRef.current.value = "";
+          newPassRef.current.value = "";
+          cnfmPassRef.current.value = "";
+        } else {
+          notify("Password didn't match");
+        }
+      } else if (
+        newPassRef.current.value !== "" ||
+        cnfmPassRef.current.value !== ""
+      ) {
+        if (
+          newPassRef.current.value === cnfmPassRef.current.value ||
+          (newPassRef.current.value !== cnfmPassRef.current.value &&
+            passRef.current.value === "")
+        ) {
+          notify("Please enter current password");
+        }
+      } else {
+        notify("Nothing to change");
+      }
+    }
   };
+  const cancelBtnClicked = (eve) => {
+    if (skeletonLoading) {
+      eve.preventDefault();
+    } else {
+      setFname(fname);
+      setLname(lname);
+      setEmail(email);
+      setAddress(address);
+      setEdit(true);
+    }
+  };
+
+  useEffect(() => {
+    const randomTimeValue = Math.floor(Math.random() * 5) + 2;
+    const randomTime = randomTimeValue + "000";
+    const timer = setTimeout(() => {
+      setSkeletonLoading(false);
+    }, randomTime);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const ref = useRef(null);
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.continuousStart();
+    }
+  }, []);
 
   return (
     <>
@@ -137,103 +169,144 @@ const ManageMyAccount = () => {
                 )}
               </div>
               <div className={style.fnameAndlname}>
-                <div className={style.fname}>
-                  <label className={style.labelFname}>First Name</label>
-                  {edit ? (
-                    <input
-                      value={fname}
-                      type="text"
-                      className={style.inputSame}
-                      style={{ cursor: "not-allowed", border: "none" }}
-                      readOnly
-                    />
-                  ) : (
-                    <input
-                      type="text"
-                      className={style.inputSame}
-                      ref={fnameRef}
-                    />
-                  )}
-                </div>
-                <div className={style.lname}>
-                  <label className={style.labelLname}>Last Name</label>
-                  {edit ? (
-                    <input
-                      value={lname}
-                      type="text"
-                      className={style.inputSame}
-                      style={{ cursor: "not-allowed", border: "none" }}
-                      readOnly
-                    />
-                  ) : (
-                    <input
-                      type="text"
-                      className={style.inputSame}
-                      ref={lnameRef}
-                    />
-                  )}
-                </div>
+                {skeletonLoading ? (
+                  <div className={style.fname}>
+                    <label className={style.labelFnameSkeletonLoading}></label>
+                    <div className={style.inputSameSkeletonLoading}></div>
+                  </div>
+                ) : (
+                  <div className={style.fname}>
+                    <label className={style.labelFname}>First Name</label>
+                    {edit ? (
+                      <input
+                        value={fname}
+                        type="text"
+                        className={style.inputSame}
+                        style={{ cursor: "not-allowed", border: "none" }}
+                        readOnly
+                      />
+                    ) : (
+                      <input
+                        type="text"
+                        className={style.inputSame}
+                        ref={fnameRef}
+                      />
+                    )}
+                  </div>
+                )}
+                {skeletonLoading ? (
+                  <div className={style.fname}>
+                    <label className={style.labelFnameSkeletonLoading}></label>
+                    <div className={style.inputSameSkeletonLoading}></div>
+                  </div>
+                ) : (
+                  <div className={style.lname}>
+                    <label className={style.labelLname}>Last Name</label>
+                    {edit ? (
+                      <input
+                        value={lname}
+                        type="text"
+                        className={style.inputSame}
+                        style={{ cursor: "not-allowed", border: "none" }}
+                        readOnly
+                      />
+                    ) : (
+                      <input
+                        type="text"
+                        className={style.inputSame}
+                        ref={lnameRef}
+                      />
+                    )}
+                  </div>
+                )}
               </div>
               <div className={style.emailAndAddress}>
-                <div className={style.email}>
-                  <label className={style.labelEmail}>Email</label>
-                  {edit ? (
-                    <input
-                      value={email}
-                      type="email"
-                      className={style.inputSame}
-                      style={{ cursor: "not-allowed", border: "none" }}
-                      readOnly
-                    />
-                  ) : (
-                    <input
-                      type="email"
-                      className={style.inputSame}
-                      ref={emailRef}
-                    />
-                  )}
-                </div>
-                <div className={style.address}>
-                  <label className={style.labelAddress}>Address</label>
-                  {edit ? (
-                    <input
-                      value={address}
-                      type="text"
-                      className={style.inputSame}
-                      style={{ cursor: "not-allowed", border: "none" }}
-                      readOnly
-                    />
-                  ) : (
-                    <input
-                      type="text"
-                      className={style.inputSame}
-                      ref={addressRef}
-                    />
-                  )}
-                </div>
+                {skeletonLoading ? (
+                  <div className={style.fname}>
+                    <label className={style.labelFnameSkeletonLoading}></label>
+                    <div className={style.inputSameSkeletonLoading}></div>
+                  </div>
+                ) : (
+                  <div className={style.email}>
+                    <label className={style.labelEmail}>Email</label>
+                    {edit ? (
+                      <input
+                        value={email}
+                        type="email"
+                        className={style.inputSame}
+                        style={{ cursor: "not-allowed", border: "none" }}
+                        readOnly
+                      />
+                    ) : (
+                      <input
+                        type="email"
+                        className={style.inputSame}
+                        ref={emailRef}
+                      />
+                    )}
+                  </div>
+                )}
+                {skeletonLoading ? (
+                  <div className={style.fname}>
+                    <label className={style.labelFnameSkeletonLoading}></label>
+                    <div className={style.inputSameSkeletonLoading}></div>
+                  </div>
+                ) : (
+                  <div className={style.address}>
+                    <label className={style.labelAddress}>Address</label>
+                    {edit ? (
+                      <input
+                        value={address}
+                        type="text"
+                        className={style.inputSame}
+                        style={{ cursor: "not-allowed", border: "none" }}
+                        readOnly
+                      />
+                    ) : (
+                      <input
+                        type="text"
+                        className={style.inputSame}
+                        ref={addressRef}
+                      />
+                    )}
+                  </div>
+                )}
               </div>
               <div className={style.password}>
-                <label className={style.labelPassword}>Password Changes</label>
-                <input
-                  type="password"
-                  className={style.passwordInput}
-                  placeholder="Current Password"
-                  ref={passRef}
-                  // onChange={passChange}
-                />
-                <input
-                  type="text"
-                  className={style.passwordInput}
-                  placeholder="New Password"
-                  ref={newPassRef}
-                />
-                <input
-                  type="text"
-                  className={style.passwordInput}
-                  placeholder="Confirm New Password"
-                  ref={cnfmPassRef}
-                />
+                {skeletonLoading ? (
+                  <>
+                    <label className={style.labelInputSkeletonLoading}></label>
+                    <div className={style.inputSkeletonLoading}></div>
+                    <div className={style.inputSkeletonLoading}></div>
+                    <div className={style.inputSkeletonLoading}></div>
+                  </>
+                ) : (
+                  <>
+                    <label className={style.labelPassword}>
+                      Password Changes
+                    </label>
+                    <input
+                      type="password"
+                      className={style.passwordInput}
+                      placeholder="Current Password"
+                      ref={passRef}
+                    />
+                    <input
+                      type="text"
+                      className={style.passwordInput}
+                      placeholder="New Password"
+                      ref={newPassRef}
+                    />
+                    <input
+                      type="text"
+                      className={style.passwordInput}
+                      placeholder="Confirm New Password"
+                      ref={cnfmPassRef}
+                    />
+                  </>
+                )}
               </div>
+
               <div className={style.buttons}>
                 <div className={style.cancelBtnBox}>
                   <button
