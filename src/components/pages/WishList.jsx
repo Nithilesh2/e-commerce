@@ -1,20 +1,24 @@
-import React from "react";
-import { useContext } from "react";
-import Navbar from "./Navbar";
-import TopHeader from "./TopHeader";
-import AppContext from "../context/AppContext";
+// import { useContext } from "react"
+// import AppContext from "../context/AppContext"
+import React from "react"
+import Navbar from "./Navbar"
+import TopHeader from "./TopHeader"
+import Footer from "./Footer"
+import style from "../css/WishList.module.css"
 
 const WishList = () => {
-  const { likeItemsIdArray, arr } = useContext(AppContext);
+  // const { likeItemsIdArray, arr } = useContext(AppContext)
 
   return (
     <>
       <TopHeader />
       <Navbar />
-      <div>{likeItemsIdArray}</div>
-      <div>{arr}</div>
+      <div className={style.WishListMain}>
+        
+      </div>
+      <Footer />
     </>
-  );
-};
+  )
+}
 
-export default WishList;
+export default WishList
