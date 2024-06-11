@@ -150,6 +150,7 @@
   width: 100%;
   border: none;
   font-size: 1.05rem;
+  font-weight: 600;
   resize: none;
   padding: 15px 10px 0 15px;
 }
@@ -187,6 +188,12 @@
 
   .bottomRightFormBox {
     padding: 15px 15px 40px 15px;
+  }
+  .bottomRightFormBoxTopName,
+  .bottomRightFormBoxTopEmail,
+  .bottomRightFormBoxTopTelNumber,
+  .bottomRightFormBoxTopCenterYourMessage {
+    color: #af3939;
   }
 }
 @media only screen and (max-width: 450px) {

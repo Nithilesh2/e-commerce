@@ -1,33 +1,64 @@
-import React, { useEffect, useRef, useState } from "react";
-import TopHeader from "./TopHeader";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import style from "../css/Contact.module.css";
-import { useNavigate } from "react-router-dom";
-import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
-import LoadingBar from "react-top-loading-bar";
+import React, { useEffect, useRef, useState } from "react"
+import TopHeader from "./TopHeader"
+import Navbar from "./Navbar"
+import Footer from "./Footer"
+import style from "../css/Contact.module.css"
+import { useNavigate } from "react-router-dom"
+import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai"
+import LoadingBar from "react-top-loading-bar"
+import emailjs from "@emailjs/browser"
+import { toast, ToastContainer } from "react-toastify"
 
 const Contact = () => {
-  const navigate = useNavigate();
-  const [skeletonLoading, setSkeletonLoading] = useState(true);
+  const form = useRef()
+  const ref = useRef(null)
+  const userNameRef = useRef()
+  const userEmailRef = useRef()
+  const userMobileRef = useRef()
+  const userMessageRef = useRef()
+  const navigate = useNavigate()
+  const [skeletonLoading, setSkeletonLoading] = useState(true)
+  const notifyTrue = (data) => toast.success(data, { autoClose: 3000 })
+  const notifyFalse = (data) => toast.error(data, { autoClose: 3000 })
 
   useEffect(() => {
-    const randomTimeValue = Math.floor(Math.random() * 5) + 2;
-    const randomTime = randomTimeValue + "000";
+    const randomTimeValue = Math.floor(Math.random() * 5) + 2
+    const randomTime = randomTimeValue + "000"
     const timer = setTimeout(() => {
-      setSkeletonLoading(false);
-    }, randomTime);
-    return () => clearTimeout(timer);
-  }, []);
+      setSkeletonLoading(false)
+    }, randomTime)
+    return () => clearTimeout(timer)
+  }, [])
 
-  const ref = useRef(null);
   useEffect(() => {
     if (ref.current) {
-      ref.current.continuousStart();
+      ref.current.continuousStart()
     }
-  }, []);
+  }, [])
+
+  const sendEmail = (e) => {
+    e.preventDefault()
+
+    emailjs
+      .sendForm("service_khd4ons", "template_w587wv8", form.current, {
+        publicKey: "PixE8S-7pHeZ6vNBj",
+      })
+      .then(
+        () => {
+          notifyTrue("Message Received")
+          userNameRef.current.value = ""
+          userEmailRef.current.value = ""
+          userMobileRef.current.value = ""
+          userMessageRef.current.value = ""
+        },
+        () => {
+          notifyFalse("Message Not Sent")
+        }
+      )
+  }
   return (
     <>
+      <ToastContainer />
       <TopHeader />
       <Navbar showbar="contact" />
       <hr />
@@ -43,7 +74,7 @@ const Contact = () => {
             <span
               className={style.home}
               onClick={() => {
-                navigate("/");
+                navigate("/")
               }}
             >
               Home
@@ -89,23 +120,36 @@ const Contact = () => {
               </div>
             </div>
             <div className={style.bottomRight}>
-              <from className={style.bottomRightFormBox}>
+              <form
+                className={style.bottomRightFormBox}
+                ref={form}
+                onSubmit={sendEmail}
+              >
                 <div className={style.bottomRightFormBoxTop}>
                   <input
                     type="text"
                     className={style.bottomRightFormBoxTopName}
                     placeholder="Your Name *"
+                    name="user_name"
+                    ref={userNameRef}
+                    required
                   />
                   <input
                     type="email"
                     className={style.bottomRightFormBoxTopEmail}
                     placeholder="Your Email *"
+                    name="user_email"
+                    ref={userEmailRef}
+                    required
                   />
                   <input
                     type="tel"
                     className={style.bottomRightFormBoxTopTelNumber}
                     placeholder="Your Phone *"
                     maxLength={10}
+                    name="user_mobile"
+                    ref={userMobileRef}
+                    required
                   />
                 </div>
                 <div className={style.bottomRightFormBoxTopCenter}>
@@ -113,17 +157,21 @@ const Contact = () => {
                     className={style.bottomRightFormBoxTopCenterYourMessage}
                     placeholder="Your Message"
                     rows={8}
+                    name="message"
+                    ref={userMessageRef}
                   ></textarea>
                 </div>
                 <div className={style.bottomRightFormBoxTopBottom}>
                   <button
+                    value="Send"
                     type="submit"
                     className={style.bottomRightFormBoxTopBottomButton}
+                    required
                   >
                     Send Message
                   </button>
                 </div>
-              </from>
+              </form>
             </div>
           </div>
         </div>
@@ -131,7 +179,7 @@ const Contact = () => {
 
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact
