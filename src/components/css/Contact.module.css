@@ -171,6 +171,28 @@
   font-size: 0.87rem;
   cursor: pointer;
 }
+.bottomRightFormBoxTopBottomButtonSendingMessage {
+  height: 47px;
+  width: 150px;
+  background-color: #db4444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.87rem;
+  cursor: not-allowed;
+  animation: sendingAnimaiton 1s linear infinite alternate;
+}
+@keyframes sendingAnimaiton {
+  0% {
+    background-color: #af3939;
+  }
+  50% {
+    background-color: #601b1b;
+  }
+  100% {
+    background-color: #af3939;
+  }
+}
 @media only screen and (max-width: 750px) {
   .bottom {
     flex-direction: column;

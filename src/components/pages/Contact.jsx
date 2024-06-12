@@ -18,6 +18,7 @@ const Contact = () => {
   const userMessageRef = useRef()
   const navigate = useNavigate()
   const [skeletonLoading, setSkeletonLoading] = useState(true)
+  const [mailSent, setMainSent] = useState(false)
   const notifyTrue = (data) => toast.success(data, { autoClose: 3000 })
   const notifyFalse = (data) => toast.error(data, { autoClose: 3000 })
 
@@ -38,6 +39,7 @@ const Contact = () => {
 
   const sendEmail = (e) => {
     e.preventDefault()
+    setMainSent(true)
 
     emailjs
       .sendForm("service_khd4ons", "template_w587wv8", form.current, {
@@ -55,6 +57,9 @@ const Contact = () => {
           notifyFalse("Message Not Sent")
         }
       )
+      .finally(() => {
+        setMainSent(false)
+      })
   }
   return (
     <>
@@ -162,14 +167,26 @@ const Contact = () => {
                   ></textarea>
                 </div>
                 <div className={style.bottomRightFormBoxTopBottom}>
-                  <button
-                    value="Send"
-                    type="submit"
-                    className={style.bottomRightFormBoxTopBottomButton}
-                    required
-                  >
-                    Send Message
-                  </button>
+                  {mailSent ? (
+                    <button
+                      value="Send"
+                      type="submit"
+                      className={
+                        style.bottomRightFormBoxTopBottomButtonSendingMessage
+                      }
+                      disabled
+                    >
+                      Sending Message...
+                    </button>
+                  ) : (
+                    <button
+                      value="Send"
+                      type="submit"
+                      className={style.bottomRightFormBoxTopBottomButton}
+                    >
+                      Send Message
+                    </button>
+                  )}
                 </div>
               </form>
             </div>
