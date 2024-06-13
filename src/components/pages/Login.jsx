@@ -1,14 +1,43 @@
-import React from "react";
-import TopHeader from "./TopHeader";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import style from "../css/Login.module.css";
+import React, { useState } from "react"
+import TopHeader from "./TopHeader"
+import Navbar from "./Navbar"
+import Footer from "./Footer"
+import style from "../css/Login.module.css"
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
+  const [emailOrPhone, setEmailOrPhone] = useState("")
+  const [password, setPassword] = useState("")
+  const navigate = useNavigate()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      const response = await fetch(
+        "https://e-commerce-backend-pg1o.onrender.com/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ emailOrPhone, password }),
+        }
+      )
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`)
+      }
+      navigate("/")
+    } catch (error) {
+      alert("Wrong pass")
+    }
+  }
+
   return (
     <>
       <TopHeader />
-      <Navbar showbar="login" /> 
+      <Navbar showbar="login" />
       <hr />
       <div className={style.login}>
         <div className={style.imageBox}>
@@ -18,7 +47,7 @@ const Login = () => {
             alt="shoppingImage"
           />
         </div>
-        <form className={style.form}>
+        <form className={style.form} onSubmit={handleSubmit}>
           <div className={style.loginBox}>
             <div className={style.top}>
               <h2>Log into Exclusive </h2>
@@ -29,15 +58,19 @@ const Login = () => {
                 type="text"
                 className={style.emailOrPhoneInput}
                 placeholder="Email or Phone Number"
+                value={emailOrPhone}
+                onChange={(e) => setEmailOrPhone(e.target.value)}
               />
               <input
                 type="password"
                 className={style.passwordInput}
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className={style.bottom}>
-              <button type="button" className={style.loginBtn}>
+              <button type="submit" className={style.loginBtn}>
                 Log In
               </button>
               <div className={style.forgotPass}>Forget Password?</div>
@@ -47,7 +80,7 @@ const Login = () => {
       </div>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

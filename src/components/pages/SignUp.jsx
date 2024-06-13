@@ -12,12 +12,19 @@ const SignUp = () => {
   const navigate = useNavigate();
   const [decoded, setDecoded] = useState("");
   const [decodedName, setDecodedName] = useState("");
+
+  const [name, setName] = useState("");
+  const [emailOrPhone, setEmailOrPhone] = useState("");
+  const [password, setPassword] = useState("");
+
   const [skeletonLoading, setSkeletonLoading] = useState(true);
+
   function loginClicked(credentialResponse) {
     let decode = jwtDecode(credentialResponse.credential);
     var userName = decode.name;
     setDecoded(userName);
   }
+
   useEffect(() => {
     setDecodedName(decoded);
     if (decodedName) {
@@ -25,6 +32,7 @@ const SignUp = () => {
       navigate("/");
     }
   }, [decoded, navigate, decodedName]);
+
   useEffect(() => {
     const randomTimeValue = Math.floor(Math.random() * 4) + 2;
     const randomTime = randomTimeValue + "000";
@@ -40,6 +48,27 @@ const SignUp = () => {
       ref.current.continuousStart();
     }
   }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("https://e-commerce-backend-pg1o.onrender.com/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ emailOrPhone, password, name }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      navigate("/login");
+    } catch (err) {
+      console.log("Error signing up:", err.message);
+    }
+  };
 
   return (
     <>
@@ -62,7 +91,7 @@ const SignUp = () => {
                 alt="shoppingImage"
               />
             </div>
-            <form className={style.form}>
+            <form className={style.form} onSubmit={handleSubmit}>
               <div className={style.signUpBox}>
                 <div className={style.top}>
                   <h2>Create an account</h2>
@@ -73,20 +102,26 @@ const SignUp = () => {
                     type="text"
                     className={style.nameInput}
                     placeholder="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                   <input
                     type="text"
                     className={style.emailOrPhoneInput}
                     placeholder="Email or Phone Number"
+                    value={emailOrPhone}
+                    onChange={(e) => setEmailOrPhone(e.target.value)}
                   />
                   <input
                     type="password"
                     className={style.passwordInput}
                     placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
                 <div className={style.bottom}>
-                  <button type="button" className={style.createAccBtn}>
+                  <button type="submit" className={style.createAccBtn}>
                     Create Account
                   </button>
                   <div className={style.googleSignIn}>
@@ -99,7 +134,7 @@ const SignUp = () => {
                     />
                   </div>
                   <div className={style.login}>
-                    <h4>Already have account?</h4>
+                    <h4>Already have an account?</h4>
                     <div
                       className={style.loginRedirect}
                       onClick={() => {
@@ -114,7 +149,6 @@ const SignUp = () => {
             </form>
           </div>
         )}
-
         <Footer />
       </div>
     </>
