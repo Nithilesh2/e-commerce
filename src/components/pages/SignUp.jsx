@@ -63,7 +63,7 @@ const SignUp = () => {
   }, [name, emailOrPhone, googleAuthUsed])
 
   useEffect(() => {
-    const randomTimeValue = Math.floor(Math.random() * 3) + 5
+    const randomTimeValue = Math.floor(Math.random() * 2) + 4
     const randomTime = randomTimeValue + "000"
     const timer = setTimeout(() => {
       setSkeletonLoading(false)
@@ -98,6 +98,7 @@ const SignUp = () => {
       notifyFalse(
         "Password must be at least 8 characters long and include at least one uppercase letter,one special character, one lowercase letter, and one number."
       )
+      setLoadingLogin(false)
       return
     } else {
       try {

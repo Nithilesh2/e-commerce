@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
-import style from "../css/NavBar.module.css";
-import { useNavigate } from "react-router-dom";
-import AppContext from "../context/AppContext";
+import React, { useEffect, useState, useContext } from "react"
+import style from "../css/NavBar.module.css"
+import { useNavigate } from "react-router-dom"
+import AppContext from "../context/AppContext"
 
 import {
   AiOutlineHeart,
@@ -14,45 +14,52 @@ import {
   AiOutlineCloseCircle,
   AiOutlineStar,
   AiOutlineLogout,
-} from "react-icons/ai";
+} from "react-icons/ai"
 
 const Navbar = (props) => {
-  const { likedItemsSent, addtoCartSent } = useContext(AppContext);
-  const navigate = useNavigate();
-  const [menuToggle, setMenuToggle] = useState(false);
-  const [activePage, setActivePage] = useState("");
-  const [popOver, setPopOver] = useState(false);
+  const { likedItemsSent, addtoCartSent } = useContext(AppContext)
+  const navigate = useNavigate()
+  const [menuToggle, setMenuToggle] = useState(false)
+  const [activePage, setActivePage] = useState("")
+  const [popOver, setPopOver] = useState(false)
   function menuClicked() {
-    setMenuToggle(!menuToggle);
+    setMenuToggle(!menuToggle)
   }
   function popOverClicked() {
-    setPopOver(!popOver);
+    setPopOver(!popOver)
     // navigate("/myaccount");
   }
   useEffect(() => {
     if (props.showbar) {
-      setActivePage(props.showbar);
+      setActivePage(props.showbar)
     }
-  }, [props.showbar]);
+  }, [props.showbar])
 
   const myaccount = () => {
-    navigate("/myaccount");
-  };
+    navigate("/myaccount")
+  }
   const logout = () => {
-    navigate("/");
-  };
+    navigate("/")
+  }
   return (
     <>
       <main className={style.main}>
         <nav className={style.navbar}>
-          <div className={style.left}>Exclusive</div>
+          <div
+            className={style.left}
+            onClick={() => {
+              navigate("/")
+            }}
+          >
+            Exclusive
+          </div>
           <div className={style.outerright}>
             <div className={menuToggle ? style.centerActive : style.center}>
               <ul className={style.navItems}>
                 <li
                   className={activePage === "home" ? style.active : ""}
                   onClick={() => {
-                    navigate("/");
+                    navigate("/")
                   }}
                 >
                   Home
@@ -60,7 +67,7 @@ const Navbar = (props) => {
                 <li
                   className={activePage === "contact" ? style.active : ""}
                   onClick={() => {
-                    navigate("/contact");
+                    navigate("/contact")
                   }}
                 >
                   Contact
@@ -68,7 +75,7 @@ const Navbar = (props) => {
                 <li
                   className={activePage === "about" ? style.active : ""}
                   onClick={() => {
-                    navigate("/about");
+                    navigate("/about")
                   }}
                 >
                   About
@@ -76,7 +83,7 @@ const Navbar = (props) => {
                 <li
                   className={activePage === "signup" ? style.active : ""}
                   onClick={() => {
-                    navigate("/signup");
+                    navigate("/signup")
                   }}
                 >
                   Sign Up
@@ -100,7 +107,7 @@ const Navbar = (props) => {
                 className={style.like}
                 title="saved"
                 onClick={() => {
-                  navigate("/wishlist");
+                  navigate("/wishlist")
                 }}
               >
                 <div className={style.addedItemsHeart}>{likedItemsSent}</div>
@@ -157,7 +164,7 @@ const Navbar = (props) => {
         </nav>
       </main>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

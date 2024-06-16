@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
-import TopHeader from "./TopHeader";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import style from "../css/Home.module.css";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import MultiCarousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import data from "../json/offerItemsData.json";
+import React, { useState, useEffect, useRef } from "react"
+import TopHeader from "./TopHeader"
+import Navbar from "./Navbar"
+import Footer from "./Footer"
+import style from "../css/Home.module.css"
+import { Carousel } from "react-responsive-carousel"
+import "react-responsive-carousel/lib/styles/carousel.min.css"
+import MultiCarousel from "react-multi-carousel"
+import "react-multi-carousel/lib/styles.css"
+import data from "../json/offerItemsData.json"
 import {
   AiFillHeart,
   AiOutlineBulb,
@@ -19,48 +19,52 @@ import {
   AiOutlinePrinter,
   AiOutlineTablet,
   AiOutlineWallet,
-} from "react-icons/ai";
-import SideLeftRedColor from "./SideLeftRedColor";
-import browseByCategoryData from "../json/browseByCategory.json";
-import bestSellingProductsData from "../json/bestSellingProducts.json";
-import exploreOurProducts from "../json/exploreOurProducts.json";
-import AppContext from "../context/AppContext";
-import Trust from "./Trust";
-import ClickToTop from "./ClickToTop";
-import LoadingBar from "react-top-loading-bar";
+} from "react-icons/ai"
+import SideLeftRedColor from "./SideLeftRedColor"
+import browseByCategoryData from "../json/browseByCategory.json"
+import bestSellingProductsData from "../json/bestSellingProducts.json"
+import exploreOurProducts from "../json/exploreOurProducts.json"
+import AppContext from "../context/AppContext"
+import Trust from "./Trust"
+import ClickToTop from "./ClickToTop"
+import LoadingBar from "react-top-loading-bar"
 
 const Home = () => {
-  const [likedItems, setLikedItems] = useState({});
-  const [addtoCart, setAddtoCart] = useState({});
-  const [likedItemsSent, setLikedItemsSent] = useState();
-  const [addtoCartSent, setaddtoCartSent] = useState();
-  const [likeItemsIdArray, setLikeItemsIdArray] = useState([]);
-  const [skeletonLoading, setSkeletonLoading] = useState(true);
+  const secondTimeRef = useRef()
+
+  const [likedItems, setLikedItems] = useState({})
+  const [addtoCart, setAddtoCart] = useState({})
+  const [likedItemsSent, setLikedItemsSent] = useState()
+  const [addtoCartSent, setaddtoCartSent] = useState()
+  const [likeItemsIdArray, setLikeItemsIdArray] = useState([])
+  const [skeletonLoading, setSkeletonLoading] = useState(true)
+  const [second, setSecond] = useState(59)
+  const [minute, setMinute] = useState(59)
 
   const likeBtnClicked = (key) => {
     setLikedItems((prevState) => ({
       ...prevState,
       [key]: !prevState[key],
-    }));
-    setLikeItemsIdArray((pstate) => [...pstate, key]);
-  };
-  let arr = [...likeItemsIdArray, likeItemsIdArray];
+    }))
+    setLikeItemsIdArray((pstate) => [...pstate, key])
+  }
+  let arr = [...likeItemsIdArray, likeItemsIdArray]
   useEffect(() => {
     setLikedItemsSent(
       Object.keys(likedItems).filter((key) => likedItems[key]).length
-    );
-  }, [likedItems]);
+    )
+  }, [likedItems])
   const addToCartBtnClicked = (key) => {
     setAddtoCart((prevState) => ({
       ...prevState,
       [key]: !prevState[key],
-    }));
-  };
+    }))
+  }
   useEffect(() => {
     setaddtoCartSent(
       Object.keys(addtoCart).filter((key) => addtoCart[key]).length
-    );
-  }, [addtoCart]);
+    )
+  }, [addtoCart])
   const iconMap = {
     AiOutlineMobile: <AiOutlineMobile />,
     AiOutlineCamera: <AiOutlineCamera />,
@@ -70,7 +74,7 @@ const Home = () => {
     AiOutlineBulb: <AiOutlineBulb />,
     AiOutlineDesktop: <AiOutlineDesktop />,
     AiOutlineLaptop: <AiOutlineLaptop />,
-  };
+  }
   const responsiverowTwo = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -100,7 +104,7 @@ const Home = () => {
       breakpoint: { max: 520, min: 0 },
       items: 1,
     },
-  };
+  }
   const responsiveRowThree = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1600 },
@@ -126,23 +130,48 @@ const Home = () => {
       breakpoint: { max: 260, min: 0 },
       items: 1,
     },
-  };
+  }
 
   useEffect(() => {
-    const randomTimeValue = Math.floor(Math.random() * 8) + 4;
-    const randomTime = randomTimeValue + "000";
+    const randomTimeValue = Math.floor(Math.random() * 5) + 3
+    const randomTime = randomTimeValue + "000"
     const timer = setTimeout(() => {
-      setSkeletonLoading(false);
-    }, randomTime);
-    return () => clearTimeout(timer);
-  }, []);
+      setSkeletonLoading(false)
+    }, randomTime)
+    return () => clearTimeout(timer)
+  }, [])
 
-  const ref = useRef(null);
+  const ref = useRef(null)
   useEffect(() => {
     if (ref.current) {
-      ref.current.continuousStart();
+      ref.current.continuousStart()
     }
-  }, []);
+  }, [])
+
+  useEffect(() => {
+    secondTimeRef.current = setInterval(() => {
+      setSecond((prev) => {
+        if (prev === 0) {
+          setMinute((prevm) => {
+            if (prevm === 0) {
+              clearInterval(secondTimeRef.current)
+              return 59
+            }
+            return prevm - 1
+          })
+          return 59
+        }
+        return prev - 1
+      })
+    }, 1000)
+    return () => clearInterval(secondTimeRef.current)
+  }, [])
+
+  useEffect(() => {
+    if (second === 0 && minute === 0) {
+      clearInterval(secondTimeRef.current)
+    }
+  }, [second, minute])
 
   return (
     <>
@@ -221,14 +250,14 @@ const Home = () => {
                   <span className={style.minutes}>
                     <div className={style.daysShowDays}>Minutes</div>
                     <div className={style.daysShowNumber}>
-                      <div>33</div>
+                      <div>{minute}</div>
                       <div className={style.semicolon}>:</div>
                     </div>
                   </span>
                   <span className={style.seconds}>
                     <div className={style.daysShowDays}>Seconds</div>
                     <div className={style.daysShowNumber}>
-                      <div>03</div>
+                      <div>{second > 9 ? second : `0${second}`}</div>
                     </div>
                   </span>
                 </div>
@@ -261,13 +290,18 @@ const Home = () => {
                           </div>
                         </div>
                         <div className={style.rowTwoOffersDataBoxCenter}>
-                          <img src={data.image} alt="img" loading="lazy" />
+                          <img
+                            src={data.image}
+                            alt="img"
+                            loading="lazy"
+                            draggable={false}
+                          />
                         </div>
                         {addtoCart[data.id] ? (
                           <div
                             className={style.addToCartDeActive}
                             onClick={() => {
-                              addToCartBtnClicked(data.id);
+                              addToCartBtnClicked(data.id)
                             }}
                           >
                             Added
@@ -276,7 +310,7 @@ const Home = () => {
                           <div
                             className={style.addToCartActive}
                             onClick={() => {
-                              addToCartBtnClicked(data.id);
+                              addToCartBtnClicked(data.id)
                             }}
                           >
                             Add to cart
@@ -389,13 +423,18 @@ const Home = () => {
                           </div>
                         </div>
                         <div className={style.rowTwoOffersDataBoxCenter}>
-                          <img src={data.image} alt="img" loading="lazy" />
+                          <img
+                            src={data.image}
+                            alt="img"
+                            loading="lazy"
+                            draggable={false}
+                          />
                         </div>
                         {addtoCart[data.id] ? (
                           <div
                             className={style.addToCartDeActive}
                             onClick={() => {
-                              addToCartBtnClicked(data.id);
+                              addToCartBtnClicked(data.id)
                             }}
                           >
                             Added
@@ -404,7 +443,7 @@ const Home = () => {
                           <div
                             className={style.addToCartActive}
                             onClick={() => {
-                              addToCartBtnClicked(data.id);
+                              addToCartBtnClicked(data.id)
                             }}
                           >
                             Add to cart
@@ -460,6 +499,7 @@ const Home = () => {
                     src="https://www.pngmart.com/files/15/JBL-Audio-Speakers-Amplifier-Background-PNG.png"
                     alt="speaker"
                     loading="lazy"
+                    draggable={false}
                   />
                 </div>
               </div>
@@ -496,13 +536,18 @@ const Home = () => {
                           </div>
                         </div>
                         <div className={style.rowTwoOffersDataBoxCenter}>
-                          <img src={data.img} alt="img" loading="lazy" />
+                          <img
+                            src={data.img}
+                            alt="img"
+                            loading="lazy"
+                            draggable={false}
+                          />
                         </div>
                         {addtoCart[data.id] ? (
                           <div
                             className={style.addToCartDeActive}
                             onClick={() => {
-                              addToCartBtnClicked(data.id);
+                              addToCartBtnClicked(data.id)
                             }}
                           >
                             Added
@@ -511,7 +556,7 @@ const Home = () => {
                           <div
                             className={style.addToCartActive}
                             onClick={() => {
-                              addToCartBtnClicked(data.id);
+                              addToCartBtnClicked(data.id)
                             }}
                           >
                             Add to cart
@@ -558,7 +603,7 @@ const Home = () => {
         <Footer />
       </AppContext.Provider>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
