@@ -63,7 +63,7 @@ const SignUp = () => {
   }, [name, emailOrPhone, googleAuthUsed])
 
   useEffect(() => {
-    const randomTimeValue = Math.floor(Math.random() * 4) + 6
+    const randomTimeValue = Math.floor(Math.random() * 3) + 5
     const randomTime = randomTimeValue + "000"
     const timer = setTimeout(() => {
       setSkeletonLoading(false)

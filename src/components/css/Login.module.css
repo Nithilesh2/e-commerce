@@ -89,6 +89,7 @@
 }
 .forgotPass {
   color: #db4444;
+  cursor: default;
 }
 .blur {
   height: 100vh;
