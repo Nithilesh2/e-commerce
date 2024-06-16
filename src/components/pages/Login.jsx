@@ -5,14 +5,17 @@ import Footer from "./Footer"
 import style from "../css/Login.module.css"
 import { useNavigate } from "react-router-dom"
 import { toast, ToastContainer } from "react-toastify"
+import { TailSpin } from "react-loader-spinner"
 
 const Login = () => {
-  const notifyFalse = (data) => toast.error(data, { autoClose: 3000 })
-  const [emailOrPhone, setEmailOrPhone] = useState("")
-  const [password, setPassword] = useState("")
   const navigate = useNavigate()
+  const [password, setPassword] = useState("")
+  const [emailOrPhone, setEmailOrPhone] = useState("")
+  const [loadingLogin, setLoadingLogin] = useState(false)
+  const notifyFalse = (data) => toast.error(data, { autoClose: 3000 })
 
   const handleSubmit = async (e) => {
+    setLoadingLogin(true)
     e.preventDefault()
 
     try {
@@ -33,6 +36,8 @@ const Login = () => {
       navigate("/")
     } catch (error) {
       notifyFalse("Wrong credentials")
+    } finally {
+      setLoadingLogin(false)
     }
   }
 
@@ -42,7 +47,19 @@ const Login = () => {
       <TopHeader />
       <Navbar showbar="login" />
       <hr />
-      <div className={style.login}>
+      {loadingLogin ? (
+        <div className={style.topLoader}>
+          <TailSpin
+            className={style.spinner}
+            color="#db4444"
+            height={80}
+            width={80}
+          />
+        </div>
+      ) : (
+        ""
+      )}
+      <div className={loadingLogin ? style.blur : style.login}>
         <div className={style.imageBox}>
           <img
             className={style.loginImage}

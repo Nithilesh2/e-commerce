@@ -7,13 +7,14 @@
   justify-content: center;
 }
 .signUp {
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   padding: 50px 0;
   background-color: rgba(244, 244, 244, 0.852);
+  position: relative;
 }
 .imageBox {
   height: 90%;
@@ -118,6 +119,31 @@
 .loginRedirect {
   cursor: pointer;
   border-bottom: 1px solid black;
+}
+.blur {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 50px 0;
+  background-color: rgba(244, 244, 244, 0.852);
+  filter: blur(10px);
+  position: relative;
+}
+.topLoader {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.spinner {
+  color: #db4444;
 }
 @media only screen and (max-width: 1030px) {
   .loginImage {

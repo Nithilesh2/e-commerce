@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom"
 import { jwtDecode } from "jwt-decode"
 import LoadingBar from "react-top-loading-bar"
 import { toast, ToastContainer } from "react-toastify"
+import { TailSpin } from "react-loader-spinner"
 
 const SignUp = () => {
   const notifyFalse = (data) => toast.error(data, { autoClose: 3000 })
@@ -28,6 +29,7 @@ const SignUp = () => {
   const [skeletonLoading, setSkeletonLoading] = useState(true)
   const [googleAuthUsed, setGoogleAuthUsed] = useState(false)
   const [inputType, setInputType] = useState(false)
+  const [loadingLogin, setLoadingLogin] = useState(false)
 
   function loginClicked(credentialResponse) {
     setGoogleAuthUsed(true)
@@ -61,7 +63,7 @@ const SignUp = () => {
   }, [name, emailOrPhone, googleAuthUsed])
 
   useEffect(() => {
-    const randomTimeValue = Math.floor(Math.random() * 1) + 0
+    const randomTimeValue = Math.floor(Math.random() * 4) + 6
     const randomTime = randomTimeValue + "000"
     const timer = setTimeout(() => {
       setSkeletonLoading(false)
@@ -90,6 +92,7 @@ const SignUp = () => {
   }, [emailOrPhone, emailOrPhoneSet, numbersRegex])
 
   const handleSubmit = async (e) => {
+    setLoadingLogin(true)
     e.preventDefault()
     if (!passwordRegex.test(password)) {
       notifyFalse(
@@ -115,6 +118,8 @@ const SignUp = () => {
         navigate("/login")
       } catch (err) {
         console.log("Error signing up:", err.message)
+      } finally {
+        setLoadingLogin(false)
       }
     }
   }
@@ -126,6 +131,18 @@ const SignUp = () => {
         <TopHeader />
         <Navbar showbar="signup" />
         <hr />
+        {loadingLogin ? (
+          <div className={style.topLoader}>
+            <TailSpin
+              className={style.spinner}
+              color="#db4444"
+              height={80}
+              width={80}
+            />
+          </div>
+        ) : (
+          ""
+        )}
         {skeletonLoading ? (
           <div className={style.skele}>
             <div>
@@ -133,7 +150,7 @@ const SignUp = () => {
             </div>
           </div>
         ) : (
-          <div className={style.signUp}>
+          <div className={loadingLogin ? style.blur : style.signUp}>
             <div className={style.imageBox}>
               <img
                 className={style.loginImage}
