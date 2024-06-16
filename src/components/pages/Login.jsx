@@ -4,8 +4,10 @@ import Navbar from "./Navbar"
 import Footer from "./Footer"
 import style from "../css/Login.module.css"
 import { useNavigate } from "react-router-dom"
+import { toast, ToastContainer } from "react-toastify"
 
 const Login = () => {
+  const notifyFalse = (data) => toast.error(data, { autoClose: 3000 })
   const [emailOrPhone, setEmailOrPhone] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
@@ -30,12 +32,13 @@ const Login = () => {
       }
       navigate("/")
     } catch (error) {
-      alert("Wrong pass")
+      notifyFalse("Wrong credentials")
     }
   }
 
   return (
     <>
+      <ToastContainer />
       <TopHeader />
       <Navbar showbar="login" />
       <hr />
