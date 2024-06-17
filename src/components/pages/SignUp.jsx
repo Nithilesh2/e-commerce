@@ -9,6 +9,7 @@ import { jwtDecode } from "jwt-decode"
 import LoadingBar from "react-top-loading-bar"
 import { toast, ToastContainer } from "react-toastify"
 import { TailSpin } from "react-loader-spinner"
+import quotes from "../json/serverBusyQuotes.json"
 
 const SignUp = () => {
   const notifyFalse = (data) => toast.error(data, { autoClose: 3000 })
@@ -24,7 +25,9 @@ const SignUp = () => {
   const [name, setName] = useState("")
   const [emailOrPhone, setEmailOrPhone] = useState("")
   const [password, setPassword] = useState("")
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0)
 
+  const [showQuotes, setShowQuotes] = useState(false)
   const [emailOrPhoneSet, setEmailOrPhoneSet] = useState(false)
   const [skeletonLoading, setSkeletonLoading] = useState(true)
   const [googleAuthUsed, setGoogleAuthUsed] = useState(false)
@@ -83,6 +86,15 @@ const SignUp = () => {
   }
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentQuoteIndex((prevIndex) =>
+        prevIndex === quotes.length - 1 ? 0 : prevIndex + 1
+      )
+    }, 7000)
+    return () => clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
     const firstData = emailOrPhone.substring(0, 1)
     if (numbersRegex.test(firstData)) {
       setEmailOrPhoneSet(true)
@@ -93,12 +105,16 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     setLoadingLogin(true)
+    setInterval(() => {
+      setShowQuotes(true)
+    }, 5000)
     e.preventDefault()
     if (!passwordRegex.test(password)) {
       notifyFalse(
         "Password must be at least 8 characters long and include at least one uppercase letter,one special character, one lowercase letter, and one number."
       )
       setLoadingLogin(false)
+      setShowQuotes(false)
       return
     } else {
       try {
@@ -121,6 +137,7 @@ const SignUp = () => {
         console.log("Error signing up:", err.message)
       } finally {
         setLoadingLogin(false)
+        setShowQuotes(false)
       }
     }
   }
@@ -133,14 +150,25 @@ const SignUp = () => {
         <Navbar showbar="signup" />
         <hr />
         {loadingLogin ? (
-          <div className={style.topLoader}>
-            <TailSpin
-              className={style.spinner}
-              color="#db4444"
-              height={80}
-              width={80}
-            />
-          </div>
+          <>
+            <div className={style.topLoader}>
+              <TailSpin
+                className={style.spinner}
+                color="#db4444"
+                height={80}
+                width={80}
+              />
+            </div>
+            {showQuotes ? (
+              <div className={style.serverBusyQuotes}>
+                <div className={style.serverBusyQuotesBox}>
+                  {quotes[currentQuoteIndex].quote}
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+          </>
         ) : (
           ""
         )}

@@ -128,10 +128,24 @@
   justify-content: flex-start;
   padding: 50px 0;
   background-color: rgba(244, 244, 244, 0.852);
-  filter: blur(10px);
+  filter: blur(5px);
   position: relative;
 }
 .topLoader {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 999;
+}
+.spinner {
+  color: #db4444;
+}
+.serverBusyQuotes {
   height: 100vh;
   width: 100%;
   display: flex;
@@ -141,9 +155,35 @@
   top: 0;
   left: 0;
   z-index: 999;
+  transition: all 0.5s linear;
 }
-.spinner {
-  color: #db4444;
+.serverBusyQuotesBox {
+  height: 50px;
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  cursor: default;
+  z-index: 9999;
+  top: 90%;
+  left: 33%;
+  border-radius: 10px;
+  font-size: 1.12rem;
+  background-color: rgba(49, 48, 48, 0.712);
+  color: rgba(255, 255, 255, 0.912);
+  animation: skeletonLoading 1s linear infinite alternate;
+  transition: all 0.5s linear;
+  padding: 5px;
+}
+
+@keyframes skeletonLoading {
+  from {
+    background-color: hsla(0, 0%, 25%, 0.656);
+  }
+  to {
+    background-color: hsla(210, 9%, 9%, 0.656);
+  }
 }
 @media only screen and (max-width: 1030px) {
   .loginImage {
@@ -172,6 +212,14 @@
   }
   .login {
     font-size: 14px;
+  }
+  .serverBusyQuotesBox {
+    left: 25%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .serverBusyQuotesBox {
+    left: 10%;
   }
 }
 @media only screen and (max-height: 690px) {
@@ -232,5 +280,21 @@
   .login {
     justify-content: center;
     flex-direction: row;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .serverBusyQuotes {
+    height: 93vh;
+  }
+  .serverBusyQuotesBox {
+    margin-bottom: 150px;
+    left: 10%;
+    width: 80%;
+    max-width: 350px;
+    font-size: 1rem;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
