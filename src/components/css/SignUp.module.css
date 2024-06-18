@@ -59,10 +59,25 @@
 }
 .center {
   height: auto;
-  width: 100%;
+  width: auto;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-right: 80px;
+  transition: margin 0.5s;
+}
+.passwordBox {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s;
+}
+.passwordBoxShowPass {
+  position: absolute;
+  right: 5px;
+  font-size: 1.25rem;
 }
 .nameInput,
 .emailOrPhoneInput,
@@ -217,9 +232,17 @@
     left: 25%;
   }
 }
+@media only screen and (max-width: 960px) {
+  .center {
+    margin-right: 40px;
+  }
+}
 @media only screen and (max-width: 800px) {
   .serverBusyQuotesBox {
     left: 10%;
+  }
+  .center {
+    margin-right: 20px;
   }
 }
 @media only screen and (max-height: 690px) {

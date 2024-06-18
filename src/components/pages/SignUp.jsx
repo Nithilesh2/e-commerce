@@ -11,6 +11,7 @@ import { toast, ToastContainer } from "react-toastify"
 import { TailSpin } from "react-loader-spinner"
 import quotes from "../json/serverBusyQuotes.json"
 import ClickToTop from "./ClickToTop"
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 
 const SignUp = () => {
   const notifyFalse = (data) => toast.error(data, { autoClose: 3000 })
@@ -34,6 +35,7 @@ const SignUp = () => {
   const [googleAuthUsed, setGoogleAuthUsed] = useState(false)
   const [inputType, setInputType] = useState(false)
   const [loadingLogin, setLoadingLogin] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   function loginClicked(credentialResponse) {
     setGoogleAuthUsed(true)
@@ -216,15 +218,29 @@ const SignUp = () => {
                     ref={emailOrPhoneRef}
                     maxLength={emailOrPhoneSet ? 10 : 50}
                   />
-                  <input
-                    type="password"
-                    className={style.passwordInput}
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    ref={passwordRef}
-                  />
+                  <div className={style.passwordBox}>
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      className={style.passwordInput}
+                      placeholder="Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                      ref={passwordRef}
+                    />
+                    <div
+                      className={style.passwordBoxShowPass}
+                      onClick={() => {
+                        setShowPassword(!showPassword)
+                      }}
+                    >
+                      {showPassword ? (
+                        <AiOutlineEye />
+                      ) : (
+                        <AiOutlineEyeInvisible />
+                      )}
+                    </div>
+                  </div>
                 </div>
                 <div className={style.bottom}>
                   <button type="submit" className={style.createAccBtn}>
