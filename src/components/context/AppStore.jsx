@@ -5,6 +5,7 @@ import { jwtDecode } from "jwt-decode";
 
 const AppStore = (props) => {
   const buttonRef = useRef();
+  const [closeTop, setCloseTop] = useState(false)
   const [likedItems, setLikedItems] = useState({});
   const [addtoCart, setAddtoCart] = useState({});
   const [likeItemsIdArray, setLikeItemsIdArray] = useState([]);
@@ -66,7 +67,9 @@ const AppStore = (props) => {
         setDecoded,
         decodedName,
         setDecodedName,
-        loginClicked
+        loginClicked,
+        closeTop,
+        setCloseTop
       }}
     >
       {props.children}

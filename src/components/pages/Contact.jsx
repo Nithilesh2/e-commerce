@@ -8,6 +8,7 @@ import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai"
 import LoadingBar from "react-top-loading-bar"
 import emailjs from "@emailjs/browser"
 import { toast, ToastContainer } from "react-toastify"
+import ClickToTop from "./ClickToTop"
 
 const Contact = () => {
   const form = useRef()
@@ -193,7 +194,7 @@ const Contact = () => {
           </div>
         </div>
       )}
-
+      <ClickToTop />
       <Footer />
     </>
   )

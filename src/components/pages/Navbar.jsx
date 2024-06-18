@@ -27,7 +27,6 @@ const Navbar = (props) => {
   }
   function popOverClicked() {
     setPopOver(!popOver)
-    // navigate("/myaccount");
   }
   useEffect(() => {
     if (props.showbar) {
@@ -39,7 +38,7 @@ const Navbar = (props) => {
     navigate("/myaccount")
   }
   const logout = () => {
-    navigate("/")
+    navigate("/login")
   }
   return (
     <>
@@ -55,40 +54,42 @@ const Navbar = (props) => {
           </div>
           <div className={style.outerright}>
             <div className={menuToggle ? style.centerActive : style.center}>
-              <ul className={style.navItems}>
-                <li
-                  className={activePage === "home" ? style.active : ""}
-                  onClick={() => {
-                    navigate("/")
-                  }}
-                >
-                  Home
-                </li>
-                <li
-                  className={activePage === "contact" ? style.active : ""}
-                  onClick={() => {
-                    navigate("/contact")
-                  }}
-                >
-                  Contact
-                </li>
-                <li
-                  className={activePage === "about" ? style.active : ""}
-                  onClick={() => {
-                    navigate("/about")
-                  }}
-                >
-                  About
-                </li>
-                <li
-                  className={activePage === "signup" ? style.active : ""}
-                  onClick={() => {
-                    navigate("/signup")
-                  }}
-                >
-                  Sign Up
-                </li>
-              </ul>
+              <div className={style.boxActive}>
+                <ul className={style.navItems}>
+                  <li
+                    className={activePage === "home" ? style.active : ""}
+                    onClick={() => {
+                      navigate("/")
+                    }}
+                  >
+                    Home
+                  </li>
+                  <li
+                    className={activePage === "contact" ? style.active : ""}
+                    onClick={() => {
+                      navigate("/contact")
+                    }}
+                  >
+                    Contact
+                  </li>
+                  <li
+                    className={activePage === "about" ? style.active : ""}
+                    onClick={() => {
+                      navigate("/about")
+                    }}
+                  >
+                    About
+                  </li>
+                  <li
+                    className={activePage === "signup" ? style.active : ""}
+                    onClick={() => {
+                      navigate("/signup")
+                    }}
+                  >
+                    Sign Up
+                  </li>
+                </ul>
+              </div>
             </div>
             <div className={style.search}>
               <form className={style.form}>

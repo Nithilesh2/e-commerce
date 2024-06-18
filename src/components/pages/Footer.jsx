@@ -1,16 +1,16 @@
-import React from "react";
-import style from "../css/Footer.module.css";
+import React from "react"
+import style from "../css/Footer.module.css"
 import {
   AiFillInstagram,
   AiFillLinkedin,
   AiOutlineFacebook,
   AiOutlineSend,
   AiOutlineTwitter,
-} from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+} from "react-icons/ai"
+import { useNavigate } from "react-router-dom"
 
 const Footer = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <>
       <footer className={style.footer}>
@@ -47,10 +47,16 @@ const Footer = () => {
         <div className={style.footerDataThree}>
           <ul className={style.footerDataThreeItems}>
             <li className={style.account}>Account</li>
-            <li>My Account</li>
             <li
               onClick={() => {
-                navigate("/login");
+                navigate("/myaccount")
+              }}
+            >
+              My Account
+            </li>
+            <li
+              onClick={() => {
+                navigate("/login")
               }}
             >
               Login / Register
@@ -59,7 +65,7 @@ const Footer = () => {
             <li>WishList</li>
             <li
               onClick={() => {
-                navigate("/");
+                navigate("/")
               }}
             >
               Shop
@@ -94,7 +100,7 @@ const Footer = () => {
                     "https://play.google.com/store",
                     "_blank",
                     "noopener,noreferrer"
-                  );
+                  )
                 }}
               />
             </li>
@@ -103,7 +109,7 @@ const Footer = () => {
                 <AiOutlineFacebook
                   className={style.facebook}
                   onClick={() => {
-                    window.open("https://facebook.com", "_blank");
+                    window.open("https://facebook.com", "_blank")
                   }}
                 />
               </span>
@@ -111,7 +117,7 @@ const Footer = () => {
                 <AiOutlineTwitter
                   className={style.twitter}
                   onClick={() => {
-                    window.open("https://twitter.com", "_blank");
+                    window.open("https://twitter.com", "_blank")
                   }}
                 />
               </span>
@@ -119,7 +125,7 @@ const Footer = () => {
                 <AiFillInstagram
                   className={style.instagram}
                   onClick={() => {
-                    window.open("https://instagram.com", "_blank");
+                    window.open("https://instagram.com", "_blank")
                   }}
                 />
               </span>
@@ -127,7 +133,7 @@ const Footer = () => {
                 <AiFillLinkedin
                   className={style.linkedIn}
                   onClick={() => {
-                    window.open("https://linkedin.com", "_blank");
+                    window.open("https://linkedin.com", "_blank")
                   }}
                 />
               </span>
@@ -136,7 +142,7 @@ const Footer = () => {
         </div>
       </footer>
     </>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

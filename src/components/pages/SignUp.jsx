@@ -10,6 +10,7 @@ import LoadingBar from "react-top-loading-bar"
 import { toast, ToastContainer } from "react-toastify"
 import { TailSpin } from "react-loader-spinner"
 import quotes from "../json/serverBusyQuotes.json"
+import ClickToTop from "./ClickToTop"
 
 const SignUp = () => {
   const notifyFalse = (data) => toast.error(data, { autoClose: 3000 })
@@ -254,6 +255,7 @@ const SignUp = () => {
             </form>
           </div>
         )}
+        <ClickToTop />
         <Footer />
       </div>
     </>

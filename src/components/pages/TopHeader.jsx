@@ -1,6 +1,6 @@
-import React from "react";
-import style from "../css/TopHeader.module.css";
-import { Link } from "react-router-dom";
+import React from "react"
+import style from "../css/TopHeader.module.css"
+import { Link } from "react-router-dom"
 
 const TopHeader = () => {
   return (
@@ -24,7 +24,7 @@ const TopHeader = () => {
         </div>
       </main>
     </>
-  );
-};
+  )
+}
 
-export default TopHeader;
+export default TopHeader

@@ -6,6 +6,7 @@ import style from "../css/Login.module.css"
 import { useNavigate } from "react-router-dom"
 import { toast, ToastContainer } from "react-toastify"
 import { TailSpin } from "react-loader-spinner"
+import ClickToTop from "./ClickToTop"
 
 const Login = () => {
   const navigate = useNavigate()
@@ -98,6 +99,7 @@ const Login = () => {
           </div>
         </form>
       </div>
+      <ClickToTop />
       <Footer />
     </>
   )
