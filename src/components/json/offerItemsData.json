@@ -6,7 +6,8 @@
     "name": "Sigma Gamepad",
     "discountCost": "₹999",
     "originalCost": "₹1,999",
-    "type": false
+    "liked": false,
+    "addToCart": false
   },
   {
     "id": "oid2",
@@ -15,7 +16,8 @@
     "name": "RPM Euro Games Keyboard",
     "discountCost": "₹699",
     "originalCost": "₹1,490",
-    "type": false
+    "liked": false,
+    "addToCart": false
   },
   {
     "id": "oid3",
@@ -24,7 +26,8 @@
     "name": "Acer 109cm(43 inches)",
     "discountCost": "₹26,999",
     "originalCost": "₹41,999",
-    "type": false
+    "liked": false,
+    "addToCart": false
   },
   {
     "id": "oid5",
@@ -33,7 +36,8 @@
     "name": "boAt Wave Sigma Smartwatch",
     "discountCost": "₹1,599",
     "originalCost": "₹7,999",
-    "type": false
+    "liked": false,
+    "addToCart": false
   },
   {
     "id": "oid6",
@@ -42,7 +46,8 @@
     "name": "Wings Phantom Truly Wireless",
     "discountCost": "₹899",
     "originalCost": "₹4,999",
-    "type": false
+    "liked": false,
+    "addToCart": false
   },
   {
     "id": "oid7",
@@ -51,6 +56,7 @@
     "name": "OnePlus Pad 29.49cm (11.61 inch)",
     "discountCost": "₹35,150",
     "originalCost": "₹37,999",
-    "type": false
+    "liked": false,
+    "addToCart": false
   }
 ]

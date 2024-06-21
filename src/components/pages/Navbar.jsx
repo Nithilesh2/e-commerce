@@ -18,12 +18,16 @@ import {
 
 const Navbar = (props) => {
   const { likedItemsSent, addtoCartSent } = useContext(AppContext)
+  
   const navigate = useNavigate()
   const [menuToggle, setMenuToggle] = useState(false)
   const [activePage, setActivePage] = useState("")
   const [popOver, setPopOver] = useState(false)
   function menuClicked() {
     setMenuToggle(!menuToggle)
+    if (menuToggle === false) {
+      setPopOver(false)
+    }
   }
   function popOverClicked() {
     setPopOver(!popOver)

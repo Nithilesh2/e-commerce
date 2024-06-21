@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, useContext } from "react"
 import TopHeader from "./TopHeader"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
@@ -7,7 +7,6 @@ import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import MultiCarousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
-import data from "../json/offerItemsData.json"
 import {
   AiFillHeart,
   AiOutlineBulb,
@@ -22,49 +21,17 @@ import {
 } from "react-icons/ai"
 import SideLeftRedColor from "./SideLeftRedColor"
 import browseByCategoryData from "../json/browseByCategory.json"
-import bestSellingProductsData from "../json/bestSellingProducts.json"
-import exploreOurProducts from "../json/exploreOurProducts.json"
 import AppContext from "../context/AppContext"
 import Trust from "./Trust"
 import ClickToTop from "./ClickToTop"
 import LoadingBar from "react-top-loading-bar"
 
 const Home = () => {
-  const secondTimeRef = useRef()
+  const [timeLeft, setTimeLeft] = useState({});
+  const intervalRef = useRef(null);
 
-  const [likedItems, setLikedItems] = useState({})
-  const [addtoCart, setAddtoCart] = useState({})
-  const [likedItemsSent, setLikedItemsSent] = useState()
-  const [addtoCartSent, setaddtoCartSent] = useState()
-  const [likeItemsIdArray, setLikeItemsIdArray] = useState([])
   const [skeletonLoading, setSkeletonLoading] = useState(true)
-  const [second, setSecond] = useState(59)
-  const [minute, setMinute] = useState(59)
 
-  const likeBtnClicked = (key) => {
-    setLikedItems((prevState) => ({
-      ...prevState,
-      [key]: !prevState[key],
-    }))
-    setLikeItemsIdArray((pstate) => [...pstate, key])
-  }
-  let arr = [...likeItemsIdArray, likeItemsIdArray]
-  useEffect(() => {
-    setLikedItemsSent(
-      Object.keys(likedItems).filter((key) => likedItems[key]).length
-    )
-  }, [likedItems])
-  const addToCartBtnClicked = (key) => {
-    setAddtoCart((prevState) => ({
-      ...prevState,
-      [key]: !prevState[key],
-    }))
-  }
-  useEffect(() => {
-    setaddtoCartSent(
-      Object.keys(addtoCart).filter((key) => addtoCart[key]).length
-    )
-  }, [addtoCart])
   const iconMap = {
     AiOutlineMobile: <AiOutlineMobile />,
     AiOutlineCamera: <AiOutlineCamera />,
@@ -133,7 +100,7 @@ const Home = () => {
   }
 
   useEffect(() => {
-    const randomTimeValue = Math.floor(Math.random() * 5) + 3
+    const randomTimeValue = Math.floor(Math.random() * 1) + 0
     const randomTime = randomTimeValue + "000"
     const timer = setTimeout(() => {
       setSkeletonLoading(false)
@@ -149,35 +116,38 @@ const Home = () => {
   }, [])
 
   useEffect(() => {
-    secondTimeRef.current = setInterval(() => {
-      setSecond((prev) => {
-        if (prev === 0) {
-          setMinute((prevm) => {
-            if (prevm === 0) {
-              clearInterval(secondTimeRef.current)
-              return 59
-            }
-            return prevm - 1
-          })
-          return 59
-        }
-        return prev - 1
-      })
-    }, 1000)
-    return () => clearInterval(secondTimeRef.current)
-  }, [])
+    const targetDate = new Date().getTime() + 3 * 24 * 60 * 60 * 1000; 
 
-  useEffect(() => {
-    if (second === 0 && minute === 0) {
-      clearInterval(secondTimeRef.current)
-    }
-  }, [second, minute])
+    const calculateTimeLeft = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        setTimeLeft({ days, hours, minutes, seconds });
+      } else {
+        clearInterval(intervalRef.current);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    };
+
+    intervalRef.current = setInterval(calculateTimeLeft, 1000);
+
+    return () => clearInterval(intervalRef.current);
+  }, []);
+
+
+
+  const context = useContext(AppContext);
+  const {offersData, likeBtnClicked, addToCartBtnClicked,likedItems,addtoCart,bestSellingData,exploreOurProductsData } = context;
+
 
   return (
     <>
-      <AppContext.Provider
-        value={{ likedItemsSent, addtoCartSent, likeItemsIdArray, arr }}
-      >
         <TopHeader />
         <Navbar showbar="home" />
         <hr />
@@ -236,28 +206,28 @@ const Home = () => {
                   <span className={style.days}>
                     <div className={style.daysShowDays}>Days</div>
                     <div className={style.daysShowNumber}>
-                      <div>03</div>
+                      <div>{timeLeft.days > 9? timeLeft.days: `0${timeLeft.days}`}</div>
                       <div className={style.semicolon}>:</div>
                     </div>
                   </span>
                   <span className={style.hours}>
                     <div className={style.daysShowDays}>Hours</div>
                     <div className={style.daysShowNumber}>
-                      <div>23</div>
+                      <div>{timeLeft.hours > 9? timeLeft.hours: `0${timeLeft.hours}`}</div>
                       <div className={style.semicolon}>:</div>
                     </div>
                   </span>
                   <span className={style.minutes}>
                     <div className={style.daysShowDays}>Minutes</div>
                     <div className={style.daysShowNumber}>
-                      <div>{minute}</div>
+                      <div>{timeLeft.minutes > 9? timeLeft.minutes: `0${timeLeft.minutes}`}</div>
                       <div className={style.semicolon}>:</div>
                     </div>
                   </span>
                   <span className={style.seconds}>
                     <div className={style.daysShowDays}>Seconds</div>
                     <div className={style.daysShowNumber}>
-                      <div>{second > 9 ? second : `0${second}`}</div>
+                      <div>{timeLeft.seconds > 9 ? timeLeft.seconds : `0${timeLeft.seconds}`}</div>
                     </div>
                   </span>
                 </div>
@@ -271,7 +241,7 @@ const Home = () => {
                   infinite={true}
                   arrows={false}
                 >
-                  {data.map((data) => (
+                  {offersData.map((data) => (
                     <div className={style.rowTwoOffersData} key={data.id}>
                       <div className={style.rowTwoOffersDataBox}>
                         <div className={style.rowTwoOffersDataBoxTop}>
@@ -399,7 +369,7 @@ const Home = () => {
                   infinite={true}
                   arrows={false}
                 >
-                  {bestSellingProductsData.map((data) => (
+                  {bestSellingData.map((data) => (
                     <div className={style.rowTwoOffersData} key={data.id}>
                       <div className={style.rowTwoOffersDataBox}>
                         <div
@@ -512,7 +482,7 @@ const Home = () => {
               </div>
               <div className={style.todaySpecialOffersItems}>
                 <div className={style.rowSixMultiCarousal}>
-                  {exploreOurProducts.map((data) => (
+                  {exploreOurProductsData.map((data) => (
                     <div className={style.rowSixOffersData} key={data.id}>
                       <div className={style.rowTwoOffersDataBox}>
                         <div
@@ -537,7 +507,7 @@ const Home = () => {
                         </div>
                         <div className={style.rowTwoOffersDataBoxCenter}>
                           <img
-                            src={data.img}
+                            src={data.image}
                             alt="img"
                             loading="lazy"
                             draggable={false}
@@ -601,7 +571,6 @@ const Home = () => {
         {/*/////////////////// uparrow ////////////////////////*/}
         <ClickToTop />
         <Footer />
-      </AppContext.Provider>
     </>
   )
 }

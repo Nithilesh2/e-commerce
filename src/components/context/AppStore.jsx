@@ -1,80 +1,175 @@
-import React, { useMemo, useCallback,useEffect } from "react";
-import { useState, useRef } from "react";
-import AppContext from "./AppContext";
-import { jwtDecode } from "jwt-decode";
+import React, { useEffect } from "react"
+import { useState } from "react"
+import AppContext from "./AppContext"
+import { jwtDecode } from "jwt-decode"
+
+import data from "../json/offerItemsData.json"
+import bestSellingProductsData from "../json/bestSellingProducts.json"
+import exploreOurProducts from "../json/exploreOurProducts.json"
 
 const AppStore = (props) => {
-  const buttonRef = useRef();
-  const [closeTop, setCloseTop] = useState(false)
-  const [likedItems, setLikedItems] = useState({});
-  const [addtoCart, setAddtoCart] = useState({});
-  const [likeItemsIdArray, setLikeItemsIdArray] = useState([]);
-  const [decoded, setDecoded] = useState("");
-  const [decodedName, setDecodedName] = useState("");
+  const [likedItems, setLikedItems] = useState({})
+  const [likedItemsSent, setLikedItemsSent] = useState()
 
-  const likedItemsSent = useMemo(
-    () => Object.keys(likedItems).filter((key) => likedItems[key]).length,
-    [likedItems]
-  );
-  const likeBtnClicked = useCallback((key) => {
+  const [addtoCart, setAddtoCart] = useState({})
+  const [addtoCartSent, setaddtoCartSent] = useState()
+
+  const [decoded, setDecoded] = useState("")
+  const [decodedName, setDecodedName] = useState("")
+
+  const [offersData, setOffersData] = useState(data)
+  const [bestSellingData, setBestSellingData] = useState(
+    bestSellingProductsData
+  )
+  const [exploreOurProductsData, setExploreOurProductsData] =
+    useState(exploreOurProducts)
+
+  //liked items
+  const likeBtnClicked = (itemId) => {
+    const updatedOffersItems = offersData.filter((item) => {
+      if (item.id === itemId) {
+        item.liked = !item.liked
+      }
+      return item
+    })
+    setOffersData(updatedOffersItems)
+
+    const updateBestSellingProducts = bestSellingData.filter((item) => {
+      if (item.id === itemId) {
+        item.liked = !item.liked
+      }
+      return item
+    })
+    setBestSellingData(updateBestSellingProducts)
+
+    const updateExploreOurProducts = exploreOurProducts.filter((item) => {
+      if (item.id === itemId) {
+        item.liked = !item.liked
+      }
+      return item
+    })
+    setExploreOurProductsData(updateExploreOurProducts)
+
     setLikedItems((prevState) => ({
       ...prevState,
-      [key]: !prevState[key],
-    }));
-    setLikeItemsIdArray((pstate) => [...pstate, key]);
-  }, []);
-  const addToCartBtnClicked = useCallback((key) => {
+      [itemId]: !prevState[itemId],
+    }))
+  }
+
+  const deleteBtnClicked = (itemId) => {
+    const deleteOffersData = offersData.filter((item) => {
+      if (item.id === itemId) {
+        item.liked = false
+      }
+      return item
+    })
+    setOffersData(deleteOffersData)
+
+    const deleteBestSellingProducts = bestSellingData.filter((item) => {
+      if (item.id === itemId) {
+        item.liked = false
+      }
+      return item
+    })
+    setBestSellingData(deleteBestSellingProducts)
+
+    const deletexploreOurProducts = exploreOurProducts.filter((item) => {
+      if (item.id === itemId) {
+        item.liked = false
+      }
+      return item
+    })
+    setExploreOurProductsData(deletexploreOurProducts)
+
+    setLikedItems((prevState) => ({
+      ...prevState,
+      [itemId]: !prevState[itemId],
+    }))
+  }
+
+  useEffect(() => {
+    setLikedItemsSent(
+      Object.keys(likedItems).filter((key) => likedItems[key]).length
+    )
+  }, [likedItems])
+
+  //Add to Cart
+  const addToCartBtnClicked = (itemId) => {
+    const updatedOffersItemsCart = offersData.filter((item) => {
+      if (item.id === itemId) {
+        item.addToCart = !item.addToCart
+      }
+      return item
+    })
+    setOffersData(updatedOffersItemsCart)
+
+    const updateBestSellingProductsCart = bestSellingData.filter((item) => {
+      if (item.id === itemId) {
+        item.addToCart = !item.addToCart
+      }
+      return item
+    })
+    setBestSellingData(updateBestSellingProductsCart)
+
+    const updateExploreOurProducts = exploreOurProducts.filter((item) => {
+      if (item.id === itemId) {
+        item.addToCart = !item.addToCart
+      }
+      return item
+    })
+    setExploreOurProductsData(updateExploreOurProducts)
+
     setAddtoCart((prevState) => ({
       ...prevState,
-      [key]: !prevState[key],
-    }));
-  }, []);
-
-  const addtoCartSent = useMemo(
-    () => Object.keys(addtoCart).filter((key) => addtoCart[key]).length,
-    [addtoCart]
-  );
-  let arr = [...likeItemsIdArray, likeItemsIdArray];
-
-  function loginClicked(credentialResponse) {
-    let decode = jwtDecode(credentialResponse.credential);
-    var userName = decode.name;
-    setDecoded(userName);
+      [itemId]: !prevState[itemId],
+    }))
   }
   useEffect(() => {
-    setDecodedName(decoded);
+    setaddtoCartSent(
+      Object.keys(addtoCart).filter((key) => addtoCart[key]).length
+    )
+  }, [addtoCart])
+
+  function loginClicked(credentialResponse) {
+    let decode = jwtDecode(credentialResponse.credential)
+    var userName = decode.name
+    setDecoded(userName)
+  }
+  useEffect(() => {
+    setDecodedName(decoded)
     if (decodedName) {
-      setDecoded((decodedName) => decodedName);
+      setDecoded((decodedName) => decodedName)
       // navigate("/");
     }
-  }, [decoded, decodedName]);
+  }, [decoded, decodedName])
   return (
     <AppContext.Provider
       value={{
-        buttonRef,
         likedItems,
         setLikedItems,
         likeBtnClicked,
+        setLikedItemsSent,
         likedItemsSent,
         addToCartBtnClicked,
         addtoCart,
         setAddtoCart,
         addtoCartSent,
-        likeItemsIdArray,
-        setLikeItemsIdArray,
-        arr,
+        setaddtoCartSent,
         decoded,
         setDecoded,
         decodedName,
         setDecodedName,
         loginClicked,
-        closeTop,
-        setCloseTop
+        offersData,
+        setBestSellingData,
+        bestSellingData,
+        exploreOurProductsData,
+        deleteBtnClicked,
       }}
     >
       {props.children}
     </AppContext.Provider>
-  );
-};
+  )
+}
 
-export default AppStore;
+export default AppStore
