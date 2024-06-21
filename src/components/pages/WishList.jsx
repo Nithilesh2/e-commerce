@@ -49,9 +49,13 @@ const WishList = () => {
         <div className={style.top}>
           <div className={style.topLeft}>Wishlist({wishListNumbers})</div>
           <div className={style.topRight}>
-            <button type="button" className={style.topRightButton}>
-              Move all to cart
-            </button>
+            {totalLikes.length === 0 ? (
+              ""
+            ) : (
+              <button type="button" className={style.topRightButton}>
+                Move all to cart
+              </button>
+            )}
           </div>
         </div>
         <div className={style.bottom}>

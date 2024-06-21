@@ -24,7 +24,7 @@ const Contact = () => {
   const notifyFalse = (data) => toast.error(data, { autoClose: 3000 })
 
   useEffect(() => {
-    const randomTimeValue = Math.floor(Math.random() * 1) + 0
+    const randomTimeValue = Math.floor(Math.random() * 5) + 2
     const randomTime = randomTimeValue + "000"
     const timer = setTimeout(() => {
       setSkeletonLoading(false)
