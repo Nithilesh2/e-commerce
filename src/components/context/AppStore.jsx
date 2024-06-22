@@ -1,5 +1,4 @@
-import React, { useEffect } from "react"
-import { useState } from "react"
+import React, { useEffect, useState } from "react"
 import AppContext from "./AppContext"
 import { jwtDecode } from "jwt-decode"
 
@@ -24,9 +23,9 @@ const AppStore = (props) => {
   const [exploreOurProductsData, setExploreOurProductsData] =
     useState(exploreOurProducts)
 
-  //liked items
+  // liked items
   const likeBtnClicked = (itemId) => {
-    const updatedOffersItems = offersData.filter((item) => {
+    const updatedOffersItems = offersData.map((item) => {
       if (item.id === itemId) {
         item.liked = !item.liked
       }
@@ -34,7 +33,7 @@ const AppStore = (props) => {
     })
     setOffersData(updatedOffersItems)
 
-    const updateBestSellingProducts = bestSellingData.filter((item) => {
+    const updateBestSellingProducts = bestSellingData.map((item) => {
       if (item.id === itemId) {
         item.liked = !item.liked
       }
@@ -42,7 +41,7 @@ const AppStore = (props) => {
     })
     setBestSellingData(updateBestSellingProducts)
 
-    const updateExploreOurProducts = exploreOurProducts.filter((item) => {
+    const updateExploreOurProducts = exploreOurProducts.map((item) => {
       if (item.id === itemId) {
         item.liked = !item.liked
       }
@@ -57,7 +56,7 @@ const AppStore = (props) => {
   }
 
   const deleteBtnClicked = (itemId) => {
-    const deleteOffersData = offersData.filter((item) => {
+    const deleteOffersData = offersData.map((item) => {
       if (item.id === itemId) {
         item.liked = false
       }
@@ -65,7 +64,7 @@ const AppStore = (props) => {
     })
     setOffersData(deleteOffersData)
 
-    const deleteBestSellingProducts = bestSellingData.filter((item) => {
+    const deleteBestSellingProducts = bestSellingData.map((item) => {
       if (item.id === itemId) {
         item.liked = false
       }
@@ -73,13 +72,13 @@ const AppStore = (props) => {
     })
     setBestSellingData(deleteBestSellingProducts)
 
-    const deletexploreOurProducts = exploreOurProducts.filter((item) => {
+    const deleteExploreOurProducts = exploreOurProducts.map((item) => {
       if (item.id === itemId) {
         item.liked = false
       }
       return item
     })
-    setExploreOurProductsData(deletexploreOurProducts)
+    setExploreOurProductsData(deleteExploreOurProducts)
 
     setLikedItems((prevState) => ({
       ...prevState,
@@ -93,9 +92,9 @@ const AppStore = (props) => {
     )
   }, [likedItems])
 
-  //Add to Cart
+  // Add to Cart
   const addToCartBtnClicked = (itemId) => {
-    const updatedOffersItemsCart = offersData.filter((item) => {
+    const updatedOffersItemsCart = offersData.map((item) => {
       if (item.id === itemId) {
         item.addToCart = !item.addToCart
       }
@@ -103,7 +102,7 @@ const AppStore = (props) => {
     })
     setOffersData(updatedOffersItemsCart)
 
-    const updateBestSellingProductsCart = bestSellingData.filter((item) => {
+    const updateBestSellingProductsCart = bestSellingData.map((item) => {
       if (item.id === itemId) {
         item.addToCart = !item.addToCart
       }
@@ -111,7 +110,7 @@ const AppStore = (props) => {
     })
     setBestSellingData(updateBestSellingProductsCart)
 
-    const updateExploreOurProducts = exploreOurProducts.filter((item) => {
+    const updateExploreOurProducts = exploreOurProducts.map((item) => {
       if (item.id === itemId) {
         item.addToCart = !item.addToCart
       }
@@ -124,6 +123,49 @@ const AppStore = (props) => {
       [itemId]: !prevState[itemId],
     }))
   }
+
+  const moveAllToCart = (itemId) => {
+    const addToCarts = offersData.map((item) => {
+      if (item.liked ) {
+        item.addToCart = true
+      }
+      return item
+    })
+    setOffersData(addToCarts)
+
+    const addToCartsBestSelling = bestSellingData.map((item) => {
+      if (item.liked && !item.addToCart) {
+        item.addToCart = true
+      }
+      return item
+    })
+    setBestSellingData(addToCartsBestSelling)
+
+    const addToCartsExplore = exploreOurProducts.map((item) => {
+      if (item.liked && !item.addToCart) {
+        item.addToCart = true
+      }
+      return item
+    })
+    setExploreOurProductsData(addToCartsExplore)
+
+    const likedItemIds = [
+      ...offersData,
+      ...bestSellingData,
+      ...exploreOurProducts,
+    ]
+      .filter((item) => item.liked)
+      .map((item) => item.id)
+
+    setAddtoCart((prevState) => {
+      const updatedCart = { ...prevState }
+      likedItemIds.forEach((itemId) => {
+        updatedCart[itemId] = true
+      })
+      return updatedCart
+    })
+  }
+
   useEffect(() => {
     setaddtoCartSent(
       Object.keys(addtoCart).filter((key) => addtoCart[key]).length
@@ -135,6 +177,7 @@ const AppStore = (props) => {
     var userName = decode.name
     setDecoded(userName)
   }
+
   useEffect(() => {
     setDecodedName(decoded)
     if (decodedName) {
@@ -142,6 +185,7 @@ const AppStore = (props) => {
       // navigate("/");
     }
   }, [decoded, decodedName])
+
   return (
     <AppContext.Provider
       value={{
@@ -165,6 +209,7 @@ const AppStore = (props) => {
         bestSellingData,
         exploreOurProductsData,
         deleteBtnClicked,
+        moveAllToCart,
       }}
     >
       {props.children}

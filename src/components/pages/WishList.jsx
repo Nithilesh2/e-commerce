@@ -17,6 +17,7 @@ const WishList = () => {
     addtoCart,
     addToCartBtnClicked,
     exploreOurProductsData,
+    moveAllToCart,
   } = useContext(AppContext)
 
   const [totalLikes, setTotaLikes] = useState([])
@@ -52,7 +53,13 @@ const WishList = () => {
             {totalLikes.length === 0 ? (
               ""
             ) : (
-              <button type="button" className={style.topRightButton}>
+              <button
+                type="button"
+                onClick={() => {
+                  totalLikes.map((data) => moveAllToCart(data.id))
+                }}
+                className={style.topRightButton}
+              >
                 Move all to cart
               </button>
             )}
@@ -109,7 +116,27 @@ const WishList = () => {
                       draggable={false}
                     />
                   </div>
-                  {addtoCart[data.id] ? (
+                  {data.addToCart ? (
+                    addtoCart[data.id] ? (
+                      <div
+                        className={style.addToCartDeActive}
+                        onClick={() => {
+                          addToCartBtnClicked(data.id)
+                        }}
+                      >
+                        Added
+                      </div>
+                    ) : (
+                      <div
+                        className={style.addToCartActive}
+                        onClick={() => {
+                          addToCartBtnClicked(data.id)
+                        }}
+                      >
+                        Add to cart
+                      </div>
+                    )
+                  ) : addtoCart[data.id] ? (
                     <div
                       className={style.addToCartDeActive}
                       onClick={() => {
@@ -128,6 +155,7 @@ const WishList = () => {
                       Add to cart
                     </div>
                   )}
+
                   <div className={style.totalLikesDataBoxBottom}>
                     <div className={style.totalLikesDataBoxBottomName}>
                       {data.name}

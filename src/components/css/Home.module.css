@@ -722,7 +722,54 @@
   .rowSixOffersData {
     margin-left: 0;
   }
+  .rowTwoOffersDataBoxBottomName {
+    font-size: 0.8rem;
+  }
   .todaySpecialOffers {
     padding-left: 10px;
+  }
+  .rowSixMultiCarousal {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    gap: 4rem;
+  }
+  .rowSixOffersData {
+    height: 150px;
+    max-width: 80%;
+    width: auto;
+    background-color: #fff;
+    padding-left: 0;
+  }
+  .rowTwoOffersDataBox {
+    height: 40%;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 0;
+  }
+  .rowTwoOffersDataBoxTop {
+    height: 60%;
+    z-index: 1;
+    position: absolute;
+    top: -50px;
+    left: 0;
+  }
+  .rowTwoOffersDataBoxCenter {
+    position: relative;
+  }
+  .rowTwoOffersDataBoxCenter img {
+    height: 80px;
+    width: 80px;
+  }
+  .addToCartActive,
+  .addToCartDeActive {
+    cursor: default;
+    position: absolute;
+    top: 100px;
+  }
+  .addToCartActive:hover {
+    background-color: black;
   }
 }

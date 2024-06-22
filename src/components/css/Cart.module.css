@@ -1,0 +1,128 @@
+.skele {
+  margin-bottom: 100px;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cartMain {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(244, 244, 244, 0.852);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.topLeft {
+  height: auto;
+  width: 100%;
+  max-width: 250px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 50px 0px 30px;
+  cursor: default;
+  font-weight: 600;
+}
+.home,
+.wishlist {
+  height: auto;
+  width: auto;
+  color: grey;
+  font-size: 1rem;
+}
+.cart {
+  height: auto;
+  width: auto;
+  color: black;
+  font-size: 1rem;
+}
+.bottom {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2.7rem;
+  padding-left: 4%;
+  margin-bottom: 80px;
+}
+/* Heading and Data*/
+.bottomProductBox,
+.bottomProductBoxData {
+  height: 50px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: -3px -2px 5px rgba(0, 0, 0, 0.129);
+  border-radius: 5px;
+  padding: 0 15px;
+  font-size: 1rem;
+  cursor: default;
+}
+/* Heading */
+.bottomProductBoxProduct,
+.bottomProductBoxPrice,
+.bottomProductBoxQuantity,
+.bottomProductBoxSubtotal {
+  height: 100%;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.bottomProductBoxProduct {
+  width: 30%;
+  justify-content: center;
+  padding-right: 11%;
+}
+/* Data */
+.bottomProductBoxDataProduct,
+.bottomProductBoxDataPrice,
+.bottomProductBoxDataQuantity,
+.bottomProductBoxDataSubtotal {
+  height: 100%;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.bottomProductBoxDataProduct {
+  width: 30%;
+  gap: 2rem;
+}
+.bottomProductBoxDataProductImg {
+  height: 100%;
+  width: auto;
+}
+.bottomProductBoxDataProductImg img {
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+}
+.bottomProductBoxDataProductName,
+.bottomProductBoxDataPrice {
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+.bottomProductBoxDataQuantity {
+  height: 100%;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 11px;
+}
+.bottomProductBoxDataQuantityInput {
+  height: 35px;
+  width: 50px;
+  border-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.7);
+  font-size: 1rem;
+}

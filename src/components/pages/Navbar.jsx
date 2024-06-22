@@ -18,7 +18,7 @@ import {
 
 const Navbar = (props) => {
   const { likedItemsSent, addtoCartSent } = useContext(AppContext)
-  
+
   const navigate = useNavigate()
   const [menuToggle, setMenuToggle] = useState(false)
   const [activePage, setActivePage] = useState("")
@@ -120,7 +120,12 @@ const Navbar = (props) => {
               </div>
               <div className={style.cartBox} title="cart">
                 <div className={style.addedItems}>{addtoCartSent}</div>
-                <AiOutlineShoppingCart className={style.cart} />
+                <AiOutlineShoppingCart
+                  className={style.cart}
+                  onClick={() => {
+                    navigate("/cart")
+                  }}
+                />
               </div>
               <div
                 className={style.userBox}

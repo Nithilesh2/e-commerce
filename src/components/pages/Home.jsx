@@ -100,7 +100,7 @@ const Home = () => {
   }
 
   useEffect(() => {
-    const randomTimeValue = Math.floor(Math.random() * 5) + 2
+    const randomTimeValue = Math.floor(Math.random() * 2) + 1
     const randomTime = randomTimeValue + "000"
     const timer = setTimeout(() => {
       setSkeletonLoading(false)
