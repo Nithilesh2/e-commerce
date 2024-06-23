@@ -6,14 +6,6 @@
   align-items: center;
   justify-content: center;
 }
-.cartMainLengthLessThanFour {
-  height: 100vh;
-  width: 100%;
-  background-color: rgba(244, 244, 244, 0.852);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
 .cartMain {
   height: 100%;
   width: 100%;
@@ -135,6 +127,46 @@
   font-size: 1.1rem;
   font-weight: 600;
 }
+.bottomProductBoxDataQuantityInputBox {
+  height: 100%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.bottomProductBoxDataQuantityInput {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 6px;
+  height: 35px;
+  width: 50px;
+  border-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.7);
+  font-size: 1.1rem;
+}
+.buttonBox {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  right: 2px;
+}
+.increaseNumber,
+.decreaseNumber {
+  border-radius: 20px;
+  position: relative;
+  border: none;
+  font-size: 0.762rem;
+  background: transparent;
+}
+.increaseNumber {
+  top: 2px;
+}
+.decreaseNumber {
+  top: 1px;
+}
 .bottomProductBoxProduct {
   width: 30%;
   justify-content: center;
@@ -201,12 +233,104 @@
   justify-content: flex-start;
   padding-left: 11px;
 }
-.bottomProductBoxDataQuantityInput {
-  height: 35px;
-  width: 50px;
-  border-radius: 5px;
-  border: 2px solid rgba(0, 0, 0, 0.7);
+.bottomUp,
+.bottomCenter {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.7rem;
+}
+.bottomUpLeftGoToHome {
+  height: 40px;
+  width: 150px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.751);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.bottomCenterLeft,
+.bottomCenterRight {
+  height: 100%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottomCenterLeftCoupon {
+  height: 40px;
+  width: 230px;
   font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid black;
+  background: transparent;
+}
+.bottomCenterRightApplyCoupon {
+  height: 40px;
+  width: 150px;
+  background-color: #db4444;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.751);
+}
+.bottomDown {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottomDownBox {
+  padding-top: 20px;
+  height: 290px;
+  width: 90%;
+  max-width: 450px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding-left: 20px;
+  font-weight: 600;
+  gap: 0.65rem;
+  cursor: default;
+}
+.bottomDown hr {
+  width: 95%;
+}
+.bottomDownCartTotal {
+  font-size: 1.2rem;
+}
+.bottomDownSubTotal,
+.bottomDownShipping,
+.bottomCoupon,
+.bottomDownTotal {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-right: 25px;
+}
+.bottomDownButton {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.processToCheckout {
+  height: 40px;
+  width: 150px;
+  color: white;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: #db4444;
 }
 @media only screen and (max-height: 430px) {
   .cartNoItems {
@@ -228,6 +352,11 @@
   .bottom {
     gap: 1rem;
   }
+  .bottomProductBox,
+  .bottomProductBoxData {
+    width: 96%;
+  }
+
   .bottomProductBoxData {
     height: 90px;
   }
@@ -243,8 +372,21 @@
     font-size: 0.66rem;
     font-weight: 600;
   }
+  .buttonBox {
+    right: 0px;
+  }
+  .increaseNumber {
+    top: 2px;
+    font-size: 1rem;
+  }
+  .decreaseNumber {
+    top: 4px;
+    font-size: 1rem;
+  }
   .bottomProductBoxDataQuantityInput {
-    font-size: 0.65rem;
+    height: 40px;
+    width: 36px;
+    font-size: 0.9rem;
   }
   .bottomProductBoxDataProduct {
     gap: 0.4rem;
@@ -252,8 +394,30 @@
   .bottomProductBoxDataQuantity {
     padding-right: 25px;
   }
-  .bottomProductBoxDataQuantityInput {
-    height: 30px;
-    width: 38px;
+}
+@media only screen and (max-width: 450px) {
+  .bottomDown {
+    width: 96%;
+  }
+  .bottomUp {
+    justify-content: flex-end;
+    padding-right: 20px;
+  }
+  .bottomCenter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .bottomCenterLeftCoupon {
+    cursor: auto;
+  }
+  .bottomUpLeftGoToHome,
+  .bottomCenterLeftCoupon,
+  .bottomCenterRightApplyCoupon,
+  .processToCheckout {
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+  .processToCheckout {
+    padding-left: -25px;
   }
 }

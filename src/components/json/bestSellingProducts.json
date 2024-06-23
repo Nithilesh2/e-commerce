@@ -4,6 +4,7 @@
     "image": "https://m.media-amazon.com/images/I/71O74TBGwgL._SX679_.jpg",
     "name": "Hood's Men Leather Jacket",
     "discountCost": "₹9,999",
+    "dc": 9999,
     "originalCost": "₹12,999",
     "liked": false,
     "addToCart": false
@@ -13,6 +14,7 @@
     "image": "https://m.media-amazon.com/images/I/71SNEa-l3xL._SY741_.jpg",
     "name": "Lymio Casual Shirt for Men",
     "discountCost": "₹439",
+    "dc": 439,
     "originalCost": "₹1,799",
     "liked": false,
     "addToCart": false
@@ -22,6 +24,7 @@
     "image": "https://m.media-amazon.com/images/I/81x+gjfK0IL._SX695_.jpg",
     "name": "Ada Fashion Trendy Handbag",
     "discountCost": "₹759",
+    "dc": 759,
     "originalCost": "₹1699",
     "liked": false,
     "addToCart": false
@@ -31,6 +34,7 @@
     "image": "https://5.imimg.com/data5/SELLER/Default/2023/3/292863519/PC/AU/KA/80979251/turbo-pro-electric-bike-1000x1000.jpg",
     "name": "Hub Motor Turbo pro Bike",
     "discountCost": "₹41,990",
+    "dc": 41990,
     "originalCost": "₹50,000",
     "liked": false,
     "addToCart": false
@@ -40,6 +44,7 @@
     "image": "https://m.media-amazon.com/images/I/319jchMEcKL._SX300_SY300_QL70_FMwebp_.jpg",
     "name": "HP Wired Mouse",
     "discountCost": "₹319",
+    "dc": 319,
     "originalCost": "₹649",
     "liked": false,
     "addToCart": false
@@ -49,6 +54,7 @@
     "image": "https://m.media-amazon.com/images/I/51hJIsWMagL._SX679_.jpg",
     "name": "Apple Macbook Air MD711HN/B",
     "discountCost": "₹65,900",
+    "dc": 65900,
     "originalCost": "₹1,00,000",
     "liked": false,
     "addToCart": false
@@ -58,6 +64,7 @@
     "image": "https://m.media-amazon.com/images/I/41zuKQifFUL._SX300_SY300_QL70_FMwebp_.jpg",
     "name": "Earphone for OnePlus",
     "discountCost": "₹499",
+    "dc": 499,
     "originalCost": "₹999",
     "liked": false,
     "addToCart": false
@@ -67,6 +74,7 @@
     "image": "https://m.media-amazon.com/images/I/315B2OERnNL._SX300_SY300_QL70_FMwebp_.jpg",
     "name": "Orient Electric ceiling fan",
     "discountCost": "₹5,198",
+    "dc": 5198,
     "originalCost": "₹6,835",
     "liked": false,
     "addToCart": false
@@ -76,6 +84,7 @@
     "image": "https://m.media-amazon.com/images/I/71XNeka-BRL._SX679_.jpg",
     "name": "OnePlus 12R (8GB RAM, 128GB Storage)",
     "discountCost": "₹39,999",
+    "dc": 39999,
     "originalCost": "₹50,000",
     "liked": false,
     "addToCart": false
@@ -85,6 +94,7 @@
     "image": "https://m.media-amazon.com/images/I/317VTY6RngL._SX300_SY300_QL70_FMwebp_.jpg",
     "name": "MRF Cricket Bat",
     "discountCost": "₹659",
+    "dc": 659,
     "originalCost": "₹1,999",
     "liked": false,
     "addToCart": false
