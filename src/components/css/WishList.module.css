@@ -1,3 +1,11 @@
+.skele {
+  margin-bottom: 100px;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .wishListMain {
   height: 100%;
   width: 100%;
@@ -56,6 +64,29 @@
   border-radius: 5px;
   background-color: #db4444;
   cursor: default;
+}
+.leftTop {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 50px 40px 0px;
+  cursor: default;
+  font-weight: 600;
+}
+.home {
+  height: auto;
+  width: auto;
+  color: grey;
+  font-size: 1rem;
+}
+.wishlist {
+  height: auto;
+  width: auto;
+  color: black;
+  font-size: 1rem;
 }
 /* when products are there */
 .top {

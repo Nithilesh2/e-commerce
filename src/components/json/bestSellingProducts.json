@@ -20,7 +20,7 @@
   {
     "id": "bsp2",
     "image": "https://m.media-amazon.com/images/I/81x+gjfK0IL._SX695_.jpg",
-    "name": "Ada Fashion Trendy Classy Bridal Handbag",
+    "name": "Ada Fashion Trendy Handbag",
     "discountCost": "₹759",
     "originalCost": "₹1699",
     "liked": false,
@@ -29,7 +29,7 @@
   {
     "id": "bsp3",
     "image": "https://5.imimg.com/data5/SELLER/Default/2023/3/292863519/PC/AU/KA/80979251/turbo-pro-electric-bike-1000x1000.jpg",
-    "name": "Steel Hub Motor Turbo pro Electric Bike",
+    "name": "Hub Motor Turbo pro Bike",
     "discountCost": "₹41,990",
     "originalCost": "₹50,000",
     "liked": false,
@@ -38,7 +38,7 @@
   {
     "id": "bsp4",
     "image": "https://m.media-amazon.com/images/I/319jchMEcKL._SX300_SY300_QL70_FMwebp_.jpg",
-    "name": "HP Wired Optical Small Mouse with 3 Buttons",
+    "name": "HP Wired Mouse",
     "discountCost": "₹319",
     "originalCost": "₹649",
     "liked": false,
@@ -47,7 +47,7 @@
   {
     "id": "bsp5",
     "image": "https://m.media-amazon.com/images/I/51hJIsWMagL._SX679_.jpg",
-    "name": "Apple Macbook Air MD711HN/B 11-inch Laptop",
+    "name": "Apple Macbook Air MD711HN/B",
     "discountCost": "₹65,900",
     "originalCost": "₹1,00,000",
     "liked": false,
@@ -65,7 +65,7 @@
   {
     "id": "bsp7",
     "image": "https://m.media-amazon.com/images/I/315B2OERnNL._SX300_SY300_QL70_FMwebp_.jpg",
-    "name": "Orient Electric 1200 mm I Float| BLDC ceiling fan",
+    "name": "Orient Electric ceiling fan",
     "discountCost": "₹5,198",
     "originalCost": "₹6,835",
     "liked": false,
@@ -74,7 +74,7 @@
   {
     "id": "bsp8",
     "image": "https://m.media-amazon.com/images/I/71XNeka-BRL._SX679_.jpg",
-    "name": "OnePlus 12R (Iron Gray, 8GB RAM, 128GB Storage)",
+    "name": "OnePlus 12R (8GB RAM, 128GB Storage)",
     "discountCost": "₹39,999",
     "originalCost": "₹50,000",
     "liked": false,

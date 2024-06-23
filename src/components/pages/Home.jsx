@@ -503,9 +503,13 @@ const Home = () => {
               <div className={style.rowSixMultiCarousal}>
                 {exploreOurProductsData.map((data) => (
                   <div className={style.rowSixOffersData} key={data.id}>
-                    <div className={style.rowTwoOffersDataBox}>
+                    <div
+                      className={`${style.rowTwoOffersDataBox} ${style.rowSixOffersDataBox}`}
+                    >
                       <div
-                        className={style.rowTwoOffersDataBoxTop}
+                        className={`
+                          ${style.rowTwoOffersDataBoxTop}
+                          ${style.rowSixOffersDataBoxTop}`}
                         style={{
                           display: "flex",
                           alignItems: "center",
@@ -514,17 +518,28 @@ const Home = () => {
                         }}
                       >
                         <div
-                          className={style.rowTwoOffersDataBoxTopLike}
+                          className={`${style.rowTwoOffersDataBoxTopLike}
+                            ${style.rowSixOffersDataBoxTopLike}`}
                           onClick={() => likeBtnClicked(data.id)}
                         >
                           {likedItems[data.id] ? (
-                            <AiFillHeart className={style.heartActive} />
+                            <AiFillHeart
+                              className={`
+                                ${style.heartActive}
+                                ${style.rowSixOffersDataBox}`}
+                            />
                           ) : (
-                            <AiOutlineHeart className={style.heartDeActive} />
+                            <AiOutlineHeart
+                              className={`
+                                ${style.heartDeActive}
+                                ${style.rowSixOffersDataBox}`}
+                            />
                           )}
                         </div>
                       </div>
-                      <div className={style.rowTwoOffersDataBoxCenter}>
+                      <div
+                        className={`${style.rowTwoOffersDataBoxCenter} ${style.rowSixOffersDataBoxCenter}`}
+                      >
                         <img
                           src={data.image}
                           alt="img"
@@ -534,7 +549,10 @@ const Home = () => {
                       </div>
                       {addtoCart[data.id] ? (
                         <div
-                          className={style.addToCartDeActive}
+                          className={`
+                            ${style.addToCartDeActive}
+                            ${style.rowSixAddToCartDeActive}
+                          `}
                           onClick={() => {
                             addToCartBtnClicked(data.id)
                           }}
@@ -543,7 +561,9 @@ const Home = () => {
                         </div>
                       ) : (
                         <div
-                          className={style.addToCartActive}
+                          className={`
+                            ${style.addToCartActive}
+                            ${style.rowSixAddToCartActive}`}
                           onClick={() => {
                             addToCartBtnClicked(data.id)
                           }}
@@ -551,22 +571,34 @@ const Home = () => {
                           Add to cart
                         </div>
                       )}
-                      <div className={style.rowTwoOffersDataBoxBottom}>
-                        <div className={style.rowTwoOffersDataBoxBottomName}>
+                      <div
+                        className={`
+                          ${style.rowTwoOffersDataBoxBottom}
+                          ${style.rowSixOffersDataBoxBottom}`}
+                      >
+                        <div
+                          className={`
+                            ${style.rowTwoOffersDataBoxBottomName}
+                            ${style.rowSixOffersDataBoxBottomName}`}
+                        >
                           {data.name}
                         </div>
-                        <div className={style.rowTwoOffersDataBoxBottomCost}>
+                        <div
+                          className={`
+                            ${style.rowTwoOffersDataBoxBottomCost}
+                            ${style.rowSixOffersDataBoxBottomCost}`}
+                        >
                           <span
-                            className={
-                              style.rowTwoOffersDataBoxBottomCostDiscount
-                            }
+                            className={`
+                              ${style.rowTwoOffersDataBoxBottomCostDiscount}
+                              ${style.rowSixOffersDataBoxBottomCostDiscount}`}
                           >
                             {data.discountCost}
                           </span>
                           <span
-                            className={
-                              style.rowTwoOffersDataBoxBottomCostOriginal
-                            }
+                            className={`
+                              ${style.rowTwoOffersDataBoxBottomCostOriginal}
+                              ${style.rowSixOffersDataBoxBottomCostOriginal}`}
                           >
                             {data.originalCost}
                           </span>

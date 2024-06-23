@@ -118,14 +118,15 @@ const Navbar = (props) => {
                 <div className={style.addedItemsHeart}>{likedItemsSent}</div>
                 <AiOutlineHeart className={style.heart} />
               </div>
-              <div className={style.cartBox} title="cart">
+              <div
+                className={style.cartBox}
+                title="cart"
+                onClick={() => {
+                  navigate("/cart")
+                }}
+              >
                 <div className={style.addedItems}>{addtoCartSent}</div>
-                <AiOutlineShoppingCart
-                  className={style.cart}
-                  onClick={() => {
-                    navigate("/cart")
-                  }}
-                />
+                <AiOutlineShoppingCart className={style.cart} />
               </div>
               <div
                 className={style.userBox}

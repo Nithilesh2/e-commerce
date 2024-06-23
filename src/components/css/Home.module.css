@@ -722,7 +722,7 @@
   .rowSixOffersData {
     margin-left: 0;
   }
-  .rowTwoOffersDataBoxBottomName {
+  .rowSixOffersDataBoxBottomName {
     font-size: 0.8rem;
   }
   .todaySpecialOffers {
@@ -740,7 +740,7 @@
     background-color: #fff;
     padding-left: 0;
   }
-  .rowTwoOffersDataBox {
+  .rowSixOffersDataBox {
     height: 40%;
     width: 350px;
     display: flex;
@@ -749,27 +749,27 @@
     position: relative;
     top: 0;
   }
-  .rowTwoOffersDataBoxTop {
+  .rowSixOffersDataBoxTop {
     height: 60%;
     z-index: 1;
     position: absolute;
     top: -50px;
     left: 0;
   }
-  .rowTwoOffersDataBoxCenter {
+  .rowSixOffersDataBoxCenter {
     position: relative;
   }
-  .rowTwoOffersDataBoxCenter img {
+  .rowSixOffersDataBoxCenter img {
     height: 80px;
     width: 80px;
   }
-  .addToCartActive,
-  .addToCartDeActive {
+  .rowSixAddToCartActive,
+  .rowSixAddToCartDeActive {
     cursor: default;
     position: absolute;
     top: 100px;
   }
-  .addToCartActive:hover {
+  .rowSixAddToCartActive:hover {
     background-color: black;
   }
 }

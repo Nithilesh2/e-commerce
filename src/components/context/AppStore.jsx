@@ -16,12 +16,15 @@ const AppStore = (props) => {
   const [decoded, setDecoded] = useState("")
   const [decodedName, setDecodedName] = useState("")
 
+  const [offersdataCart, setOffersDataCart] = useState()
   const [offersData, setOffersData] = useState(data)
   const [bestSellingData, setBestSellingData] = useState(
     bestSellingProductsData
   )
   const [exploreOurProductsData, setExploreOurProductsData] =
     useState(exploreOurProducts)
+
+  const [totalCarts, setTotalCarts] = useState([])
 
   // liked items
   const likeBtnClicked = (itemId) => {
@@ -126,7 +129,7 @@ const AppStore = (props) => {
 
   const moveAllToCart = (itemId) => {
     const addToCarts = offersData.map((item) => {
-      if (item.liked ) {
+      if (item.liked) {
         item.addToCart = true
       }
       return item
@@ -164,6 +167,38 @@ const AppStore = (props) => {
       })
       return updatedCart
     })
+  }
+
+  //Remove from cart
+  const removeAddToCart = (itemId) => {
+    const deleteOffersDataFromCart = offersData.map((item) => {
+      if (item.id === itemId) {
+        item.addToCart = false
+      }
+      return item
+    })
+    setOffersData(deleteOffersDataFromCart)
+
+    const deleteBestSellingProductsFromCart = bestSellingData.map((item) => {
+      if (item.id === itemId) {
+        item.addToCart = false
+      }
+      return item
+    })
+    setBestSellingData(deleteBestSellingProductsFromCart)
+
+    const deleteExploreOurProductsFromCart = exploreOurProducts.map((item) => {
+      if (item.id === itemId) {
+        item.addToCart = false
+      }
+      return item
+    })
+    setExploreOurProductsData(deleteExploreOurProductsFromCart)
+
+    setAddtoCart((prevState) => ({
+      ...prevState,
+      [itemId]: !prevState[itemId],
+    }))
   }
 
   useEffect(() => {
@@ -210,6 +245,11 @@ const AppStore = (props) => {
         exploreOurProductsData,
         deleteBtnClicked,
         moveAllToCart,
+        removeAddToCart,
+        totalCarts,
+        setTotalCarts,
+        offersdataCart,
+        setOffersDataCart,
       }}
     >
       {props.children}
