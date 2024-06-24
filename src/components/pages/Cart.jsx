@@ -10,6 +10,7 @@ import {
   AiOutlineArrowDown,
   AiOutlineArrowUp,
   AiOutlineClose,
+  AiOutlineMinusCircle,
 } from "react-icons/ai"
 import { useWindowSize } from "react-use"
 import Confetti from "react-confetti"
@@ -45,15 +46,22 @@ const Cart = () => {
   ////////////////////////////////////////////////////////////////
   const notifyFalse = (data) => toast.error(data, { autoClose: 3000 })
   const notifyTrue = (data) => toast.success(data, { autoClose: 3000 })
+  const notifyWarn = (data) => toast.warn(data, { autoClose: 3000 })
 
   const skeletonLoadingRef = useRef(null)
   const inputRef = useRef(null)
 
   const navigate = useNavigate()
 
-  const [skeletonLoading, setSkeletonLoading] = useState(true)
   const [quantities, setQuantities] = useState({})
+
+  const [skeletonLoading, setSkeletonLoading] = useState(true)
   const [couponConfetti, setCouponConfetti] = useState(false)
+
+  const [subTotalCost, setSubTotalCost] = useState()
+  const [shippingCost, setShippingCost] = useState(0)
+  const [couponCode, setCouponCode] = useState("0")
+  const [totalCost, setTotalCost] = useState()
 
   //Top Loading Bar
   useEffect(() => {
@@ -85,20 +93,66 @@ const Cart = () => {
     }))
   }
 
+  //coupon code application
   const couponClicked = () => {
-    if (inputRef.current.value === "new50") {
-      notifyTrue("Applied successfully")
-      setCouponConfetti(true)
-      setTimeout(() => {
-        setCouponConfetti(false)
-      }, 5000)
+    if (inputRef.current.value.slice(0, 3) === "new") {
+      const couponCode = inputRef.current.value
+      const sliceCouponCode = couponCode.slice(3)
+      if (
+        sliceCouponCode === "50" ||
+        sliceCouponCode === "100" ||
+        sliceCouponCode === "150" ||
+        sliceCouponCode === "200"
+      ) {
+        setCouponCode(sliceCouponCode)
+        notifyTrue("Applied successfully")
+        setCouponConfetti(true)
+        inputRef.current.value = ""
+        setTimeout(() => {
+          setCouponConfetti(false)
+        }, 5000)
+      } else {
+        notifyFalse("Coupon code is invalid")
+      }
     } else {
       if (inputRef.current.value === "") {
-        notifyFalse("Please enter a coupon")
+        notifyFalse("Please enter a coupon code")
       } else {
-        notifyFalse("use 'new50' coupon code")
+        notifyFalse("use 'new50' or 'new100'... coupon code")
       }
     }
+  }
+
+  const couponCodeInputChange = (eve) => {
+    if (eve.key === "Enter") {
+      couponClicked()
+      inputRef.current.value = ""
+    }
+  }
+
+  //Cart total box
+  useEffect(() => {
+    const calcuateTotal = () => {
+      let subtotal = 0
+      totalCarts.forEach((data) => {
+        const quantaties = quantities[data.id] || 1
+        subtotal += data.dc * quantaties
+      })
+      setSubTotalCost(subtotal)
+    }
+    calcuateTotal()
+
+    if (subTotalCost < 500) {
+      setShippingCost(90)
+    } else {
+      setShippingCost(0)
+    }
+    setTotalCost(subTotalCost + shippingCost - Number(couponCode))
+  }, [totalCarts, quantities, subTotalCost, shippingCost, couponCode])
+
+  const removeCouponButton = () => {
+    setCouponCode("0")
+    notifyWarn("coupon is removed")
   }
 
   return (
@@ -232,7 +286,11 @@ const Cart = () => {
                   </div>
                 ))}
                 <div className={style.bottomUp}>
-                  <button type="button" className={style.bottomUpLeftGoToHome}>
+                  <button
+                    type="button"
+                    className={style.bottomUpLeftGoToHome}
+                    onClick={() => navigate("/")}
+                  >
                     Return to Home
                   </button>
                 </div>
@@ -243,6 +301,7 @@ const Cart = () => {
                       placeholder="Coupon Code"
                       className={style.bottomCenterLeftCoupon}
                       ref={inputRef}
+                      onKeyPress={couponCodeInputChange}
                     />
                   </div>
                   <div className={style.bottomCenterRight}>
@@ -259,22 +318,35 @@ const Cart = () => {
                     <div className={style.bottomDownCartTotal}>Cart Total</div>
                     <div className={style.bottomDownSubTotal}>
                       <div className={style.left}>Subtotal: </div>
-                      <div className={style.right}>7999</div>
+                      <div className={style.right}>₹{subTotalCost}</div>
                     </div>
                     <hr />
                     <div className={style.bottomDownShipping}>
                       <div className={style.left}>Shipping: </div>
-                      <div className={style.right}>Free</div>
+                      <div className={style.right}>
+                        {shippingCost === 0 ? "Free" : `₹${shippingCost}`}
+                      </div>
                     </div>
                     <hr />
                     <div className={style.bottomCoupon}>
                       <div className={style.left}>Coupon: </div>
-                      <div className={style.right}>0</div>
+                      <div className={style.right}>
+                        {couponCode === "0" ? (
+                          <>{couponCode}</>
+                        ) : (
+                          <>
+                            <AiOutlineMinusCircle
+                              onClick={removeCouponButton}
+                            />
+                            {couponCode}
+                          </>
+                        )}
+                      </div>
                     </div>
                     <hr />
                     <div className={style.bottomDownTotal}>
                       <div className={style.left}>Total: </div>
-                      <div className={style.right}>7999</div>
+                      <div className={style.right}>₹{totalCost}</div>
                     </div>
                     <div className={style.bottomDownButton}>
                       <button type="button" className={style.processToCheckout}>

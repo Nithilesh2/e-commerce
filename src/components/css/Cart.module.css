@@ -316,6 +316,13 @@
   justify-content: space-between;
   padding-right: 25px;
 }
+.right {
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
 .bottomDownButton {
   height: auto;
   width: 100%;
