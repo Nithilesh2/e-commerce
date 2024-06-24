@@ -95,7 +95,10 @@ const Cart = () => {
 
   //coupon code application
   const couponClicked = () => {
-    if (inputRef.current.value.slice(0, 3) === "new") {
+    const tolowercaseofcouponcode = inputRef.current.value
+      .slice(0, 3)
+      .toLowerCase()
+    if (tolowercaseofcouponcode === "new") {
       const couponCode = inputRef.current.value
       const sliceCouponCode = couponCode.slice(3)
       if (
