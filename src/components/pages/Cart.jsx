@@ -25,6 +25,13 @@ const Cart = () => {
     totalCarts,
     setTotalCarts,
     removeAddToCart,
+    setQuantities,
+    setCouponCode,
+    quantities,
+    subTotalCost,
+    shippingCost,
+    couponCode,
+    totalCost,
   } = useContext(AppContext)
 
   //getting data from appstore and geting the data which are true of addToCart
@@ -53,15 +60,8 @@ const Cart = () => {
 
   const navigate = useNavigate()
 
-  const [quantities, setQuantities] = useState({})
-
   const [skeletonLoading, setSkeletonLoading] = useState(true)
   const [couponConfetti, setCouponConfetti] = useState(false)
-
-  const [subTotalCost, setSubTotalCost] = useState()
-  const [shippingCost, setShippingCost] = useState(0)
-  const [couponCode, setCouponCode] = useState("0")
-  const [totalCost, setTotalCost] = useState()
 
   //Top Loading Bar
   useEffect(() => {
@@ -133,26 +133,6 @@ const Cart = () => {
     }
   }
 
-  //Cart total box
-  useEffect(() => {
-    const calcuateTotal = () => {
-      let subtotal = 0
-      totalCarts.forEach((data) => {
-        const quantaties = quantities[data.id] || 1
-        subtotal += data.dc * quantaties
-      })
-      setSubTotalCost(subtotal)
-    }
-    calcuateTotal()
-
-    if (subTotalCost < 500) {
-      setShippingCost(90)
-    } else {
-      setShippingCost(0)
-    }
-    setTotalCost(subTotalCost + shippingCost - Number(couponCode))
-  }, [totalCarts, quantities, subTotalCost, shippingCost, couponCode])
-
   const removeCouponButton = () => {
     setCouponCode("0")
     notifyWarn("coupon is removed")
@@ -189,15 +169,6 @@ const Cart = () => {
               }}
             >
               Home
-            </span>
-            <span className={style.slash}>/</span>
-            <span
-              className={style.wishlist}
-              onClick={() => {
-                navigate("/wishlist")
-              }}
-            >
-              WishList
             </span>
             <span className={style.slash}>/</span>
             <span className={style.cart}>Cart</span>
@@ -352,7 +323,13 @@ const Cart = () => {
                       <div className={style.right}>₹{totalCost}</div>
                     </div>
                     <div className={style.bottomDownButton}>
-                      <button type="button" className={style.processToCheckout}>
+                      <button
+                        type="button"
+                        className={style.processToCheckout}
+                        onClick={() => {
+                          navigate("/cart/checkout")
+                        }}
+                      >
                         Process to checkout
                       </button>
                     </div>

@@ -1,0 +1,327 @@
+.skele {
+  margin-bottom: 100px;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.checkOutMain {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(244, 244, 244, 0.852);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+/* When no products are there */
+.cartNoItems {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(244, 244, 244, 0.852);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: all 0.5s;
+}
+.bottomLeftNothingToShow,
+.noLikedItems {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 30px 0px 0px;
+}
+.noLikedItemsOne {
+  font-size: 2.6rem;
+  padding-left: 50px;
+  font-weight: 600;
+  cursor: default;
+}
+.noLikedItemsTwo {
+  font-size: 1.8rem;
+  padding-left: 50px;
+  font-weight: 500;
+  cursor: default;
+}
+.navigateToHomeButtonBox {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navigateToHomeButton {
+  height: 40px;
+  width: 150px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background-color: #db4444;
+  cursor: default;
+}
+/*----------------------------------*/
+.topLeft {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 50px 40px 0px;
+  cursor: default;
+  font-weight: 600;
+}
+.home,
+.cart {
+  height: auto;
+  width: auto;
+  color: grey;
+  font-size: 1rem;
+}
+.checkOut {
+  height: auto;
+  width: auto;
+  color: black;
+  font-size: 1rem;
+}
+.bottom {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2.7rem;
+  padding-left: 7%;
+  margin-top: 50px;
+  margin-bottom: 80px;
+}
+.bottomLeft {
+  height: 100%;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.2rem;
+}
+.bottomLeftBillingDetailsBox {
+  height: auto;
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.bottomLeftBilling {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.4rem;
+}
+.left {
+  font-size: 0.9rem;
+  color: rgb(77, 77, 77);
+}
+.inputBox {
+  height: 35px;
+  width: 350px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.saveInfoBox {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: 0.4rem;
+}
+.saveInfoInputBox {
+  height: 20px;
+  width: 20px;
+}
+.saveInfoInputBox:checked {
+  accent-color: #db4444;
+  color: white;
+}
+.bottomRight {
+  height: 100%;
+  width: 50%;
+  margin-top: 50px;
+  margin-right: 50px;
+}
+.bottomRightBox {
+  height: 100%;
+  width: 530px;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  cursor: default;
+}
+.bottomRightBoxData {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bottomRightBoxDataLeft {
+  height: 100%;
+  width: 100%;
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.bottomRightBoxDataLeftImg img {
+  width: 40px;
+  aspect-ratio: 8/7;
+}
+.bottomRightBoxDataLeftName {
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+.bottomRightBoxDataRight {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.bottomRightBoxSubTotalBox {
+  padding-top: 30px;
+}
+.bottomRightBoxSubTotalBox,
+.bottomRightBoxShippingBox,
+.bottomRightBoxTotalBox,
+.bottomRightBoxCouponBox {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+.right {
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.bottomRightBoxPayment {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.bottomRightBoxBankPaymentBox {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding-top: 20px;
+}
+.bottomRightBoxBankPayment,
+.bottomRightBoxCodPayment {
+  height: 17px;
+  width: 17px;
+}
+.bottomRightBoxBankPayment:checked,
+.bottomRightBoxCodPayment:checked {
+  accent-color: #db4444;
+}
+.bottomRightBoxCoupon {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.7rem;
+}
+.bottomCenterLeft,
+.bottomCenterRight {
+  height: 100%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottomCenterLeftCoupon {
+  height: 40px;
+  width: 230px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid black;
+  background: transparent;
+}
+.bottomCenterRightApplyCoupon,
+.placeOrgerBtn {
+  height: 40px;
+  width: 150px;
+  background-color: #db4444;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.751);
+}
+.placeOrder {
+  height: 100%;
+  width: 100%;
+  padding-top: 40px;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+@media only screen and (max-height: 430px) {
+  .cartNoItems {
+    height: 100%;
+    padding-bottom: 50px;
+  }
+}
+@media only screen and (min-height: 985px) {
+  .checkOutMain {
+    height: 100vh;
+  }
+}
+@media only screen and (max-width: 890px) {
+  .bottom {
+    flex-direction: column;
+  }
+  .inputBox {
+    width: 470px;
+    max-width: 90%;
+  }
+  .bottomLeft {
+    width: 100%;
+  }
+  .bottomRight {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+  .bottomRightBoxCoupon {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .bottomCenterLeftCoupon {
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+  .bottomLeftBillingDetailsBox {
+    cursor: default;
+  }
+  .bottomRightBoxSubTotalBox,
+  .bottomRightBoxShippingBox,
+  .bottomRightBoxTotalBox,
+  .bottomRightBoxCouponBox,
+  .bottomRightBoxBankPaymentBox {
+    font-size: 0.8rem;
+  }
+}

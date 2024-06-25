@@ -26,6 +26,13 @@ const AppStore = (props) => {
 
   const [totalCarts, setTotalCarts] = useState([])
 
+  //CART PAGE
+  const [subTotalCost, setSubTotalCost] = useState()
+  const [shippingCost, setShippingCost] = useState(0)
+  const [totalCost, setTotalCost] = useState()
+  const [quantities, setQuantities] = useState({})
+  const [couponCode, setCouponCode] = useState("0")
+
   // liked items
   const likeBtnClicked = (itemId) => {
     const updatedOffersItems = offersData.map((item) => {
@@ -221,6 +228,27 @@ const AppStore = (props) => {
     }
   }, [decoded, decodedName])
 
+  //CART PAGE
+  //Cart total box
+  useEffect(() => {
+    const calcuateTotal = () => {
+      let subtotal = 0
+      totalCarts.forEach((data) => {
+        const quantaties = quantities[data.id] || 1
+        subtotal += data.dc * quantaties
+      })
+      setSubTotalCost(subtotal)
+    }
+    calcuateTotal()
+
+    if (subTotalCost < 500) {
+      setShippingCost(90)
+    } else {
+      setShippingCost(0)
+    }
+    setTotalCost(subTotalCost + shippingCost - Number(couponCode))
+  }, [totalCarts, quantities, subTotalCost, shippingCost, couponCode])
+
   return (
     <AppContext.Provider
       value={{
@@ -250,6 +278,16 @@ const AppStore = (props) => {
         setTotalCarts,
         offersdataCart,
         setOffersDataCart,
+        subTotalCost,
+        setSubTotalCost,
+        totalCost,
+        setTotalCost,
+        shippingCost,
+        setShippingCost,
+        quantities,
+        setQuantities,
+        couponCode,
+        setCouponCode,
       }}
     >
       {props.children}
