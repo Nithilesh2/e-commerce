@@ -320,8 +320,10 @@
   .bottomRightBoxSubTotalBox,
   .bottomRightBoxShippingBox,
   .bottomRightBoxTotalBox,
-  .bottomRightBoxCouponBox,
-  .bottomRightBoxBankPaymentBox {
+  .bottomRightBoxCouponBox {
+    font-size: 0.8rem;
+  }
+  .bottomRightBoxBankPaymentBox label {
     font-size: 0.8rem;
   }
 }
