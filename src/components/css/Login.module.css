@@ -22,6 +22,7 @@
 }
 .form {
   height: 500px;
+  min-height: 87%;
   width: 400px;
   max-width: 40%;
   display: flex;
@@ -114,7 +115,7 @@
   z-index: 999;
 }
 .spinner {
-  color: #db4444; 
+  color: #db4444;
 }
 @media only screen and (max-width: 1030px) {
   .loginImage {

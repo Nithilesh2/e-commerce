@@ -323,7 +323,16 @@
   .bottomRightBoxCouponBox {
     font-size: 0.8rem;
   }
-  .bottomRightBoxBankPaymentBox label {
+  .saveInfoBox {
+    display: flex;
+    align-items: center;
+  }
+  .saveInfoInputBox {
+    height: 15px;
+    width: 15px;
+  }
+  .bottomRightBoxBankPaymentBox label,
+  .saveInfoBox label {
     font-size: 0.8rem;
   }
 }

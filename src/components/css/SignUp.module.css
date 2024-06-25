@@ -30,6 +30,7 @@
 }
 .form {
   height: 500px;
+  min-height: 87%;
   width: 400px;
   max-width: 40%;
   display: flex;
@@ -247,6 +248,7 @@
 }
 @media only screen and (max-height: 690px) {
   .signUpBox {
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -270,6 +272,11 @@
   .login {
     justify-content: center;
     flex-direction: row;
+  }
+}
+@media only screen and(max-height: 1068px) {
+  .signup {
+    height: 100%;
   }
 }
 @media only screen and (max-width: 700px) {
