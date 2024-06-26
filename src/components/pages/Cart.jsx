@@ -15,6 +15,7 @@ import {
 import { useWindowSize } from "react-use"
 import Confetti from "react-confetti"
 import { toast, ToastContainer } from "react-toastify"
+import ScrollToTop from "./ScrollToTop"
 
 const Cart = () => {
   const { width, height } = useWindowSize()
@@ -140,6 +141,7 @@ const Cart = () => {
 
   return (
     <>
+      <ScrollToTop />
       {couponConfetti && <Confetti width={width - 30} height={height} />}
       <ToastContainer />
       <TopHeader />

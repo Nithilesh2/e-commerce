@@ -25,6 +25,7 @@ import AppContext from "../context/AppContext"
 import Trust from "./Trust"
 import ClickToTop from "./ClickToTop"
 import LoadingBar from "react-top-loading-bar"
+import ScrollToTop from "./ScrollToTop"
 
 const Home = () => {
   const [timeLeft, setTimeLeft] = useState({})
@@ -157,6 +158,7 @@ const Home = () => {
 
   return (
     <>
+      <ScrollToTop />
       <TopHeader />
       <Navbar showbar="home" />
       <hr />

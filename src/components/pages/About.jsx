@@ -1,23 +1,24 @@
-import React, { useEffect, useRef, useState } from "react";
-import style from "../css/About.module.css";
-import TopHeader from "./TopHeader";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import { useNavigate } from "react-router-dom";
-import Trust from "./Trust";
+import React, { useEffect, useRef, useState } from "react"
+import style from "../css/About.module.css"
+import TopHeader from "./TopHeader"
+import Navbar from "./Navbar"
+import Footer from "./Footer"
+import { useNavigate } from "react-router-dom"
+import Trust from "./Trust"
 import {
   AiOutlineDollarCircle,
   AiOutlineMoneyCollect,
   AiOutlineShop,
   AiOutlineShopping,
-} from "react-icons/ai";
-import ClickToTop from "./ClickToTop";
-import MultiCarousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import LoadingBar from "react-top-loading-bar";
+} from "react-icons/ai"
+import ClickToTop from "./ClickToTop"
+import MultiCarousel from "react-multi-carousel"
+import "react-multi-carousel/lib/styles.css"
+import LoadingBar from "react-top-loading-bar"
+import ScrollToTop from "./ScrollToTop"
 
 const About = () => {
-  const [skeletonLoading, setSkeletonLoading] = useState(true);
+  const [skeletonLoading, setSkeletonLoading] = useState(true)
 
   const responsiveRowThree = {
     superLargeDesktop: {
@@ -48,27 +49,28 @@ const About = () => {
       breakpoint: { max: 650, min: 0 },
       items: 1.5,
     },
-  };
-  const navigate = useNavigate();
+  }
+  const navigate = useNavigate()
 
   useEffect(() => {
-    const randomTimeValue = Math.floor(Math.random() * 8) + 4;
-    const randomTime = randomTimeValue + "000";
+    const randomTimeValue = Math.floor(Math.random() * 8) + 4
+    const randomTime = randomTimeValue + "000"
 
     const timer = setTimeout(() => {
-      setSkeletonLoading(false);
-    }, randomTime);
-    return () => clearTimeout(timer);
-  }, []);
+      setSkeletonLoading(false)
+    }, randomTime)
+    return () => clearTimeout(timer)
+  }, [])
 
-  const ref = useRef(null);
+  const ref = useRef(null)
   useEffect(() => {
     if (ref.current) {
-      ref.current.continuousStart();
+      ref.current.continuousStart()
     }
-  }, []);
+  }, [])
   return (
     <>
+      <ScrollToTop />
       <TopHeader />
       <Navbar showbar="about" />
       {skeletonLoading ? (
@@ -83,7 +85,7 @@ const About = () => {
             <span
               className={style.home}
               onClick={() => {
-                navigate("/");
+                navigate("/")
               }}
             >
               Home
@@ -185,7 +187,6 @@ const About = () => {
                 </div>
               </MultiCarousel>
             </div>
-            {/* <div className={style.bottomThree}></div> */}
             <div className={style.bottomFour}>
               <Trust />
             </div>
@@ -195,7 +196,7 @@ const About = () => {
       <ClickToTop />
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default About;
+export default About

@@ -1,0 +1,232 @@
+.paymentMain {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(244, 244, 244, 0.852);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.topLeft {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 50px 40px 0px;
+  cursor: default;
+  font-weight: 600;
+}
+.home,
+.cart,
+.checkOut {
+  height: auto;
+  width: auto;
+  color: grey;
+  font-size: 1rem;
+}
+.payment {
+  height: auto;
+  width: auto;
+  color: black;
+  font-size: 1rem;
+}
+.bottom {
+  height: 100%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 2.7rem;
+  padding-left: 7%;
+  margin-top: 50px;
+  margin-bottom: 80px;
+}
+.bottomPayment {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.bottomBankPaymentBoxActive {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding-top: 20px;
+}
+.bottomBankPaymentBoxDeActive {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding-top: 20px;
+  position: relative;
+}
+.bottomBankPayment,
+.bottomCodPayment {
+  height: 17px;
+  width: 17px;
+}
+.bottomBankPayment:checked,
+.bottomCodPayment:checked {
+  accent-color: #db4444;
+}
+.hr {
+  height: auto;
+  width: 100%;
+  margin-top: 10px;
+}
+.one {
+  height: 100%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+.bottomBankPaymentBoxActive .two {
+  height: 100%;
+  width: auto;
+  display: flex;
+  gap: 0.8rem;
+  flex-direction: column;
+}
+.bottomBankPaymentBoxDeActive .two {
+  position: absolute;
+  display: none;
+}
+.twoTop,
+.twoBottom {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+.twoBottomInput {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.twoBottomButton {
+  height: 100%;
+  width: 100%;
+}
+.cardNumber,
+.cardHolder,
+.upi {
+  height: 40px;
+  width: 200px;
+  max-width: 70%;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.cardExpYear {
+  margin-right: 25px;
+}
+.cardExpMonth,
+.cardExpYear {
+  height: 40px;
+  width: 70px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.cardButton {
+  height: 40px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  background-color: #db4444;
+}
+.upi {
+  width: 200px;
+}
+.upiButton {
+  height: 40px;
+  width: 110px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  background-color: #db4444;
+}
+.paymentUpi {
+  height: 30px;
+  width: 70px;
+  border-radius: 50px;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.bottomPaymentButtonBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottomPaymentButton {
+  height: 40px;
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+  background-color: #db4444;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+}
+@media only screen and (max-width: 500px) {
+  .twoTop {
+    flex-direction: column;
+  }
+  .twoBottomInput {
+    justify-content: flex-start;
+  }
+  .cardButton {
+    width: 210px;
+  }
+  .cardNumber,
+  .cardHolder,
+  .upi {
+    width: 300px;
+  }
+  .twoBottom {
+    flex-direction: column;
+  }
+  .twoBottomUpiButtons {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .bottom {
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 0;
+  }
+  .bottomPayment {
+    padding-left: 10px;
+  }
+  .one,
+  .cardNumber,
+  .cardHolder,
+  .cardExpMonth,
+  .cardExpYear,
+  .upi {
+    font-size: 0.8rem;
+  }
+  label {
+    font-size: 0.95rem;
+  }
+}

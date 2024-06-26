@@ -8,6 +8,7 @@ import LoadingBar from "react-top-loading-bar"
 import { useNavigate } from "react-router-dom"
 import AppContext from "../context/AppContext"
 import { AiOutlineMinusCircle } from "react-icons/ai"
+import ScrollToTop from "./ScrollToTop"
 
 const CheckOut = () => {
   const {
@@ -88,6 +89,7 @@ const CheckOut = () => {
 
   return (
     <>
+      <ScrollToTop />
       <ToastContainer />
       <TopHeader />
       <Navbar />
@@ -103,10 +105,10 @@ const CheckOut = () => {
           </div>
         </div>
       ) : (
-        <div 
-        className={
-          totalCarts.length === 0 ? style.cartNoItems : style.checkOutMain
-        }
+        <div
+          className={
+            totalCarts.length === 0 ? style.cartNoItems : style.checkOutMain
+          }
         >
           <div className={style.topLeft}>
             <span
@@ -267,36 +269,6 @@ const CheckOut = () => {
                       {totalCost}
                     </div>
                   </div>
-                  <div className={style.bottomRightBoxPayment}>
-                    <div className={style.bottomRightBoxBankPaymentBox}>
-                      <input
-                        type="radio"
-                        className={style.bottomRightBoxBankPayment}
-                        id="customRadiobox1"
-                        name="radioButton"
-                      />
-                      <label
-                        className={style.bottomRightBoxBank}
-                        htmlFor="customRadiobox1"
-                      >
-                        Bank
-                      </label>
-                    </div>
-                    <div className={style.bottomRightBoxBankPaymentBox}>
-                      <input
-                        type="radio"
-                        className={style.bottomRightBoxCodPayment}
-                        id="customRadiobox2"
-                        name="radioButton"
-                      />
-                      <label
-                        className={style.bottomRightBoxCod}
-                        htmlFor="customRadiobox2"
-                      >
-                        Cash On Delivery
-                      </label>
-                    </div>
-                  </div>
                   <div className={style.bottomRightBoxCoupon}>
                     <div className={style.bottomCenterLeft}>
                       <input
@@ -317,7 +289,12 @@ const CheckOut = () => {
                     </div>
                   </div>
                   <div className={style.placeOrder}>
-                    <button className={style.placeOrgerBtn}>Place Order</button>
+                    <button
+                      className={style.placeOrgerBtn}
+                      onClick={() => navigate("/cart/checkout/payment")}
+                    >
+                      Place Order
+                    </button>
                   </div>
                 </div>
               </div>

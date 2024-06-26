@@ -8,6 +8,7 @@ import style from "../css/WishList.module.css"
 import { AiOutlineDelete } from "react-icons/ai"
 import { useNavigate } from "react-router-dom"
 import LoadingBar from "react-top-loading-bar"
+import ScrollToTop from "./ScrollToTop"
 
 const WishList = () => {
   const navigate = useNavigate()
@@ -59,6 +60,7 @@ const WishList = () => {
 
   return (
     <>
+      <ScrollToTop />
       <TopHeader />
       <Navbar />
       <hr />

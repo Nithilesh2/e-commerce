@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 import style from "../css/ErrorPage.module.css"
 import { useNavigate } from "react-router-dom"
 import LoadingBar from "react-top-loading-bar"
+import ScrollToTop from "./ScrollToTop"
 
 const ErrorPage = () => {
   const navigate = useNavigate()
@@ -25,6 +26,7 @@ const ErrorPage = () => {
   }, [])
   return (
     <>
+      <ScrollToTop />
       {skeletonLoading ? (
         <div className={style.skele}>
           <div>

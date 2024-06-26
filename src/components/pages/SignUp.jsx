@@ -12,6 +12,7 @@ import { TailSpin } from "react-loader-spinner"
 import quotes from "../json/serverBusyQuotes.json"
 import ClickToTop from "./ClickToTop"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
+import ScrollToTop from "./ScrollToTop"
 
 const SignUp = () => {
   const notifyFalse = (data) => toast.error(data, { autoClose: 3000 })
@@ -147,6 +148,7 @@ const SignUp = () => {
 
   return (
     <>
+      <ScrollToTop />
       <ToastContainer />
       <div className={style.main}>
         <TopHeader />

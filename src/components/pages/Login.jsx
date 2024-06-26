@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 import { toast, ToastContainer } from "react-toastify"
 import { TailSpin } from "react-loader-spinner"
 import ClickToTop from "./ClickToTop"
+import ScrollToTop from "./ScrollToTop";
 
 const Login = () => {
   const navigate = useNavigate()
@@ -45,6 +46,7 @@ const Login = () => {
 
   return (
     <>
+    <ScrollToTop />
       <ToastContainer />
       <TopHeader />
       <Navbar showbar="login" />

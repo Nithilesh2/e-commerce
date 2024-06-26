@@ -210,31 +210,6 @@
   justify-content: center;
   gap: 5px;
 }
-.bottomRightBoxPayment {
-  height: auto;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.bottomRightBoxBankPaymentBox {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  padding-top: 20px;
-}
-.bottomRightBoxBankPayment,
-.bottomRightBoxCodPayment {
-  height: 17px;
-  width: 17px;
-}
-.bottomRightBoxBankPayment:checked,
-.bottomRightBoxCodPayment:checked {
-  accent-color: #db4444;
-}
 .bottomRightBoxCoupon {
   height: auto;
   width: 100%;

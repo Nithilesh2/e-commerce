@@ -9,6 +9,7 @@ import LoadingBar from "react-top-loading-bar"
 import emailjs from "@emailjs/browser"
 import { toast, ToastContainer } from "react-toastify"
 import ClickToTop from "./ClickToTop"
+import ScrollToTop from "./ScrollToTop";
 
 const Contact = () => {
   const form = useRef()
@@ -64,6 +65,7 @@ const Contact = () => {
   }
   return (
     <>
+    <ScrollToTop />
       <ToastContainer />
       <TopHeader />
       <Navbar showbar="contact" />

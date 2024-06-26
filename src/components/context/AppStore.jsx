@@ -215,6 +215,7 @@ const AppStore = (props) => {
   }, [addtoCart])
 
   function loginClicked(credentialResponse) {
+    console.log(credentialResponse)
     let decode = jwtDecode(credentialResponse.credential)
     var userName = decode.name
     setDecoded(userName)

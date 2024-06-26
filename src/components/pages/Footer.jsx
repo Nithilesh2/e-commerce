@@ -61,8 +61,8 @@ const Footer = () => {
             >
               Login / Register
             </li>
-            <li>Cart</li>
-            <li>WishList</li>
+            <li onClick={() => navigate("/cart")}>Cart</li>
+            <li onClick={() => navigate("/wishlist")}>WishList</li>
             <li
               onClick={() => {
                 navigate("/")
@@ -78,7 +78,7 @@ const Footer = () => {
             <li>Privacy Policy</li>
             <li>Terms Of Use</li>
             <li>FAQ</li>
-            <li>Contact</li>
+            <li onClick={() => navigate("/contact")}>Contact</li>
           </ul>
         </div>
         <div className={style.footerDataFive}>

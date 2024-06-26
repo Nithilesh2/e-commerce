@@ -10,6 +10,8 @@ import WishList from "./components/pages/WishList"
 import About from "./components/pages/About"
 import Contact from "./components/pages/Contact"
 import ErrorPage from "./components/pages/ErrorPage"
+import Payment from "./components/pages/Payment"
+import Orders from "./components/pages/Orders"
 
 const App = () => {
   return (
@@ -21,10 +23,12 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/cart/checkout" element={<CheckOut />} />
+          <Route path="/cart/checkout/payment" element={<Payment />} />
           <Route path="/myaccount" element={<MyAccount />} />
           <Route path="/wishlist" element={<WishList />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/orders" element={<Orders />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>

@@ -4,17 +4,16 @@
   background-color: rgba(244, 244, 244, 0.852);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 3rem;
 }
 .topLeft {
   height: auto;
   width: 100%;
-  max-width: 250px;
   display: flex;
   align-items: flex-start;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 1rem;
-  padding: 50px 0px 30px;
+  padding: 50px 40px 0px;
   cursor: default;
   font-weight: 600;
 }
@@ -307,6 +306,9 @@ input {
   }
 }
 @media only screen and (max-width: 383px) {
+  .topLeft {
+    padding: 50px 20px 0;
+  }
   .bottomLeftTwoBottom {
     margin-top: 20px;
   }

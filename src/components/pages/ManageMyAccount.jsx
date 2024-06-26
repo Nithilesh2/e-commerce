@@ -1,64 +1,65 @@
-import React, { useEffect, useRef, useState } from "react";
-import style from "../css/ManageMyAccount.module.css";
-import TopHeader from "./TopHeader";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import { useNavigate } from "react-router-dom";
-import { AiOutlineEdit } from "react-icons/ai";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import ClickToTop from "./ClickToTop";
+import React, { useEffect, useRef, useState } from "react"
+import style from "../css/ManageMyAccount.module.css"
+import TopHeader from "./TopHeader"
+import Navbar from "./Navbar"
+import Footer from "./Footer"
+import { useNavigate } from "react-router-dom"
+import { AiOutlineEdit } from "react-icons/ai"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import ClickToTop from "./ClickToTop"
+import ScrollToTop from "./ScrollToTop"
 
 const ManageMyAccount = () => {
-  const notify = (data) => toast.warn(data, { autoClose: 3000 });
-  const notifyTrue = (data) => toast.success(data, { autoClose: 3000 });
-  const navigate = useNavigate();
-  const fnameRef = useRef();
-  const lnameRef = useRef();
-  const emailRef = useRef();
-  const addressRef = useRef();
-  const passRef = useRef();
-  const newPassRef = useRef();
-  const cnfmPassRef = useRef();
+  const notify = (data) => toast.warn(data, { autoClose: 3000 })
+  const notifyTrue = (data) => toast.success(data, { autoClose: 3000 })
+  const navigate = useNavigate()
+  const fnameRef = useRef()
+  const lnameRef = useRef()
+  const emailRef = useRef()
+  const addressRef = useRef()
+  const passRef = useRef()
+  const newPassRef = useRef()
+  const cnfmPassRef = useRef()
 
-  const [fname, setFname] = useState("Shriya");
-  const [lname, setLname] = useState("Saran");
-  const [email, setEmail] = useState("shriyasaran@gmail.com");
-  const [address, setAddress] = useState("Hyderabad,Telangana");
-  const [edit, setEdit] = useState(true);
-  const [skeletonLoading, setSkeletonLoading] = useState(true);
+  const [fname, setFname] = useState("Shriya")
+  const [lname, setLname] = useState("Saran")
+  const [email, setEmail] = useState("shriyasaran@gmail.com")
+  const [address, setAddress] = useState("Hyderabad,Telangana")
+  const [edit, setEdit] = useState(true)
+  const [skeletonLoading, setSkeletonLoading] = useState(true)
 
   const editBtnClicked = (eve) => {
     if (skeletonLoading) {
-      eve.preventDefault();
+      eve.preventDefault()
     } else {
-      setEdit(!edit);
+      setEdit(!edit)
     }
-  };
+  }
   const changeBtnPressed = (eve) => {
     if (skeletonLoading) {
-      eve.preventDefault();
+      eve.preventDefault()
     } else {
       if (!edit) {
-        setFname(fnameRef.current.value);
-        setLname(lnameRef.current.value);
-        setEmail(emailRef.current.value);
-        setAddress(addressRef.current.value);
-        notifyTrue("Successfully changed");
-        setEdit(true);
+        setFname(fnameRef.current.value)
+        setLname(lnameRef.current.value)
+        setEmail(emailRef.current.value)
+        setAddress(addressRef.current.value)
+        notifyTrue("Successfully changed")
+        setEdit(true)
       } else if (passRef.current.value !== "") {
         if (
           newPassRef.current.value === "" ||
           cnfmPassRef.current.value === ""
         ) {
-          notify("Please Enter new Password and Confirm Password");
+          notify("Please Enter new Password and Confirm Password")
         } else if (newPassRef.current.value === cnfmPassRef.current.value) {
-          notifyTrue("Password changed");
-          passRef.current.value = "";
-          newPassRef.current.value = "";
-          cnfmPassRef.current.value = "";
+          notifyTrue("Password changed")
+          passRef.current.value = ""
+          newPassRef.current.value = ""
+          cnfmPassRef.current.value = ""
         } else {
-          notify("Password didn't match");
+          notify("Password didn't match")
         }
       } else if (
         newPassRef.current.value !== "" ||
@@ -69,43 +70,44 @@ const ManageMyAccount = () => {
           (newPassRef.current.value !== cnfmPassRef.current.value &&
             passRef.current.value === "")
         ) {
-          notify("Please enter current password");
+          notify("Please enter current password")
         }
       } else {
-        notify("Nothing to change");
+        notify("Nothing to change")
       }
     }
-  };
+  }
   const cancelBtnClicked = (eve) => {
     if (skeletonLoading) {
-      eve.preventDefault();
+      eve.preventDefault()
     } else {
-      setFname(fname);
-      setLname(lname);
-      setEmail(email);
-      setAddress(address);
-      setEdit(true);
+      setFname(fname)
+      setLname(lname)
+      setEmail(email)
+      setAddress(address)
+      setEdit(true)
     }
-  };
+  }
 
   useEffect(() => {
-    const randomTimeValue = Math.floor(Math.random() * 5) + 2;
-    const randomTime = randomTimeValue + "000";
+    const randomTimeValue = Math.floor(Math.random() * 5) + 2
+    const randomTime = randomTimeValue + "000"
     const timer = setTimeout(() => {
-      setSkeletonLoading(false);
-    }, randomTime);
-    return () => clearTimeout(timer);
-  }, []);
+      setSkeletonLoading(false)
+    }, randomTime)
+    return () => clearTimeout(timer)
+  }, [])
 
-  const ref = useRef(null);
+  const ref = useRef(null)
   useEffect(() => {
     if (ref.current) {
-      ref.current.continuousStart();
+      ref.current.continuousStart()
     }
-  }, []);
+  }, [])
 
   return (
     <>
+      <ScrollToTop />
       <ToastContainer />
       <TopHeader />
       <Navbar />
@@ -115,13 +117,13 @@ const ManageMyAccount = () => {
           <span
             className={style.home}
             onClick={() => {
-              navigate("/");
+              navigate("/")
             }}
           >
             Home
           </span>
           <span className={style.slash}>/</span>
-          <span className={style.myAccount}>My Account</span>
+          <span className={style.myAccount}>My Profile</span>
         </div>
         <div className={style.bottom}>
           <div className={style.bottomLeft}>
@@ -137,8 +139,14 @@ const ManageMyAccount = () => {
               </div>
             </div>
             <div className={style.bottomLeftTwo}>
-              <div className={style.bottomLeftTwoTop}>My Orders</div>
+              <div className={style.bottomLeftTwoTop}>Manage My Orders</div>
               <div className={style.bottomLeftTwoBottom}>
+                <div
+                  className={style.bottomLeftTwoBottomMyProfile}
+                  onClick={() => navigate("/orders")}
+                >
+                  My Orders
+                </div>
                 <div className={style.bottomLeftTwoBottomMyProfile}>
                   My Returns
                 </div>
@@ -334,7 +342,7 @@ const ManageMyAccount = () => {
       <ClickToTop />
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default ManageMyAccount;
+export default ManageMyAccount
