@@ -12,6 +12,7 @@ import Contact from "./components/pages/Contact"
 import ErrorPage from "./components/pages/ErrorPage"
 import Payment from "./components/pages/Payment"
 import Orders from "./components/pages/Orders"
+import Invoice from "./components/pages/Invoice"
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/invoice" element={<Invoice />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>

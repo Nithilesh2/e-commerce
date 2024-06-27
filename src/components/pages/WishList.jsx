@@ -9,6 +9,7 @@ import { AiOutlineDelete } from "react-icons/ai"
 import { useNavigate } from "react-router-dom"
 import LoadingBar from "react-top-loading-bar"
 import ScrollToTop from "./ScrollToTop"
+import ClickToTop from "./ClickToTop"
 
 const WishList = () => {
   const navigate = useNavigate()
@@ -27,7 +28,7 @@ const WishList = () => {
   const skeletonLoadingRef = useRef(null)
 
   useEffect(() => {
-    const randomTimeValue = Math.floor(Math.random() * 2) + 1
+    const randomTimeValue = Math.floor(Math.random() * 4) + 2
     const randomTime = randomTimeValue + "000"
     const timer = setTimeout(() => {
       setSkeletonLoading(false)
@@ -225,6 +226,7 @@ const WishList = () => {
           </div>
         </div>
       )}
+      <ClickToTop />
       <Footer />
     </>
   )

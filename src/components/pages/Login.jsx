@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 import { toast, ToastContainer } from "react-toastify"
 import { TailSpin } from "react-loader-spinner"
 import ClickToTop from "./ClickToTop"
-import ScrollToTop from "./ScrollToTop";
+import ScrollToTop from "./ScrollToTop"
 
 const Login = () => {
   const navigate = useNavigate()
@@ -41,12 +41,11 @@ const Login = () => {
     } finally {
       setLoadingLogin(false)
     }
-    
   }
 
   return (
     <>
-    <ScrollToTop />
+      <ScrollToTop />
       <ToastContainer />
       <TopHeader />
       <Navbar showbar="login" />
@@ -97,7 +96,18 @@ const Login = () => {
               <button type="submit" className={style.loginBtn}>
                 Log In
               </button>
-              <div className={style.forgotPass}>Forget Password?</div>
+              <div className={style.forgotPass}>Forgot Password?</div>
+            </div>
+            <div className={style.signUp}>
+              <h4>Already a user?</h4>
+              <div
+                className={style.signUpRedirect}
+                onClick={() => {
+                  navigate("/signup")
+                }}
+              >
+                Sign up
+              </div>
             </div>
           </div>
         </form>

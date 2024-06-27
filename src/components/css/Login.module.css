@@ -92,6 +92,15 @@
   color: #db4444;
   cursor: default;
 }
+.signUp {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 15px;
+  gap: 0.7rem;
+}
 .blur {
   height: 100vh;
   width: 100%;
@@ -195,5 +204,9 @@
     justify-content: space-between;
     flex-direction: row;
     width: 80%;
+  }
+  .signUp {
+    justify-content: center;
+    padding-left: 0px;
   }
 }

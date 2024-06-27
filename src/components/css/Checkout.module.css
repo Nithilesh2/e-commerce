@@ -177,6 +177,23 @@
   align-items: center;
   justify-content: flex-start;
 }
+.bottomRightBoxDataLeftImg {
+  position: relative;
+}
+.bottomRightBoxDataLeftImgQuantities {
+  position: absolute;
+  bottom: 30px;
+  right: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  height: 18px;
+  width: 18px;
+  border-radius: 18px;
+  background-color: rgb(255, 73, 73);
+  font-size: 0.65rem;
+}
 .bottomRightBoxDataLeftImg img {
   width: 40px;
   aspect-ratio: 8/7;
@@ -308,6 +325,15 @@
   }
   .bottomRightBoxBankPaymentBox label,
   .saveInfoBox label {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .bottomRightBoxDataLeft {
+    width: 80%;
+  }
+  .bottomRightBoxDataLeftName,
+  .bottomRightBoxDataRight {
     font-size: 0.8rem;
   }
 }

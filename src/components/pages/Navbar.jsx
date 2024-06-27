@@ -44,6 +44,9 @@ const Navbar = (props) => {
   const logout = () => {
     navigate("/login")
   }
+  const orders = () => {
+    navigate("/orders")
+  }
   return (
     <>
       <main className={style.main}>
@@ -144,7 +147,7 @@ const Navbar = (props) => {
                       <AiOutlineUser />
                       <span>Manage My Account</span>
                     </li>
-                    <li title="orders">
+                    <li title="orders" onClick={orders}>
                       <AiOutlineShopping />
                       <span>My Order</span>
                     </li>

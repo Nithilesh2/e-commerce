@@ -18,22 +18,23 @@ const CheckOut = () => {
     totalCost,
     couponCode,
     setCouponCode,
+    quantities,
   } = useContext(AppContext)
 
   const inputRef = useRef(null)
 
+  const skeletonLoadingRef = useRef(null)
   const [skeletonLoading, setSkeletonLoading] = useState(true)
 
   const notifyFalse = (data) => toast.error(data, { autoClose: 3000 })
   const notifyTrue = (data) => toast.success(data, { autoClose: 3000 })
   const notifyWarn = (data) => toast.warn(data, { autoClose: 3000 })
 
-  const skeletonLoadingRef = useRef(null)
 
   const navigate = useNavigate()
 
   useEffect(() => {
-    const randomTimeValue = Math.floor(Math.random() * 1) + 0
+    const randomTimeValue = Math.floor(Math.random() * 4) + 2
     const randomTime = randomTimeValue + "000"
     const timer = setTimeout(() => {
       setSkeletonLoading(false)
@@ -218,6 +219,13 @@ const CheckOut = () => {
                     <div className={style.bottomRightBoxData} key={data.id}>
                       <div className={style.bottomRightBoxDataLeft}>
                         <div className={style.bottomRightBoxDataLeftImg}>
+                          <div
+                            className={
+                              style.bottomRightBoxDataLeftImgQuantities
+                            }
+                          >
+                            {quantities[data.id] || 1}
+                          </div>
                           <img src={data.image} alt="data_image" />
                         </div>
                         <div className={style.bottomRightBoxDataLeftName}>

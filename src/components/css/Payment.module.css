@@ -1,3 +1,11 @@
+.skele {
+  margin-bottom: 100px;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .paymentMain {
   height: 100vh;
   width: 100%;
@@ -189,9 +197,16 @@
 @media only screen and (max-width: 500px) {
   .twoTop {
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .twoBottomButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .twoBottomInput {
-    justify-content: flex-start;
+    justify-content: center;
   }
   .cardButton {
     width: 210px;
@@ -207,6 +222,7 @@
   .twoBottomUpiButtons {
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
   }
 }
 @media only screen and (max-width: 360px) {

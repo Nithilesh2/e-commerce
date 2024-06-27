@@ -16,6 +16,7 @@
   padding: 50px 40px 0px;
   cursor: default;
   font-weight: 600;
+  transition: padding 0.3s linear;
 }
 .myAccount,
 .home {
@@ -29,4 +30,9 @@
   width: auto;
   color: black;
   font-size: 1rem;
+}
+@media only screen and (max-width: 450px) {
+  .topLeft {
+    padding: 50px 20px 0;
+  }
 }

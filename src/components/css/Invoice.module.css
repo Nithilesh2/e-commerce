@@ -1,0 +1,253 @@
+.invoiceMain {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.topLeft {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 50px 40px 0px;
+  cursor: default;
+  font-weight: 600;
+}
+.home {
+  height: 40px;
+  width: 80px;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 5px;
+  background-color: #db4444;
+}
+.invoiceMainBox {
+  height: 100%;
+  width: 90%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border: 1px solid black;
+  border-radius: 2px;
+  margin-bottom: 50px;
+  gap: 6rem;
+}
+.top {
+  padding: 30px 0 0 30px;
+  height: auto;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+}
+.topOne {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #db4444;
+  cursor: default;
+}
+.topTwo {
+  height: 100%;
+  width: 90%;
+  max-width: 900px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.topTwoLeft,
+.topTwoCenter,
+.topTwoRight {
+  cursor: default;
+  height: 100%;
+  width: auto;
+  display: flex;
+  gap: 0.2rem;
+  flex-direction: column;
+}
+.topTwoLeft p:first-child,
+.topTwoCenter p:first-child,
+.topTwoRight p:first-child {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #db4444;
+}
+.topTwoLeft p,
+.topTwoCenter p,
+.topTwoRight p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: grey;
+}
+.topThree {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.topThreeBox {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.topThreeTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+.topThreeTable th,
+.topThreeTable td {
+  padding: 10px;
+  border: 1px solid #808080;
+  text-align: center;
+}
+.topThreeTable th {
+  background-color: #f9f9f9;
+}
+
+.topThreeTableMobile {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+.topThreeTableMobile th,
+.topThreeTableMobile td {
+  padding: 10px;
+  border: 1px solid #808080;
+  text-align: center;
+}
+.topThreeTableMobile th {
+  background-color: #f9f9f9;
+}
+.subTotalRow {
+  font-weight: bold;
+}
+.totalRow {
+  font-weight: bold;
+  color: #db4444;
+}
+.bottom {
+  cursor: default;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottomOne {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 2rem;
+  line-height: 1.5rem;
+  font-size: 1rem;
+  padding: 0 50px 50px 0;
+}
+.bottomOnePaymentDetails {
+  height: 100%;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  color: rgb(57, 57, 57);
+  font-weight: 600;
+}
+.line {
+  height: 100px;
+  width: auto;
+  border-left: 5px solid #db4444;
+  border-radius: 3px;
+}
+.bottomOnePaymentDetails p:first-child,
+.bottomOneBank {
+  font-weight: 700;
+  color: #db4444;
+}
+.bottomOneBankName {
+  border-radius: 3px;
+  color: rgb(57, 57, 57);
+  font-weight: 600;
+}
+.printButton {
+  height: 40px;
+  width: 150px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  background-color: #db4444;
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 680px) {
+  .topTwo {
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .line {
+    display: none;
+  }
+  .bottomOne {
+    flex-wrap: wrap;
+  }
+  .topTwoLeft,
+  .topTwoCenter,
+  .topTwoRight,
+  .bottomOneBank,
+  .bottomOneBankName,
+  .bottomOnePaymentDetails {
+    width: 100%;
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 490px) {
+  .topThreeTable {
+    display: none;
+  }
+  .topThreeTableMobile {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    rotate: 90deg;
+  }
+  .topThreeTableMobile th,
+  .topThreeTableMobile td {
+    padding: 10px;
+    border: 1px solid #808080;
+    text-align: center;
+  }
+  .topThreeTableMobile th {
+    background-color: #f9f9f9;
+  }
+  .bottomOne {
+    padding: 0 0 50px 0;
+  }
+  .invoiceMainBox {
+    gap: 1.5rem;
+  }
+  .printButton, .home{
+    cursor: pointer;
+  }
+}
+
+@media print {
+  .bottomOne {
+    gap: 2.5rem;
+  }
+  .printButton,
+  .topLeft {
+    display: none;
+  }
+}
