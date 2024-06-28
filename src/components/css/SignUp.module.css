@@ -87,7 +87,9 @@
   height: 20px;
   width: 310px;
   border: none;
-  font-size: 16px;
+  padding-left: 10px;
+  font-size: 1rem;
+  font-weight: 600;
   margin-left: 3px;
   padding-bottom: 5px;
   background-color: rgba(244, 244, 244, 0.852);

@@ -8,6 +8,7 @@ import { toast, ToastContainer } from "react-toastify"
 import { TailSpin } from "react-loader-spinner"
 import ClickToTop from "./ClickToTop"
 import ScrollToTop from "./ScrollToTop"
+import "react-toastify/dist/ReactToastify.css"
 
 const Login = () => {
   const navigate = useNavigate()

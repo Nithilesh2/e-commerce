@@ -64,7 +64,9 @@
   height: 20px;
   width: 310px;
   border: none;
-  font-size: 16px;
+  padding-left: 10px;
+  font-size: 1rem;
+  font-weight: 600;
   margin-left: 3px;
   padding-bottom: 5px;
   border-bottom: 1.6px solid rgba(0, 0, 0, 0.442);

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react"
+import { Suspense, useContext, useEffect, useRef, useState } from "react"
 import AppContext from "../context/AppContext"
 import React from "react"
 import Navbar from "./Navbar"
@@ -24,21 +24,12 @@ const WishList = () => {
   } = useContext(AppContext)
 
   //Top Loading Bar
-  const [skeletonLoading, setSkeletonLoading] = useState(true)
-  const skeletonLoadingRef = useRef(null)
+
+  const ref = useRef()
 
   useEffect(() => {
-    const randomTimeValue = Math.floor(Math.random() * 4) + 2
-    const randomTime = randomTimeValue + "000"
-    const timer = setTimeout(() => {
-      setSkeletonLoading(false)
-    }, randomTime)
-    return () => clearTimeout(timer)
-  }, [])
-
-  useEffect(() => {
-    if (skeletonLoadingRef.current) {
-      skeletonLoadingRef.current.continuousStart()
+    if (ref.current) {
+      ref.current.continuousStart()
     }
   }, [])
 
@@ -65,17 +56,15 @@ const WishList = () => {
       <TopHeader />
       <Navbar />
       <hr />
-      {skeletonLoading ? (
-        <div className={style.skele}>
-          <div>
-            <LoadingBar
-              color="#00BFFF"
-              ref={skeletonLoadingRef}
-              shadow={true}
-            />
+      <Suspense
+        fallback={
+          <div className={style.skele}>
+            <div>
+              <LoadingBar color="#00BFFF" ref={ref} shadow={true} />
+            </div>
           </div>
-        </div>
-      ) : (
+        }
+      >
         <div
           className={
             totalLikes.length === 0 ? style.wishListNoItems : style.wishListMain
@@ -225,7 +214,7 @@ const WishList = () => {
             )}
           </div>
         </div>
-      )}
+      </Suspense>
       <ClickToTop />
       <Footer />
     </>

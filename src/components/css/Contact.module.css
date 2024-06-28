@@ -140,6 +140,9 @@
   height: 45px;
   width: 100%;
   font-size: 1.05rem;
+  padding-left: 10px;
+  font-size: 1rem;
+  font-weight: 600;
 }
 .bottomRightFormBoxTopCenter {
   height: 100%;

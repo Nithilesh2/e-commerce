@@ -6,13 +6,13 @@ import { GoogleLogin } from "@react-oauth/google"
 import style from "../css/SignUp.module.css"
 import { useNavigate } from "react-router-dom"
 import { jwtDecode } from "jwt-decode"
-import LoadingBar from "react-top-loading-bar"
 import { toast, ToastContainer } from "react-toastify"
 import { TailSpin } from "react-loader-spinner"
 import quotes from "../json/serverBusyQuotes.json"
 import ClickToTop from "./ClickToTop"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import ScrollToTop from "./ScrollToTop"
+import "react-toastify/dist/ReactToastify.css"
 
 const SignUp = () => {
   const notifyFalse = (data) => toast.error(data, { autoClose: 3000 })
@@ -32,7 +32,6 @@ const SignUp = () => {
 
   const [showQuotes, setShowQuotes] = useState(false)
   const [emailOrPhoneSet, setEmailOrPhoneSet] = useState(false)
-  const [skeletonLoading, setSkeletonLoading] = useState(true)
   const [googleAuthUsed, setGoogleAuthUsed] = useState(false)
   const [inputType, setInputType] = useState(false)
   const [loadingLogin, setLoadingLogin] = useState(false)
@@ -68,22 +67,6 @@ const SignUp = () => {
       }
     }
   }, [name, emailOrPhone, googleAuthUsed])
-
-  useEffect(() => {
-    const randomTimeValue = Math.floor(Math.random() * 2) + 4
-    const randomTime = randomTimeValue + "000"
-    const timer = setTimeout(() => {
-      setSkeletonLoading(false)
-    }, randomTime)
-    return () => clearTimeout(timer)
-  }, [])
-
-  const ref = useRef(null)
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.continuousStart()
-    }
-  }, [])
 
   const emailOrPhoneRefChanging = (eve) => {
     setEmailOrPhone(eve.target.value)
@@ -177,102 +160,94 @@ const SignUp = () => {
         ) : (
           ""
         )}
-        {skeletonLoading ? (
-          <div className={style.skele}>
-            <div>
-              <LoadingBar color="#00BFFF" ref={ref} shadow={true} />
-            </div>
+
+        <div className={loadingLogin ? style.blur : style.signUp}>
+          <div className={style.imageBox}>
+            <img
+              className={style.loginImage}
+              src="https://as1.ftcdn.net/v2/jpg/04/92/58/98/1000_F_492589808_QQoUPIyKpdBi37HcRhvwSBnfKW4dPA7C.jpg"
+              alt="shoppingImage"
+            />
           </div>
-        ) : (
-          <div className={loadingLogin ? style.blur : style.signUp}>
-            <div className={style.imageBox}>
-              <img
-                className={style.loginImage}
-                src="https://as1.ftcdn.net/v2/jpg/04/92/58/98/1000_F_492589808_QQoUPIyKpdBi37HcRhvwSBnfKW4dPA7C.jpg"
-                alt="shoppingImage"
-              />
-            </div>
-            <form className={style.form} onSubmit={handleSubmit}>
-              <div className={style.signUpBox}>
-                <div className={style.top}>
-                  <h2>Create an account</h2>
-                  <h4>Enter your details below</h4>
-                </div>
-                <div className={style.center}>
+          <form className={style.form} onSubmit={handleSubmit}>
+            <div className={style.signUpBox}>
+              <div className={style.top}>
+                <h2>Create an account</h2>
+                <h4>Enter your details below</h4>
+              </div>
+              <div className={style.center}>
+                <input
+                  type="text"
+                  className={style.nameInput}
+                  placeholder="Name"
+                  value={name}
+                  ref={nameRef}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+                <input
+                  type={inputType ? "text" : emailOrPhoneSet ? "tel" : "email"}
+                  className={style.emailOrPhoneInput}
+                  placeholder="Email or Phone Number"
+                  value={emailOrPhone}
+                  onChange={emailOrPhoneRefChanging}
+                  required
+                  ref={emailOrPhoneRef}
+                  maxLength={emailOrPhoneSet ? 10 : 50}
+                />
+                <div className={style.passwordBox}>
                   <input
-                    type="text"
-                    className={style.nameInput}
-                    placeholder="Name"
-                    value={name}
-                    ref={nameRef}
-                    onChange={(e) => setName(e.target.value)}
+                    type={showPassword ? "text" : "password"}
+                    className={style.passwordInput}
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required
+                    ref={passwordRef}
                   />
-                  <input
-                    type={
-                      inputType ? "text" : emailOrPhoneSet ? "tel" : "email"
-                    }
-                    className={style.emailOrPhoneInput}
-                    placeholder="Email or Phone Number"
-                    value={emailOrPhone}
-                    onChange={emailOrPhoneRefChanging}
-                    required
-                    ref={emailOrPhoneRef}
-                    maxLength={emailOrPhoneSet ? 10 : 50}
-                  />
-                  <div className={style.passwordBox}>
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      className={style.passwordInput}
-                      placeholder="Password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                      ref={passwordRef}
-                    />
-                    <div
-                      className={style.passwordBoxShowPass}
-                      onClick={() => {
-                        setShowPassword(!showPassword)
-                      }}
-                    >
-                      {showPassword ? (
-                        <AiOutlineEye />
-                      ) : (
-                        <AiOutlineEyeInvisible />
-                      )}
-                    </div>
-                  </div>
-                </div>
-                <div className={style.bottom}>
-                  <button type="submit" className={style.createAccBtn}>
-                    Create Account
-                  </button>
-                  <div className={style.googleSignIn}>
-                    <GoogleLogin
-                      className={style.googleLoginBtn}
-                      onSuccess={loginClicked}
-                      onError={() => {
-                        navigate("/login")
-                      }}
-                    />
-                  </div>
-                  <div className={style.login}>
-                    <h4>Already have an account?</h4>
-                    <div
-                      className={style.loginRedirect}
-                      onClick={() => {
-                        navigate("/login")
-                      }}
-                    >
-                      Log in
-                    </div>
+                  <div
+                    className={style.passwordBoxShowPass}
+                    onClick={() => {
+                      setShowPassword(!showPassword)
+                    }}
+                  >
+                    {showPassword ? (
+                      <AiOutlineEye />
+                    ) : (
+                      <AiOutlineEyeInvisible />
+                    )}
                   </div>
                 </div>
               </div>
-            </form>
-          </div>
-        )}
+              <div className={style.bottom}>
+                <button type="submit" className={style.createAccBtn}>
+                  Create Account
+                </button>
+                <div className={style.googleSignIn}>
+                  <GoogleLogin
+                    className={style.googleLoginBtn}
+                    onSuccess={loginClicked}
+                    onError={() => {
+                      navigate("/login")
+                    }}
+                  />
+                </div>
+                <div className={style.login}>
+                  <h4>Already have an account?</h4>
+                  <div
+                    className={style.loginRedirect}
+                    onClick={() => {
+                      navigate("/login")
+                    }}
+                  >
+                    Log in
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
         <ClickToTop />
         <Footer />
       </div>

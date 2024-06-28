@@ -264,6 +264,7 @@
   font-weight: 600;
   border: 1px solid black;
   background: transparent;
+  padding-left: 10px;
 }
 .bottomCenterRightApplyCoupon {
   height: 40px;
