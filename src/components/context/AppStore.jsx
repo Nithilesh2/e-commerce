@@ -26,6 +26,15 @@ const AppStore = (props) => {
 
   const [totalCarts, setTotalCarts] = useState([])
 
+  //user details from checkout page
+  const [name, setName] = useState("")
+  const [userAddress, setUserAddress] = useState("")
+  const [town, setTown] = useState("")
+  const [pincode, setPincode] = useState(0)
+  const [phone, setPhone] = useState(0)
+  const [emailAddress, setEmailAddress] = useState("")
+  const [infoBox, setInfoBox] = useState(false)
+
   //CART PAGE
   const [subTotalCost, setSubTotalCost] = useState()
   const [shippingCost, setShippingCost] = useState(0)
@@ -101,6 +110,38 @@ const AppStore = (props) => {
       Object.keys(likedItems).filter((key) => likedItems[key]).length
     )
   }, [likedItems])
+
+  //double Click to like image
+  const rowTwoDClick = (itemId) => {
+    const updatedOffersItems = offersData.map((item) => {
+      if (item.id === itemId) {
+        item.liked = !item.liked
+      }
+      return item
+    })
+    setOffersData(updatedOffersItems)
+
+    const updateBestSellingProducts = bestSellingData.map((item) => {
+      if (item.id === itemId) {
+        item.liked = !item.liked
+      }
+      return item
+    })
+    setBestSellingData(updateBestSellingProducts)
+
+    const updateExploreOurProducts = exploreOurProducts.map((item) => {
+      if (item.id === itemId) {
+        item.liked = !item.liked
+      }
+      return item
+    })
+    setExploreOurProductsData(updateExploreOurProducts)
+
+    setLikedItems((prevState) => ({
+      ...prevState,
+      [itemId]: !prevState[itemId],
+    }))
+  }
 
   // Add to Cart
   const addToCartBtnClicked = (itemId) => {
@@ -225,7 +266,6 @@ const AppStore = (props) => {
     setDecodedName(decoded)
     if (decodedName) {
       setDecoded((decodedName) => decodedName)
-      // navigate("/");
     }
   }, [decoded, decodedName])
 
@@ -289,6 +329,21 @@ const AppStore = (props) => {
         setQuantities,
         couponCode,
         setCouponCode,
+        rowTwoDClick,
+        name,
+        setName,
+        userAddress,
+        setUserAddress,
+        town,
+        setTown,
+        pincode,
+        setPincode,
+        phone,
+        setPhone,
+        emailAddress,
+        setEmailAddress,
+        infoBox,
+        setInfoBox,
       }}
     >
       {props.children}

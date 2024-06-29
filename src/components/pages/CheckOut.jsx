@@ -19,8 +19,13 @@ const CheckOut = () => {
     couponCode,
     setCouponCode,
     quantities,
+    setName,
+    setUserAddress,
+    setTown,
+    setPincode,
+    setPhone,
+    setEmailAddress,
   } = useContext(AppContext)
-
   const inputRef = useRef(null)
 
   const notifyFalse = (data) => toast.error(data, { autoClose: 3000 })
@@ -69,6 +74,11 @@ const CheckOut = () => {
     notifyWarn("coupon is removed")
   }
 
+  const formDetailsSubmitted = (eve) => {
+    eve.preventDefault()
+    navigate("/cart/checkout/payment")
+  }
+
   return (
     <>
       <ScrollToTop />
@@ -76,7 +86,6 @@ const CheckOut = () => {
       <TopHeader />
       <Navbar />
       <hr />
-
       <div
         className={
           totalCarts.length === 0 ? style.cartNoItems : style.checkOutMain
@@ -123,19 +132,33 @@ const CheckOut = () => {
           </div>
         ) : (
           <div className={style.bottom}>
-            <div className={style.bottomLeft}>
+            <form onSubmit={formDetailsSubmitted} className={style.bottomLeft}>
               <div className={style.bottomLeftBillingDetailsBox}>
                 Billing Details
               </div>
               <div className={`${style.nameBox} ${style.bottomLeftBilling}`}>
                 <label className={style.left}>Name*</label>
-                <input type="text" className={style.inputBox} />
+                <input
+                  type="text"
+                  className={style.inputBox}
+                  required
+                  onChange={(eve) => {
+                    setName(eve.target.value)
+                  }}
+                />
               </div>
               <div
                 className={`${style.streetAddressBox} ${style.bottomLeftBilling}`}
               >
                 <label className={style.left}>Street Address*</label>
-                <input type="text" className={style.inputBox} />
+                <input
+                  type="text"
+                  className={style.inputBox}
+                  required
+                  onChange={(eve) => {
+                    setUserAddress(eve.target.value)
+                  }}
+                />
               </div>
               <div
                 className={`${style.apartmentNoBox} ${style.bottomLeftBilling}`}
@@ -149,23 +172,53 @@ const CheckOut = () => {
                 className={`${style.townOrCityBox} ${style.bottomLeftBilling}`}
               >
                 <label className={style.left}>Town/City*</label>
-                <input type="text" className={style.inputBox} />
+                <input
+                  type="text"
+                  className={style.inputBox}
+                  required
+                  onChange={(eve) => {
+                    setTown(eve.target.value)
+                  }}
+                />
               </div>
               <div className={`${style.pincodeBox} ${style.bottomLeftBilling}`}>
                 <label className={style.left}>Pincode*</label>
-                <input type="tel" className={style.inputBox} maxLength={6} />
+                <input
+                  type="tel"
+                  className={style.inputBox}
+                  maxLength={6}
+                  required
+                  onChange={(eve) => {
+                    setPincode(eve.target.value)
+                  }}
+                />
               </div>
               <div
                 className={`${style.phoneNumberBox} ${style.bottomLeftBilling}`}
               >
                 <label className={style.left}>phone Number*</label>
-                <input type="tel" className={style.inputBox} maxLength={10} />
+                <input
+                  type="tel"
+                  className={style.inputBox}
+                  maxLength={10}
+                  required
+                  onChange={(eve) => {
+                    setPhone(eve.target.value)
+                  }}
+                />
               </div>
               <div
                 className={`${style.emailAddressBox} ${style.bottomLeftBilling}`}
               >
                 <label className={style.left}>Email Address*</label>
-                <input type="email" className={style.inputBox} />
+                <input
+                  type="email"
+                  className={style.inputBox}
+                  required
+                  onChange={(eve) => {
+                    setEmailAddress(eve.target.value)
+                  }}
+                />
               </div>
               <div className={style.saveInfoBox}>
                 <input
@@ -180,7 +233,12 @@ const CheckOut = () => {
                   Save this information for faster check-out next time
                 </label>
               </div>
-            </div>
+              <div className={style.placeOrder}>
+                <button className={style.placeOrgerBtn} type="submit">
+                  Place Order
+                </button>
+              </div>
+            </form>
 
             <div className={style.bottomRight}>
               <div className={style.bottomRightBox}>
@@ -258,14 +316,6 @@ const CheckOut = () => {
                       Apply Coupon
                     </button>
                   </div>
-                </div>
-                <div className={style.placeOrder}>
-                  <button
-                    className={style.placeOrgerBtn}
-                    onClick={() => navigate("/cart/checkout/payment")}
-                  >
-                    Place Order
-                  </button>
                 </div>
               </div>
             </div>

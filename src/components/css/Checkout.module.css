@@ -98,6 +98,7 @@
   padding-left: 7%;
   margin-top: 50px;
   margin-bottom: 80px;
+  position: relative;
 }
 .bottomLeft {
   height: 100%;
@@ -267,7 +268,7 @@
   border: 1px solid rgba(0, 0, 0, 0.751);
 }
 .placeOrder {
-  height: 100%;
+  height: auto;
   width: 100%;
   padding-top: 40px;
   display: flex;
@@ -288,6 +289,7 @@
 @media only screen and (max-width: 890px) {
   .bottom {
     flex-direction: column;
+    gap: 0;
   }
   .inputBox {
     width: 470px;
@@ -330,6 +332,16 @@
   .bottomRightBoxBankPaymentBox label,
   .saveInfoBox label {
     font-size: 0.8rem;
+  }
+  .placeOrder {
+    padding: 0 0 40px 0;
+  }
+  .placeOrgerBtn {
+    position: absolute;
+    top: 97%;
+    z-index: 999;
+    left: 40%;
+    margin-top: 50px;
   }
 }
 @media only screen and (max-width: 420px) {

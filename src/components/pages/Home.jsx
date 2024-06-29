@@ -136,6 +136,7 @@ const Home = () => {
     addtoCart,
     bestSellingData,
     exploreOurProductsData,
+    rowTwoDClick,
   } = context
 
   return (
@@ -264,6 +265,7 @@ const Home = () => {
                         alt="img"
                         loading="lazy"
                         draggable={false}
+                        onDoubleClick={() => rowTwoDClick(data.id)}
                       />
                     </div>
                     {addtoCart[data.id] ? (
@@ -392,6 +394,7 @@ const Home = () => {
                         alt="img"
                         loading="lazy"
                         draggable={false}
+                        onDoubleClick={() => rowTwoDClick(data.id)}
                       />
                     </div>
                     {addtoCart[data.id] ? (
@@ -514,6 +517,7 @@ const Home = () => {
                         alt="img"
                         loading="lazy"
                         draggable={false}
+                        onDoubleClick={() => rowTwoDClick(data.id)}
                       />
                     </div>
                     {addtoCart[data.id] ? (
