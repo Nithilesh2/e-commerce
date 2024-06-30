@@ -290,6 +290,19 @@ const AppStore = (props) => {
     setTotalCost(subTotalCost + shippingCost - Number(couponCode))
   }, [totalCarts, quantities, subTotalCost, shippingCost, couponCode])
 
+  //click to open product
+  // const buyBtnClicked = (itemId) => {
+  //   const addToCart = offersData
+  //     .map((item) => {
+  //       if (item.id === itemId) {
+  //         item.addToCart = true
+  //       }
+  //       return item
+  //     })
+  //     .filter((item) => item.addToCart === true)
+  //   setTotalCarts(addToCart)
+  // }
+
   return (
     <AppContext.Provider
       value={{
@@ -344,6 +357,7 @@ const AppStore = (props) => {
         setEmailAddress,
         infoBox,
         setInfoBox,
+        // buyBtnClicked,
       }}
     >
       {props.children}

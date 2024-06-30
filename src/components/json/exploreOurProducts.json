@@ -6,6 +6,7 @@
     "discountCost": "₹564",
     "dc": 564,
     "originalCost": "₹1,599",
+    "description": "A durable and spacious school backpack designed to carry books, stationery, and a laptop. It features multiple compartments for organized storage, padded straps for comfort, and a water-resistant exterior for added protection.",
     "liked": false,
     "addToCart": false
   },
@@ -16,6 +17,7 @@
     "discountCost": "₹1,099",
     "dc": 1099,
     "originalCost": "₹2,290",
+    "description": "The Longway Black Table Fan provides efficient cooling with its powerful motor and adjustable speed settings. It features a sleek black design, oscillation function for widespread air distribution, and a compact size perfect for desktops and small spaces.",
     "liked": false,
     "addToCart": false
   },
@@ -26,6 +28,7 @@
     "discountCost": "₹1,650",
     "dc": 1650,
     "originalCost": "₹2,499",
+    "description": "The TABLE MATE is a versatile and sturdy adjustable table, ideal for various activities like eating, reading, and working. It features a strong build, adjustable height and angle, and a foldable design for easy storage and portability.",
     "liked": false,
     "addToCart": false
   },
@@ -36,6 +39,7 @@
     "discountCost": "₹25,990",
     "dc": 25990,
     "originalCost": "₹37,099",
+    "description": "The LG Double Door Refrigerator offers ample storage space with separate compartments for fresh and frozen foods. ",
     "liked": false,
     "addToCart": false
   },
@@ -46,6 +50,7 @@
     "discountCost": "₹25,095",
     "dc": 25095,
     "originalCost": "₹29,999",
+    "description": "The Nike Superfly 9 Elite Mercurial soccer cleats are designed for speed and agility on the field. ",
     "liked": false,
     "addToCart": false
   },
@@ -56,6 +61,7 @@
     "discountCost": "₹2,499",
     "dc": 2499,
     "originalCost": "₹3,595",
+    "description": "Woodland Men's Leather Casual Shoes combine rugged durability with stylish design. Made from high-quality leather, these shoes offer comfort, a sturdy grip, and a versatile look suitable for both casual outings and outdoor adventures.",
     "liked": false,
     "addToCart": false
   },
@@ -66,6 +72,7 @@
     "discountCost": "₹2,590",
     "dc": 2590,
     "originalCost": "₹3,499",
+    "description": "Men's jackets come in various styles, from lightweight windbreakers to heavy-duty winter coats. ",
     "liked": false,
     "addToCart": false
   },
@@ -76,6 +83,7 @@
     "discountCost": "₹2,51,353",
     "dc": 251353,
     "originalCost": "₹3,02,353",
+    "description": "The latest Canon DSLR camera offers advanced features for photography enthusiasts and professionals. It includes a high-resolution sensor, fast autofocus, 4K video recording.",
     "liked": false,
     "addToCart": false
   }

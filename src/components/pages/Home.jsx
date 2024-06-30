@@ -18,6 +18,7 @@ import {
 } from "react-icons/ai"
 import browseByCategoryData from "../json/browseByCategory.json"
 import AppContext from "../context/AppContext"
+import { useNavigate } from "react-router-dom"
 
 const TopHeader = React.lazy(() => import("./TopHeader"))
 const Navbar = React.lazy(() => import("./Navbar"))
@@ -138,6 +139,13 @@ const Home = () => {
     exploreOurProductsData,
     rowTwoDClick,
   } = context
+
+  const navigate = useNavigate()
+
+  const goToProductPage = (id) => {
+    const encrypted = btoa(id)
+    navigate(`/product/${encrypted}`)
+  }
 
   return (
     <>
@@ -266,6 +274,9 @@ const Home = () => {
                         loading="lazy"
                         draggable={false}
                         onDoubleClick={() => rowTwoDClick(data.id)}
+                        onClick={() => {
+                          goToProductPage(data.id)
+                        }}
                       />
                     </div>
                     {addtoCart[data.id] ? (
@@ -395,6 +406,9 @@ const Home = () => {
                         loading="lazy"
                         draggable={false}
                         onDoubleClick={() => rowTwoDClick(data.id)}
+                        onClick={() => {
+                          goToProductPage(data.id)
+                        }}
                       />
                     </div>
                     {addtoCart[data.id] ? (
@@ -518,6 +532,9 @@ const Home = () => {
                         loading="lazy"
                         draggable={false}
                         onDoubleClick={() => rowTwoDClick(data.id)}
+                        onClick={() => {
+                          goToProductPage(data.id)
+                        }}
                       />
                     </div>
                     {addtoCart[data.id] ? (

@@ -7,6 +7,7 @@
     "discountCost": "₹999",
     "dc": 999,
     "originalCost": "₹1,999",
+    "description": "The Google Stadia Controller offers seamless gaming with wireless Bluetooth connectivity. Easily switch to Bluetooth mode for continued gaming on various devices even after Stadia shutdown. With a user-friendly design",
     "liked": false,
     "addToCart": false
   },
@@ -18,6 +19,7 @@
     "discountCost": "₹699",
     "dc": 699,
     "originalCost": "₹1,490",
+    "description": "RPM Euro Games keyboards are wired keyboards that are suitable for gaming and office use. They come in different models with varying features.",
     "liked": false,
     "addToCart": false
   },
@@ -29,6 +31,7 @@
     "discountCost": "₹26,999",
     "dc": 26999,
     "originalCost": "₹41,999",
+    "description": "The Acer 43-inch (109 cm) TV offers a versatile and immersive viewing experience with its large screen size and vibrant display quality. This model typically features a 4K UHD resolution, providing crystal-clear picture quality and enhanced detail.",
     "liked": false,
     "addToCart": false
   },
@@ -40,6 +43,7 @@
     "discountCost": "₹1,599",
     "dc": 1599,
     "originalCost": "₹7,999",
+    "description": "The boAt Wave Sigma Smartwatch features a sleek design with a vibrant touchscreen display. It offers a variety of fitness tracking features, including heart rate monitoring, sleep tracking, and multiple sports modes.",
     "liked": false,
     "addToCart": false
   },
@@ -51,6 +55,7 @@
     "discountCost": "₹899",
     "dc": 899,
     "originalCost": "₹4,999",
+    "description": "The Wings Phantom Truly Wireless Earphones deliver high-quality sound with deep bass and clear treble. These earphones come with a comfortable and secure fit, making them ideal for workouts and daily use.",
     "liked": false,
     "addToCart": false
   },
@@ -62,6 +67,7 @@
     "discountCost": "₹35,150",
     "dc": 35150,
     "originalCost": "₹37,999",
+    "description": "The OnePlus Pad features an 11.61-inch display, providing a large and immersive screen for both work and entertainment. It boasts a powerful processor, ample RAM, and long battery life, ensuring smooth performance and multitasking capabilities.",
     "liked": false,
     "addToCart": false
   }

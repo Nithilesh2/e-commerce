@@ -4,8 +4,25 @@ import AppContext from "../context/AppContext"
 import { useNavigate } from "react-router-dom"
 
 const Invoice = () => {
+  const date = new Date()
+
   const { subTotalCost, totalCost, totalCarts, quantities } =
     useContext(AppContext)
+  const getNextDatesFormatted = (startDate, daysInterval) => {
+    const dates = []
+    let currentDate = new Date(startDate)
+
+    for (let i = 0; i < 2; i++) {
+      const nextDate = new Date(currentDate)
+      const formattedDate = `${nextDate.getDate()}/${nextDate.getMonth()}/${nextDate.getFullYear()}`
+      dates.push(formattedDate)
+      currentDate.setDate(currentDate.getDate() + daysInterval)
+    }
+
+    return dates
+  }
+
+  const dates = getNextDatesFormatted(date, 15)
 
   const navigate = useNavigate()
 
@@ -39,8 +56,15 @@ const Invoice = () => {
             <div className={style.topTwo}>
               <div className={style.topTwoLeft}>
                 <p>Payable ₹{totCost}</p>
-                <p>Dues 15/08/2023</p>
-                <p>Issued 01/08/2023</p>
+                <p>Dues :{dates[1]}</p>
+                <p>
+                  Issued :
+                  {date.getDate() +
+                    "/" +
+                    date.getMonth() +
+                    "/" +
+                    date.getFullYear()}
+                </p>
                 <p>Ref. #INV-057</p>
               </div>
               <div className={style.topTwoCenter}>

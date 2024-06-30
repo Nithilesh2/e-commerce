@@ -9,6 +9,7 @@ import ErrorPage from "./components/pages/ErrorPage"
 import Orders from "./components/pages/Orders"
 import Invoice from "./components/pages/Invoice"
 import LoadingBar from "react-top-loading-bar"
+import Product from "./components/pages/Product"
 
 const Home = React.lazy(() => import("./components/pages/Home"))
 const Payment = React.lazy(() => import("./components/pages/Payment"))
@@ -37,17 +38,18 @@ const App = () => {
         >
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/about" element={<About />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/cart/checkout" element={<CheckOut />} />
-            <Route path="/cart/checkout/payment" element={<Payment />} />
-            <Route path="/myaccount" element={<MyAccount />} />
-            <Route path="/wishlist" element={<WishList />} />
-            <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/orders" element={<Orders />} />
             <Route path="/invoice" element={<Invoice />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/myaccount" element={<MyAccount />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/cart/checkout/payment" element={<Payment />} />
+            <Route path="/product/:productId" element={<Product />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/wishlist" element={<WishList />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </Suspense>

@@ -6,6 +6,7 @@
     "discountCost": "₹9,999",
     "dc": 9999,
     "originalCost": "₹12,999",
+    "description": "The Hood's Men Leather Jacket is a stylish and durable outerwear option, crafted from high-quality leather. ",
     "liked": false,
     "addToCart": false
   },
@@ -16,6 +17,7 @@
     "discountCost": "₹439",
     "dc": 439,
     "originalCost": "₹1,799",
+    "description": "The Lymio Casual Shirt for Men is a versatile and comfortable shirt perfect for everyday wear. It is made from breathable fabric, comes in a variety of colors and patterns",
     "liked": false,
     "addToCart": false
   },
@@ -26,6 +28,7 @@
     "discountCost": "₹759",
     "dc": 759,
     "originalCost": "₹1699",
+    "description": "The Ada Fashion Trendy Handbag is a chic and practical accessory for women. It offers ample storage space with multiple compartments.",
     "liked": false,
     "addToCart": false
   },
@@ -36,6 +39,7 @@
     "discountCost": "₹41,990",
     "dc": 41990,
     "originalCost": "₹50,000",
+    "description": "The Hub Motor Turbo Pro Bike is a high-performance electric bike designed for speed and efficiency. It features a powerful hub motor.",
     "liked": false,
     "addToCart": false
   },
@@ -46,6 +50,7 @@
     "discountCost": "₹319",
     "dc": 319,
     "originalCost": "₹649",
+    "description": "The HP Wired Mouse is a reliable and responsive input device, perfect for everyday computer use. It features a comfortable ergonomic design, precise optical tracking.",
     "liked": false,
     "addToCart": false
   },
@@ -56,6 +61,7 @@
     "discountCost": "₹65,900",
     "dc": 65900,
     "originalCost": "₹1,00,000",
+    "description": "The Apple MacBook Air MD711HN/B is a lightweight and portable laptop with a sleek aluminum design.",
     "liked": false,
     "addToCart": false
   },
@@ -66,6 +72,7 @@
     "discountCost": "₹499",
     "dc": 499,
     "originalCost": "₹999",
+    "description": "The Earphone for OnePlus offers high-quality sound and a comfortable fit, designed specifically for OnePlus devices.",
     "liked": false,
     "addToCart": false
   },
@@ -76,6 +83,7 @@
     "discountCost": "₹5,198",
     "dc": 5198,
     "originalCost": "₹6,835",
+    "description": "The Orient Electric Ceiling Fan is a reliable and efficient cooling solution for your home. It features a powerful motor, aerodynamic blades for better air circulation.",
     "liked": false,
     "addToCart": false
   },
@@ -86,6 +94,7 @@
     "discountCost": "₹39,999",
     "dc": 39999,
     "originalCost": "₹50,000",
+    "description": "The OnePlus 12R is a powerful smartphone with 8GB RAM and 128GB storage. It features a high-resolution display, advanced camera system, fast processor.",
     "liked": false,
     "addToCart": false
   },
@@ -96,6 +105,7 @@
     "discountCost": "₹659",
     "dc": 659,
     "originalCost": "₹1,999",
+    "description": "The MRF Cricket Bat is crafted for performance and durability, used by professional cricketers. It features high-quality willow.",
     "liked": false,
     "addToCart": false
   }

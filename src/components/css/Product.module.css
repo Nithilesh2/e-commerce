@@ -1,0 +1,248 @@
+.productMain {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.topLeft {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 50px 40px 0px;
+  cursor: default;
+  font-weight: 600;
+}
+.home {
+  height: auto;
+  width: auto;
+  color: grey;
+  font-size: 1rem;
+}
+.cart {
+  height: auto;
+  width: auto;
+  color: black;
+  font-size: 1rem;
+}
+.product {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  transition: align-items 0.5s linear;
+}
+.leftImage {
+  height: 100%;
+  width: 80%;
+  margin-top: 40px;
+}
+.leftImage img {
+  aspect-ratio: 7/6;
+  width: 440px;
+  margin-left: 20%;
+}
+.rightData {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.7rem;
+  margin-top: 40px;
+}
+.rightDataName {
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.7rem;
+}
+.rightDataReviews {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #db5555;
+  padding-bottom: 3px;
+}
+.rightDataCost {
+  font-size: 1rem;
+  display: flex;
+  gap: 1.3rem;
+}
+.rightDataOriginalCost {
+  text-decoration: line-through;
+  color: #db5555;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.rightDataDiscountCost {
+  font-weight: 600;
+  font-size: 1rem;
+}
+.rightDataDesc {
+  height: 100%;
+  width: 50%;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.hr {
+  margin: 10px 0;
+  width: 100%;
+}
+.rightDataQuaBuyLike {
+  height: 100%;
+  width: 100%;
+  max-width: 330px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rightDataQuaBox {
+  height: 40px;
+  width: auto;
+  display: flex;
+  margin: 0 0 0 20px;
+}
+.rightDataQuaBoxInput {
+  height: 100%;
+  width: 60px;
+  border: 2px solid rgba(117, 117, 117, 0.755);
+  padding: 10px 0 0 10px;
+}
+.buttonBox {
+  position: relative;
+}
+.increaseNumber,
+.decreaseNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  height: 40px;
+  width: 30px;
+  background-color: white;
+  position: absolute;
+  transition: all 0.2s linear;
+  border: 2px solid rgba(117, 117, 117, 0.755);
+}
+.increaseNumber:hover,
+.decreaseNumber:hover {
+  background-color: #db5555;
+  color: white;
+}
+.decreaseNumber {
+  bottom: -7px;
+  right: 55px;
+  border-radius: 4px 0 0 4px;
+}
+.increaseNumber {
+  bottom: -7px;
+  left: 30px;
+  border-radius: 0 4px 4px 0;
+}
+.rightDataBuyBtn {
+  height: 40px;
+  width: 120px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  background-color: #db5555;
+  color: white;
+}
+.rightDataLike {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  border: 2px solid rgba(117, 117, 117, 0.755);
+}
+.rowSixOffersDataBox {
+  font-size: 1.4rem;
+}
+.heartActive {
+  color: #ea3333;
+}
+.heartDeActive {
+  color: rgb(0, 0, 0);
+}
+.rightDataDeliveryAndReturnBoxes {
+  height: 140px;
+  max-width: 400px;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border: 1px solid rgba(117, 117, 117, 0.755);
+  gap: 1rem;
+  border-radius: 5px;
+  padding: 0 0 0 20px;
+  margin-top: 30px;
+  cursor: default;
+}
+.boxesDelivery,
+.boxesReturn {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.boxesDeliveryLeft {
+  padding-top: 10px;
+  font-size: 2.1rem;
+}
+.boxesReturnLeft {
+  padding-top: 10px;
+  font-size: 1.7rem;
+}
+.boxesDeliveryRight div:first-child,
+.boxesReturnRight div:first-child {
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+.boxesDeliveryRight div:nth-child(2),
+.boxesReturnRight div:nth-child(2) {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+@media only screen and (max-width: 1050px) {
+  .leftImage img {
+    margin-left: 0;
+    max-width: 95%;
+  }
+  .rightData {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 860px) {
+  .productMain {
+    height: 100%;
+  }
+  .product {
+    flex-direction: column;
+    align-items: center;
+  }
+  .rightDataName {
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 30px;
+  }
+  .rightDataDesc {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 380px) {
+  .increaseNumber,
+  .decreaseNumber {
+    height: 40px;
+    bottom: -6px;
+  }
+}
