@@ -15,6 +15,7 @@ import {
   AiOutlineStar,
   AiOutlineLogout,
 } from "react-icons/ai"
+import Cookies from "js-cookie"
 
 const Navbar = (props) => {
   const { likedItemsSent, addtoCartSent } = useContext(AppContext)
@@ -23,6 +24,8 @@ const Navbar = (props) => {
   const [menuToggle, setMenuToggle] = useState(false)
   const [activePage, setActivePage] = useState("")
   const [popOver, setPopOver] = useState(false)
+  const [cookieActive, setCookieActive] = useState(false)
+
   function menuClicked() {
     setMenuToggle(!menuToggle)
     if (menuToggle === false) {
@@ -42,11 +45,29 @@ const Navbar = (props) => {
     navigate("/myaccount")
   }
   const logout = () => {
+    Cookies.remove("name")
+    navigate("/login")
+  }
+  const cookieLogout = ()=>{
+    Cookies.remove("name")
     navigate("/login")
   }
   const orders = () => {
     navigate("/orders")
   }
+
+  useEffect(() => {
+    const updateCookies = () => {
+      const cookie = Cookies.get("name")
+      setCookieActive(!!cookie)
+    }
+    updateCookies()
+    const time = setInterval(() => {
+      updateCookies()
+    }, 1000)
+    return () => clearInterval(time)
+  }, [])
+
   return (
     <>
       <main className={style.main}>
@@ -87,14 +108,18 @@ const Navbar = (props) => {
                   >
                     About
                   </li>
-                  <li
-                    className={activePage === "signup" ? style.active : ""}
-                    onClick={() => {
-                      navigate("/signup")
-                    }}
-                  >
-                    Sign Up
-                  </li>
+                  {cookieActive ? (
+                    <li onClick={cookieLogout}>Logout</li>
+                  ) : (
+                    <li
+                      className={activePage === "login" ? style.active : ""}
+                      onClick={() => {
+                        navigate("/login")
+                      }}
+                    >
+                      Login
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>
@@ -159,9 +184,9 @@ const Navbar = (props) => {
                       <AiOutlineStar />
                       <span>My Reviews</span>
                     </li>
-                    <li title="logout" onClick={logout}>
+                    <li title="" onClick={logout}>
                       <AiOutlineLogout />
-                      <span>Logout</span>
+                      <span>{cookieActive ? "Logout" : "Sign In"}</span>
                     </li>
                   </ul>
                 </div>

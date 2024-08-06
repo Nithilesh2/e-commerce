@@ -9,8 +9,12 @@ import { TailSpin } from "react-loader-spinner"
 import ClickToTop from "./ClickToTop"
 import ScrollToTop from "./ScrollToTop"
 import "react-toastify/dist/ReactToastify.css"
+import Cookies from "js-cookie"
 
 const Login = () => {
+  const sec = 40
+  const days = sec / (24 * 60 * 60)
+
   const navigate = useNavigate()
   const [password, setPassword] = useState("")
   const [emailOrPhone, setEmailOrPhone] = useState("")
@@ -36,6 +40,7 @@ const Login = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`)
       }
+      Cookies.set("name", emailOrPhone, { expires: days })
       navigate("/")
     } catch (error) {
       notifyFalse("Wrong credentials")
@@ -100,7 +105,7 @@ const Login = () => {
               <div className={style.forgotPass}>Forgot Password?</div>
             </div>
             <div className={style.signUp}>
-              <h4>Already a user?</h4>
+              <h4>Not a user?</h4>
               <div
                 className={style.signUpRedirect}
                 onClick={() => {
