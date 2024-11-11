@@ -10,6 +10,7 @@ import Orders from "./components/pages/Orders"
 import Invoice from "./components/pages/Invoice"
 import LoadingBar from "react-top-loading-bar"
 import Product from "./components/pages/Product"
+import Admin from "./components/pages/Admin";
 
 const Home = React.lazy(() => import("./components/pages/Home"))
 const Payment = React.lazy(() => import("./components/pages/Payment"))
@@ -51,6 +52,8 @@ const App = () => {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/wishlist" element={<WishList />} />
             <Route path="*" element={<ErrorPage />} />
+            
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

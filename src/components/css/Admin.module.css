@@ -1,0 +1,25 @@
+.main {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(244, 244, 244, 0.852);
+}
+.navbar {
+  height: 75px;
+  max-width: 2160px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-left: 20px;
+  transition: all.5s;
+}
+.left {
+  height: 100%;
+  width: auto;
+  font-size: 24px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
