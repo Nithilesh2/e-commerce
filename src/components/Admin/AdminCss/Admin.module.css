@@ -27,13 +27,12 @@
   font-size: 24px;
   font-weight: 800;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   cursor: default;
-  margin-top: 30px;
 }
 .left {
-  height: auto;
+  height: 700px;
   width: 245px;
   display: flex;
   flex-direction: column;
@@ -41,6 +40,7 @@
   justify-content: flex-start;
   cursor: default;
   margin-top: 20px;
+  border-right: 3px solid black;
 }
 .leftItems {
   height: 100%;
@@ -48,36 +48,35 @@
   margin-left: 25px;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
   font-size: 1.1rem;
   font-weight: 500;
 }
-.leftItems li::selection, .leftItems li span::selection, .leftLogo::selection{
+.leftItems li::selection,
+.leftItems li span::selection,
+.leftLogo::selection {
   background: #000;
   color: #fff;
 }
-.leftItemsData span {
+.leftItemsData,.leftSlider li, .leftProducts li{
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+.leftItemsData1 span {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  gap: 1rem;
 }
 .leftProducts,
 .leftSlider {
-  height: 100%;
-  margin: 15px 0 -5px 0;
+  height: auto;
+  margin: 25px 0 -5px 0;
   width: auto;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-}
-.vlineAfter {
-  width: 2px;
-  height: 80%;
-  background-color: black;
-  position: absolute;
-  left: 212px;
-  top: 75px;
-  border-radius: 10px;
+  gap: 2rem;
 }
 .right {
   height: 100%;
@@ -91,10 +90,11 @@
 .dashboard {
   font-size: 1.6rem;
   margin: 1.3rem 0 0 0;
+  padding-left: 1.5rem;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .dashboard::selection {
   background: black;
@@ -172,4 +172,42 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.rowFour {
+  height: 100%;
+  width: 98%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 20px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px rgba(56, 56, 56, 0.852);
+  margin: 20px 0  60px 10px;
+}
+.rowFourTable {
+  height: 250px;
+  width: 98%;
+  border-radius: 30px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.rowFourTable .rowFourTHead tr{
+  height: 50px;
+  background-color: grey;
+  border-bottom: 1px solid black;
+}
+.rowFourTable .rowFourTHead tr th::selection{
+  background: black;
+  color: grey;
+}
+.rowFourTable .rowFourTBody tr{
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+.rowFourTable .rowFourTBody tr td::selection, .rowFourLatestOrdersTitle::selection{
+  background: black;
+  color: white;
 }

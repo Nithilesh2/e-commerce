@@ -10,7 +10,7 @@ import Orders from "./components/pages/Orders"
 import Invoice from "./components/pages/Invoice"
 import LoadingBar from "react-top-loading-bar"
 import Product from "./components/pages/Product"
-import Admin from "./components/pages/Admin";
+import Admin from "./components/Admin/Admin";
 
 const Home = React.lazy(() => import("./components/pages/Home"))
 const Payment = React.lazy(() => import("./components/pages/Payment"))
