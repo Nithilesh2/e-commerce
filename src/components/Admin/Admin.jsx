@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { IoIosArrowDown } from "react-icons/io"
+import { IoIosArrowDown, IoMdMenu } from "react-icons/io"
 import styles from "../Admin/AdminCss/Admin.module.css"
 import { FaBoxOpen, FaTags, FaUsers } from "react-icons/fa"
 import OrderChart from "../chartJsComponents/OrderChart"
@@ -18,36 +18,74 @@ import {
 const Admin = () => {
   const [productsToggle, setProductsToggle] = useState(false)
   const [sliderToggle, setSliderToggle] = useState(false)
+  const [sidebarToggle, setSidebarToggle] = useState(true)
 
   return (
     <>
       <div className={styles.main}>
         <nav className={styles.navbar}>
           <div className={styles.leftLogo}>Exclusive</div>
+          <div
+            className={styles.rightToggleMenu}
+            onClick={() => setSidebarToggle(!sidebarToggle)}
+          >
+            <IoMdMenu />
+          </div>
         </nav>
         <div className={styles.adminPage}>
-          <div className={styles.left}>
+          <div className={sidebarToggle ? styles.left : styles.leftDe}>
             <ul className={styles.leftItems}>
               <li className={styles.leftItemsData}>
-                {" "}
                 <FaTachometerAlt />
-                Dashboard
+                <span
+                  className={
+                    sidebarToggle
+                      ? styles.leftItemsDataToggle
+                      : styles.leftItemsDataToggleDeActive
+                  }
+                >
+                  Dashboard
+                </span>
               </li>
               <li className={styles.leftItemsData1}>
                 <span onClick={() => setProductsToggle(!productsToggle)}>
                   <FaBox />
-                  Products
-                  <IoIosArrowDown />
+                  <span
+                    className={
+                      sidebarToggle
+                        ? styles.leftItemsDataToggle
+                        : styles.leftItemsDataToggleDeActive
+                    }
+                  >
+                    Products
+                    <IoIosArrowDown />
+                  </span>
                 </span>
                 {productsToggle ? (
                   <ul className={styles.leftProducts}>
                     <li>
                       <FaPlusCircle />
-                      Insert Product
+                      <span
+                        className={
+                          sidebarToggle
+                            ? styles.leftItemsDataToggle
+                            : styles.leftItemsDataToggleDeActive
+                        }
+                      >
+                        Insert Product
+                      </span>
                     </li>
                     <li>
                       <FaEye />
-                      View Products
+                      <span
+                        className={
+                          sidebarToggle
+                            ? styles.leftItemsDataToggle
+                            : styles.leftItemsDataToggleDeActive
+                        }
+                      >
+                        View Products
+                      </span>
                     </li>
                   </ul>
                 ) : (
@@ -57,18 +95,42 @@ const Admin = () => {
               <li className={styles.leftItemsData1}>
                 <span onClick={() => setSliderToggle(!sliderToggle)}>
                   <FaSlidersH />
-                  Slider
-                  <IoIosArrowDown />
+                  <span
+                    className={
+                      sidebarToggle
+                        ? styles.leftItemsDataToggle
+                        : styles.leftItemsDataToggleDeActive
+                    }
+                  >
+                    Slider
+                    <IoIosArrowDown />
+                  </span>
                 </span>
                 {sliderToggle ? (
                   <ul className={styles.leftSlider}>
                     <li>
                       <FaPlusCircle />
-                      Insert Slider
+                      <span
+                        className={
+                          sidebarToggle
+                            ? styles.leftItemsDataToggle
+                            : styles.leftItemsDataToggleDeActive
+                        }
+                      >
+                        Insert Slider
+                      </span>
                     </li>
                     <li>
                       <FaEye />
-                      View Slider
+                      <span
+                        className={
+                          sidebarToggle
+                            ? styles.leftItemsDataToggle
+                            : styles.leftItemsDataToggleDeActive
+                        }
+                      >
+                        View Slider
+                      </span>
                     </li>
                   </ul>
                 ) : (
@@ -77,11 +139,27 @@ const Admin = () => {
               </li>
               <li className={styles.leftItemsData}>
                 <FaUser />
-                Customer Details
+                <span
+                  className={
+                    sidebarToggle
+                      ? styles.leftItemsDataToggle
+                      : styles.leftItemsDataToggleDeActive
+                  }
+                >
+                  Customer Details
+                </span>
               </li>
               <li className={styles.leftItemsData}>
                 <FaCreditCard />
-                View Payments
+                <span
+                  className={
+                    sidebarToggle
+                      ? styles.leftItemsDataToggle
+                      : styles.leftItemsDataToggleDeActive
+                  }
+                >
+                  View Payments
+                </span>
               </li>
             </ul>
           </div>

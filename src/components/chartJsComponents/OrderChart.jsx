@@ -11,7 +11,7 @@ const orderData = [
 
 function OrderChart() {
   return (
-    <LineChart width={500} height={400} data={orderData}>
+    <LineChart width={410} height={310} data={orderData}>
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="month" />
       <YAxis />

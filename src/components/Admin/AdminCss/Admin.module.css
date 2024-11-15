@@ -12,7 +12,8 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  gap: 2rem;
   padding-left: 20px;
   transition: all.5s;
 }
@@ -23,7 +24,7 @@
 }
 .leftLogo {
   height: 100%;
-  width: 100%;
+  width: auto;
   font-size: 24px;
   font-weight: 800;
   display: flex;
@@ -31,9 +32,14 @@
   justify-content: flex-start;
   cursor: default;
 }
-.left {
+.rightToggleMenu {
+  display: flex;
+  font-size: 1.65rem;
+}
+.left,
+.leftDe {
   height: 700px;
-  width: 245px;
+  transition: all 0.2s linear;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -41,6 +47,12 @@
   cursor: default;
   margin-top: 20px;
   border-right: 3px solid black;
+}
+.leftDe {
+  width: 80px;
+}
+.left {
+  width: 245px;
 }
 .leftItems {
   height: 100%;
@@ -58,12 +70,24 @@
   background: #000;
   color: #fff;
 }
-.leftItemsData,.leftSlider li, .leftProducts li{
+.leftItemsData,
+.leftSlider li,
+.leftProducts li {
   width: 100%;
   display: flex;
   gap: 1rem;
 }
-.leftItemsData1 span {
+.leftItemsDataToggle {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.leftItemsDataToggleDeActive {
+  display: none;
+}
+.leftItemsData1 span:first-child {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -157,8 +181,8 @@
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 2px 2px 10px rgba(56, 56, 56, 0.852);
-  height: 400px;
-  width: 450px;
+  height: 360px;
+  width: 410px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -167,8 +191,8 @@
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 2px 2px 10px rgba(56, 56, 56, 0.852);
-  height: 420px;
-  width: 550px;
+  height: 360px;
+  width: 440px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -185,7 +209,7 @@
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 2px 2px 10px rgba(56, 56, 56, 0.852);
-  margin: 20px 0  60px 10px;
+  margin: 20px 0 60px 10px;
 }
 .rowFourTable {
   height: 250px;
@@ -194,20 +218,60 @@
   border-collapse: collapse;
   font-size: 0.9rem;
 }
-.rowFourTable .rowFourTHead tr{
+.rowFourTable .rowFourTHead tr {
   height: 50px;
   background-color: grey;
   border-bottom: 1px solid black;
 }
-.rowFourTable .rowFourTHead tr th::selection{
+.rowFourTable .rowFourTHead tr th::selection {
   background: black;
   color: grey;
 }
-.rowFourTable .rowFourTBody tr{
+.rowFourTable .rowFourTBody tr {
   text-align: center;
   border-bottom: 1px solid black;
 }
-.rowFourTable .rowFourTBody tr td::selection, .rowFourLatestOrdersTitle::selection{
+.rowFourTable .rowFourTBody tr td::selection,
+.rowFourLatestOrdersTitle::selection {
   background: black;
   color: white;
+}
+@media screen and (max-width: 1060px) {
+  .orders,
+  .customers,
+  .products {
+    height: 110px;
+    width: 200px;
+    font-size: 1rem;
+  }
+  .ordersText,.customersText,.productsText{
+    font-size: 1rem;
+  }
+  .rowOneIcons{
+    font-size: 2rem;
+  }
+  .rowThree{
+    width: 90%;
+  }
+  .rowTwoItems{
+    height: 250px;
+    width: 300px;
+  }
+  .recharts-wrapper{
+    height: 260px;
+  }
+}
+@media screen and (max-width: 890px){
+  .rowOne{
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+@media screen and (max-width:825px){
+  .rowTwo{
+    flex-direction: column;
+    gap: 1rem;
+  }
 }
